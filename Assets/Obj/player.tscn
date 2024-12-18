@@ -1,7 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://crqp6ytp53h0h"]
+[gd_scene load_steps=15 format=3 uid="uid://crqp6ytp53h0h"]
 
 [ext_resource type="Script" path="res://Assets/Obj/player.gd" id="1_m2h8y"]
-[ext_resource type="Texture2D" uid="uid://b8yaeuk1an732" path="res://Assets/Textures/player.png" id="1_xbyop"]
+[ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Assets/Sprites/Player/Full/spr_player_basic.png" id="2_3wmo5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7r0b"]
 radius = 0.442084
@@ -9,27 +9,197 @@ height = 1.25506
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh0go"]
 radius = 0.3
-height = 2.4
-radial_segments = 4
-rings = 3
+height = 2.6
+radial_segments = 16
+rings = 6
+
+[sub_resource type="Animation" id="Animation_4bwoc"]
+resource_name = "walk_down"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_lqrfa"]
+resource_name = "idle_down"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_wadm3"]
+resource_name = "RESET"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="Animation" id="Animation_0nxy0"]
+resource_name = "idle_right"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_h4n4m"]
+resource_name = "idle_left"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [12]
+}
+
+[sub_resource type="Animation" id="Animation_ek3xa"]
+resource_name = "idle_up"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [8]
+}
+
+[sub_resource type="Animation" id="Animation_ne1ry"]
+resource_name = "walk_right"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
+}
+
+[sub_resource type="Animation" id="Animation_m0c0t"]
+resource_name = "walk_left"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_3ltif"]
+resource_name = "walk_up"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [8, 9, 10, 11]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_yt2hf"]
+_data = {
+"RESET": SubResource("Animation_wadm3"),
+"idle_down": SubResource("Animation_lqrfa"),
+"idle_left": SubResource("Animation_h4n4m"),
+"idle_right": SubResource("Animation_0nxy0"),
+"idle_up": SubResource("Animation_ek3xa"),
+"walk_down": SubResource("Animation_4bwoc"),
+"walk_left": SubResource("Animation_m0c0t"),
+"walk_right": SubResource("Animation_ne1ry"),
+"walk_up": SubResource("Animation_3ltif")
+}
 
 [node name="Player" type="CharacterBody3D"]
 script = ExtResource("1_m2h8y")
 
-[node name="Sprite3D" type="Sprite3D" parent="."]
+[node name="CollisionStanding" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635711, 0)
+shape = SubResource("CapsuleShape3D_o7r0b")
+
+[node name="BasicShadow" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0, 1.285, -0.276)
+cast_shadow = 3
+mesh = SubResource("CapsuleMesh_sh0go")
+
+[node name="Visual" type="Node3D" parent="."]
+
+[node name="SpriteFull" type="Sprite3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1, 0, 1.41, 0)
 cast_shadow = 0
 pixel_size = 0.0625
 shaded = true
 alpha_cut = 2
 texture_filter = 0
-texture = ExtResource("1_xbyop")
+texture = ExtResource("2_3wmo5")
+hframes = 4
+vframes = 4
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635711, 0)
-shape = SubResource("CapsuleShape3D_o7r0b")
-
-[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, -0.35)
-cast_shadow = 3
-mesh = SubResource("CapsuleMesh_sh0go")
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
+root_node = NodePath("../..")
+libraries = {
+"": SubResource("AnimationLibrary_yt2hf")
+}
