@@ -3,13 +3,22 @@ extends Camera3D
 @onready var player = $"../Player";
 @onready var sun = $"../DirectionalLight3D";
 
+var camera_speed = 0.3
+
 func _ready() -> void:
 	pass
 
 
 func _process(delta: float) -> void:
 	
-	global_position = Vector3(player.global_position.x, 48.0, player.global_position.z + 46.0);
+	# snap to base pixel size divided by window scale
+	# TODO: make window manager -> change the 3.0 to window scale
+	
+	global_position.x = snapped(lerp(global_position.x, player.global_position.x, camera_speed), (GLOBAL.PIXEL_X / 16.0) / 3.0)
+	global_position.z = snapped(lerp(global_position.z, player.global_position.z + 46.0, camera_speed), (GLOBAL.PIXEL_Z / 16.0) / 3.0)
+	
+	if !player.is_jumping:
+		global_position.y = snapped(lerp(global_position.y, player.global_position.y + 48.0, camera_speed * .5), (GLOBAL.PIXEL_Y / 16.0) / 3.0)
 	
 	if Input.is_action_pressed("camera_left"):
 		sun.rotation.y -= 0.1;

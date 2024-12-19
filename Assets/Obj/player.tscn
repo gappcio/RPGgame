@@ -1,11 +1,14 @@
-[gd_scene load_steps=15 format=3 uid="uid://crqp6ytp53h0h"]
+[gd_scene load_steps=16 format=3 uid="uid://crqp6ytp53h0h"]
 
 [ext_resource type="Script" path="res://Assets/Obj/player.gd" id="1_m2h8y"]
 [ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Assets/Sprites/Player/Full/spr_player_basic.png" id="2_3wmo5"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7r0b"]
-radius = 0.442084
-height = 1.25506
+radius = 0.45
+height = 2.4
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fdd6m"]
+points = PackedVector3Array(0, -1.2, 0.2, -0.2, -1.2, 0, 0.2, -1.2, 0, 0, -1.2, -0.2, 0, -0.75, 0.4, -0.4, -0.75, 0, 0.4, -0.75, 0, 0, -0.75, -0.4, -0.45, 0, 0, 0.45, 0, 0, 0, 0, -0.4, 0, 0, 0.4, 0.2, 1.2, 0, -0.2, 1.2, 0, 0, 1.2, 0.2, 0, 1.2, -0.2)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh0go"]
 radius = 0.3
@@ -13,10 +16,8 @@ height = 2.6
 radial_segments = 16
 rings = 6
 
-[sub_resource type="Animation" id="Animation_4bwoc"]
-resource_name = "walk_down"
-loop_mode = 1
-step = 0.25
+[sub_resource type="Animation" id="Animation_wadm3"]
+resource_name = "RESET"
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -24,10 +25,10 @@ tracks/0/path = NodePath("Visual/SpriteFull:frame")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
-"transitions": PackedFloat32Array(1, 1, 1, 1),
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0, 1, 2, 3]
+"values": [0]
 }
 
 [sub_resource type="Animation" id="Animation_lqrfa"]
@@ -46,8 +47,9 @@ tracks/0/keys = {
 "values": [0]
 }
 
-[sub_resource type="Animation" id="Animation_wadm3"]
-resource_name = "RESET"
+[sub_resource type="Animation" id="Animation_h4n4m"]
+resource_name = "idle_left"
+loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
@@ -58,7 +60,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [0]
+"values": [12]
 }
 
 [sub_resource type="Animation" id="Animation_0nxy0"]
@@ -77,22 +79,6 @@ tracks/0/keys = {
 "values": [4]
 }
 
-[sub_resource type="Animation" id="Animation_h4n4m"]
-resource_name = "idle_left"
-loop_mode = 1
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Visual/SpriteFull:frame")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [12]
-}
-
 [sub_resource type="Animation" id="Animation_ek3xa"]
 resource_name = "idle_up"
 loop_mode = 1
@@ -109,8 +95,8 @@ tracks/0/keys = {
 "values": [8]
 }
 
-[sub_resource type="Animation" id="Animation_ne1ry"]
-resource_name = "walk_right"
+[sub_resource type="Animation" id="Animation_4bwoc"]
+resource_name = "walk_down"
 loop_mode = 1
 step = 0.25
 tracks/0/type = "value"
@@ -123,7 +109,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7]
+"values": [0, 1, 2, 3]
 }
 
 [sub_resource type="Animation" id="Animation_m0c0t"]
@@ -141,6 +127,23 @@ tracks/0/keys = {
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
 "values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_ne1ry"]
+resource_name = "walk_right"
+loop_mode = 1
+step = 0.25
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [4, 5, 6, 7]
 }
 
 [sub_resource type="Animation" id="Animation_3ltif"]
@@ -177,11 +180,17 @@ _data = {
 script = ExtResource("1_m2h8y")
 
 [node name="CollisionStanding" type="CollisionShape3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.635711, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+visible = false
 shape = SubResource("CapsuleShape3D_o7r0b")
+disabled = true
+
+[node name="CollisionStanding2" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+shape = SubResource("ConvexPolygonShape3D_fdd6m")
 
 [node name="BasicShadow" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.999391, 0.0348995, 0, -0.0348995, 0.999391, 0, 1.285, -0.276)
+transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0, 1.285, -0.316)
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_sh0go")
 

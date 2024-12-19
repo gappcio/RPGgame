@@ -1,13 +1,13 @@
 extends CharacterBody3D
 
+class_name Player
+
 @onready var anim: AnimationPlayer = $Visual/AnimationPlayer
 
 var SPEED = 5.0
-var JUMP_VELOCITY = 6.0 * GLOBAL.PIXEL_Y
 var ACCEL = 0.75
 var DECCEL = 0.2
-
-var JUMP_FORCE_BASE = 6.0 * GLOBAL.PIXEL_Y
+var JUMP_FORCE_BASE = 4.5 * GLOBAL.PIXEL_Y
 var jump_force = JUMP_FORCE_BASE
 
 var GRAVITY_BASE = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -21,19 +21,20 @@ var in_air: bool = false
 var can_jump: bool = true
 var jump_trigger: bool = false
 
-var jump_time_threshold = 10
+var jump_time_threshold = 10.0
 var jump_time = 0
 
-var jump_buffer_max = 6
+var jump_buffer_max = 6.0
 var jump_buffer: float = 0.0
 
-var coyote_time_max: float = 5.0
+var coyote_time_max: float = 6.0
 var coyote_time: float = coyote_time_max
 
-var jump_accel = 0.4
-var jump_accel_threshold = 10
+var just_jumped: bool = false
+
+var jump_accel = 0.7
+var jump_accel_threshold = 6.0
 var jump_accel_time = jump_accel_threshold
-var jump_accel_time_max = -10
 
 var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 var direction = (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
@@ -57,13 +58,27 @@ func _process(delta: float) -> void:
 		anim.speed_scale = velocity.length() * 0.25;
 
 func _physics_process(delta: float) -> void:
-
+	
+	var key_right = Input.is_action_pressed("move_right")
+	var key_left = Input.is_action_pressed("move_left")
+	var key_down = Input.is_action_pressed("move_down")
+	var key_up = Input.is_action_pressed("move_up")
+	var key_jump = Input.is_action_just_pressed("jump")
+	var key_jump_down = Input.is_action_pressed("jump")
+	
+	if key_right: direction_string = "right"
+	if key_left: direction_string = "left"
+	if key_down: direction_string = "down"
+	if key_up: direction_string = "up"
+	
 	if !is_on_floor():
 		velocity.y -= gravity * delta
 	else:
 		jump_trigger = false
 		is_jumping = false
 		is_falling = false
+		coyote_time = coyote_time_max
+		jump_time = 0
 		
 	if velocity.y < 0.0:
 		is_falling = true
@@ -72,36 +87,58 @@ func _physics_process(delta: float) -> void:
 		
 	if is_falling:
 		if abs(velocity.y) < 0.75:
-			gravity = lerp(gravity, GRAVITY_BASE * .5, .1)
+			gravity = lerp(gravity, GRAVITY_BASE * 1.25, .2)
 		else:
-			gravity = GRAVITY_BASE
+			gravity = GRAVITY_BASE * 1.75
 	else:
-		gravity = GRAVITY_BASE * 1.1
+		gravity = GRAVITY_BASE * 2.25
+		
 		
 	if velocity.y != 0.0:
 		in_air = true
 	else:
 		in_air = false
 		
-	if Input.is_action_just_pressed("jump") && can_jump:
+	if key_jump && can_jump:
 		#velocity.y = JUMP_VELOCITY
 		jump_buffer = jump_buffer_max
 
-	if jump_buffer > 0:
+	if jump_buffer > 0.0:
 		if jump_buffer <= 0.0:
 			jump_buffer = 0.0
 		else:
 			jump_buffer -= 1.0 
 		
-		if !jump_trigger || coyote_time > 0.0:
+		if !jump_trigger && !in_air:
 			jump()
 			
+	
+	if is_jumping:
+		jump_time += 1.0
+	
+	if just_jumped:
+		jump_accel_time -= 1.0;
+		
+		if jump_accel_time <= 0.0:
+			just_jumped = false
+			jump_accel_time = jump_accel_threshold
+			
+		velocity.y = lerp(velocity.y, JUMP_FORCE_BASE * 1.25, jump_accel)
+			
+	
+	if !key_jump_down && is_jumping:
+		if !is_falling && !is_on_floor():
+			jump_time = jump_time_threshold
+			jump_accel_time = jump_accel_threshold
+			just_jumped = false
+			velocity.y *= 0.9
 	
 	if is_falling && !is_jumping:
 		if coyote_time > 0.0:
 			coyote_time -= 1.0
-	
-	print(coyote_time)
+			
+			if !jump_trigger && jump_buffer > 0.0:
+				jump()
 	
 	input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
@@ -125,27 +162,20 @@ func _physics_process(delta: float) -> void:
 	if velocity.z > -stop_treshold && velocity.z < stop_treshold:
 		velocity.z = 0.0
 	
-	match input_dir:
-		Vector2(0, 0):
-			pass
-		Vector2(-1, 0),\
-		Vector2(-1, -1):
-			direction_string = "left"
-		Vector2(1, 0),\
-		Vector2(1, 1):
-			direction_string = "right"
-		Vector2(0, -1),\
-		Vector2(1, -1):
-			direction_string = "up"
-		Vector2(0, 1),\
-		Vector2(-1, 1):
-			direction_string = "down"
-			
-
+	# snap position to base pixel size divided by window scale to avoid jitter
+	
+	position.x = snapped(position.x, (GLOBAL.PIXEL_X / 16.0) / 3.0)
+	position.y = snapped(position.y, (GLOBAL.PIXEL_Y / 16.0) / 3.0)
+	position.z = snapped(position.z, (GLOBAL.PIXEL_Z / 16.0) / 3.0)
+	
+	#if velocity.x == 0.0 && velocity.z == 0.0:
+	#	position.x = snapped(position.x, 0.0625)
+	#	position.z = snapped(position.z, 0.0625)
+	
 	move_and_slide()
 
 func jump():
-	velocity.y = JUMP_FORCE_BASE
 	is_jumping = true
 	is_falling = false
 	jump_trigger = true
+	just_jumped = true
