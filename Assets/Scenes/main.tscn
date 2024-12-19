@@ -1,10 +1,11 @@
-[gd_scene load_steps=13 format=3 uid="uid://62n6lc63rm26"]
+[gd_scene load_steps=14 format=3 uid="uid://62n6lc63rm26"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="1_7f1ch"]
 [ext_resource type="Script" path="res://Assets/Scenes/camera_3d.gd" id="1_cocky"]
 [ext_resource type="Material" uid="uid://b1d32sqbd6568" path="res://Assets/Materials/MAT_grass1.tres" id="1_ogvuv"]
 [ext_resource type="Material" uid="uid://der6s2dvr4qge" path="res://Assets/Materials/MAT_test.tres" id="2_0ppqn"]
 [ext_resource type="PackedScene" uid="uid://crqp6ytp53h0h" path="res://Assets/Obj/player.tscn" id="3_re8pl"]
+[ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Assets/Maps/test.blend" id="6_3rrmn"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7x6p"]
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -463,3 +464,6 @@ skeleton = NodePath("../Terrain/base_cube")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="block13/StaticBody3D"]
 transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
+
+[node name="test" parent="." instance=ExtResource("6_3rrmn")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.74, 0, 9.87)
