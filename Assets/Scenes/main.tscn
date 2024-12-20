@@ -1,11 +1,12 @@
-[gd_scene load_steps=14 format=3 uid="uid://62n6lc63rm26"]
+[gd_scene load_steps=15 format=3 uid="uid://62n6lc63rm26"]
 
 [ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="1_7f1ch"]
-[ext_resource type="Script" path="res://Assets/Scenes/camera_3d.gd" id="1_cocky"]
+[ext_resource type="Script" path="res://Assets/Scenes/Camera/camera_3d.gd" id="1_cocky"]
 [ext_resource type="Material" uid="uid://b1d32sqbd6568" path="res://Assets/Materials/MAT_grass1.tres" id="1_ogvuv"]
 [ext_resource type="Material" uid="uid://der6s2dvr4qge" path="res://Assets/Materials/MAT_test.tres" id="2_0ppqn"]
-[ext_resource type="PackedScene" uid="uid://crqp6ytp53h0h" path="res://Assets/Obj/player.tscn" id="3_re8pl"]
+[ext_resource type="PackedScene" uid="uid://crqp6ytp53h0h" path="res://Assets/Scenes/Player/player.tscn" id="3_re8pl"]
 [ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Assets/Maps/test.blend" id="6_3rrmn"]
+[ext_resource type="PackedScene" uid="uid://q28ieg5iro8" path="res://Assets/Scenes/_COLLISIONS/COLLISION_GridMap.tscn" id="7_the70"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7x6p"]
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -49,7 +50,7 @@ shadow_enabled = true
 directional_shadow_split_1 = 0.05
 
 [node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 15, 16, 28)
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 14, 32, 43)
 keep_aspect = 0
 projection = 1
 current = true
@@ -400,7 +401,7 @@ transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
 
 [node name="block9" type="MeshInstance3D" parent="."]
-transform = Transform3D(0.707107, 4.83307, 0, -0.707107, 4.83307, 0, 0, 0, 1.41, 7.937, 1.465, 9.61)
+transform = Transform3D(0.819152, 3.92039, 0, -0.573577, 5.5989, 0, 0, 0, 1.41, 8.45, 1.149, 9.61)
 mesh = SubResource("BoxMesh_by83s")
 skeleton = NodePath("../Terrain/base_cube")
 
@@ -466,4 +467,10 @@ transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
 
 [node name="test" parent="." instance=ExtResource("6_3rrmn")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.74, 0, 9.87)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
+
+[node name="COLLISIONGridMap" parent="." instance=ExtResource("7_the70")]
+data = {
+"cells": PackedInt32Array(-1, 5, 0, -1, 4, 0, -1, 6, 0, -2, 4, 0, -2, 5, 0, -2, 6, 0, -3, 6, 0, -3, 5, 0, -4, 5, 0, -4, 4, 0, -4, 6, 0, -5, 6, 0, -5, 5, 0, -5, 4, 0, -1, 11, 0, -2, 11, 0, -3, 11, 0, -4, 11, 0, -5, 11, 0, -5, 12, 0, -4, 12, 0, -3, 12, 0, -2, 12, 0, -1, 12, 0, -1, 13, 0, -2, 13, 0, -3, 13, 0, -4, 13, 0, -5, 13, 0, -5, 14, 0, -4, 14, 0, -3, 14, 0, -2, 14, 0, -1, 14, 0, -1, 15, 0, -2, 15, 0, -3, 15, 0, -4, 15, 0, -5, 15, 0, -5, 16, 0, -4, 16, 0, -3, 16, 0, -2, 16, 0, -1, 16, 0, -5, 17, 0, -4, 17, 0, -3, 17, 0, -2, 17, 0, -1, 17, 0, -1, 18, 0, -2, 18, 0, -3, 18, 0, -4, 18, 0, -5, 18, 0, -5, 19, 0, -4, 19, 0, -3, 19, 0, -2, 19, 0, -1, 19, 0, -1, 20, 0, -2, 20, 0, -3, 20, 0, -4, 20, 0, -5, 20, 0, -5, 21, 0, -4, 21, 0, -3, 21, 0, -2, 21, 0, -1, 21, 0, -1, 22, 0, -2, 22, 0, -3, 22, 0, -4, 22, 0, -5, 22, 0, -5, 23, 0, -4, 23, 0, -3, 23, 0, -2, 23, 0, -1, 23, 0, -1, 27, 0, -2, 27, 0, -3, 27, 0, -4, 27, 0, -5, 27, 0, -5, 26, 0, -5, 25, 0, -5, 24, 0, -4, 26, 0, -4, 25, 0, -4, 24, 0, -3, 26, 0, -3, 25, 0, -3, 24, 0, -2, 25, 0, -2, 26, 0, -2, 24, 0, -1, 24, 0, -1, 25, 0, -1, 26, 0, -6, 27, 0, -6, 26, 0, -6, 25, 0, -6, 24, 0, -6, 23, 0, -6, 22, 0, -6, 21, 0, -6, 20, 0, -6, 19, 0, -6, 18, 0, -6, 17, 0, -6, 16, 0, -6, 15, 0, -6, 14, 0, -6, 13, 0, -6, 12, 0, -6, 11, 0, -7, 11, 0, -7, 12, 0, -7, 13, 0, -7, 14, 0, -7, 15, 0, -8, 16, 0, -8, 17, 0, -8, 18, 0, -8, 19, 0, -8, 20, 0, -8, 21, 0, -8, 22, 0, -8, 23, 0, -8, 24, 0, -8, 25, 0, -8, 26, 0, -8, 27, 0, -7, 27, 0, -7, 26, 0, -7, 25, 0, -7, 24, 0, -7, 23, 0, -7, 22, 0, -7, 21, 0, -7, 20, 0, -7, 19, 0, -7, 18, 0, -7, 17, 0, -7, 16, 0, -8, 15, 0, -8, 14, 0, -8, 13, 0, -8, 12, 0, -8, 11, 0, -8, 10, 0, -7, 10, 0, -6, 10, 0, -5, 10, 0, -4, 10, 0, -3, 10, 0, -2, 10, 0, -1, 10, 0, 196603, 10, 0, 196604, 10, 0, 196605, 10, 0, 196606, 10, 0, 196607, 10, 0, 196607, 9, 0, 196606, 9, 0, 196605, 9, 0, 196604, 9, 0, 196603, 9, 0, 196603, 8, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 196607, 7, 0, 196606, 7, 0, 196605, 7, 0, 196604, 7, 0, 196603, 7, 0, -10, 16, 0, -10, 15, 0, -10, 14, 0, -11, 14, 0, -11, 13, 0, -12, 12, 0, -13, 12, 0, -13, 11, 0, -13, 13, 0, -13, 14, 0, -12, 15, 0, -12, 16, 0, -12, 17, 0, -11, 17, 0, -11, 16, 0, -11, 15, 0, -12, 14, 0, -14, 14, 0, -14, 15, 0, -13, 15, 0, -13, 16, 0, -14, 13, 0, -14, 12, 0, -15, 13, 0, -15, 14, 0, -15, 15, 0, -14, 16, 0, -12, 13, 0, 65531, 9, 1)
+}
+metadata/_editor_floor_ = Vector3(0, 0, 0)

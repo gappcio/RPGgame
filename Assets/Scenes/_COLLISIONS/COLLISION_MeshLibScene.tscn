@@ -1,0 +1,46 @@
+[gd_scene load_steps=7 format=3 uid="uid://bat7ywt12tufn"]
+
+[ext_resource type="PackedScene" uid="uid://c1ald0swgcr3y" path="res://Assets/Scenes/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x1.blend" id="1_5g74u"]
+[ext_resource type="PackedScene" uid="uid://bw6fl6iuxx8b4" path="res://Assets/Scenes/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x2.blend" id="2_e6lnr"]
+[ext_resource type="PackedScene" uid="uid://q08hghps1wwk" path="res://Assets/Scenes/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x3.blend" id="3_b7jjd"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_sc6eq"]
+size = Vector3(1, 1.414, 1.414)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_jifc6"]
+size = Vector3(1, 2.828, 1.414)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_8tccf"]
+size = Vector3(1, 4.243, 1)
+
+[node name="COLLISION_MeshLib" type="Node3D"]
+
+[node name="COLLISION_CUBE1x1" parent="." instance=ExtResource("1_5g74u")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="COLLISION_CUBE1x1/Cube" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="COLLISION_CUBE1x1/Cube/StaticBody3D"]
+shape = SubResource("BoxShape3D_sc6eq")
+
+[node name="COLLISION_CUBE1x2" parent="." instance=ExtResource("2_e6lnr")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="COLLISION_CUBE1x2/Cube1x2" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="COLLISION_CUBE1x2/Cube1x2/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.707, 0)
+shape = SubResource("BoxShape3D_jifc6")
+
+[node name="COLLISION_CUBE1x3" parent="." instance=ExtResource("3_b7jjd")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="COLLISION_CUBE1x3/Cube1x3" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="COLLISION_CUBE1x3/Cube1x3/StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.414, 0)
+shape = SubResource("BoxShape3D_8tccf")
+
+[editable path="COLLISION_CUBE1x1"]
+[editable path="COLLISION_CUBE1x2"]
+[editable path="COLLISION_CUBE1x3"]

@@ -1,0 +1,11 @@
+[gd_scene load_steps=3 format=3 uid="uid://q28ieg5iro8"]
+
+[ext_resource type="MeshLibrary" uid="uid://y7rrjmwyd73o" path="res://Assets/Scenes/_COLLISIONS/COLLISION_MeshLib.tres" id="1_a765y"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i53wp"]
+
+[node name="COLLISIONGridMap" type="GridMap"]
+mesh_library = ExtResource("1_a765y")
+physics_material = SubResource("PhysicsMaterial_i53wp")
+cell_size = Vector3(1, 1.414, 1.414)
+cell_octant_size = 16
