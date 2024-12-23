@@ -1,7 +1,7 @@
 [gd_scene load_steps=16 format=3 uid="uid://crqp6ytp53h0h"]
 
-[ext_resource type="Script" path="res://Assets/Scenes/Player/player.gd" id="1_v0ns8"]
-[ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Assets/Sprites/Player/Full/spr_player_basic.png" id="2_2532p"]
+[ext_resource type="Script" path="res://Entities/_Player/player.gd" id="1_v0ns8"]
+[ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Entities/_Player/Sprites/spr_player_basic.png" id="2_2532p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7r0b"]
 radius = 0.45

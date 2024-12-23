@@ -1,8 +1,8 @@
 [gd_scene load_steps=7 format=3 uid="uid://bat7ywt12tufn"]
 
-[ext_resource type="PackedScene" uid="uid://c1ald0swgcr3y" path="res://Assets/Scenes/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x1.blend" id="1_5g74u"]
-[ext_resource type="PackedScene" uid="uid://bw6fl6iuxx8b4" path="res://Assets/Scenes/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x2.blend" id="2_e6lnr"]
-[ext_resource type="PackedScene" uid="uid://q08hghps1wwk" path="res://Assets/Scenes/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x3.blend" id="3_b7jjd"]
+[ext_resource type="PackedScene" uid="uid://c1ald0swgcr3y" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x1.blend" id="1_5g74u"]
+[ext_resource type="PackedScene" uid="uid://bw6fl6iuxx8b4" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x2.blend" id="2_e6lnr"]
+[ext_resource type="PackedScene" uid="uid://q08hghps1wwk" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x3.blend" id="3_b7jjd"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sc6eq"]
 size = Vector3(1, 1.414, 1.414)

@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://q28ieg5iro8"]
 
-[ext_resource type="MeshLibrary" uid="uid://y7rrjmwyd73o" path="res://Assets/Scenes/_COLLISIONS/COLLISION_MeshLib.tres" id="1_a765y"]
+[ext_resource type="MeshLibrary" uid="uid://y7rrjmwyd73o" path="res://Common/_COLLISIONS/COLLISION_MeshLib.tres" id="1_a765y"]
 
 [sub_resource type="PhysicsMaterial" id="PhysicsMaterial_i53wp"]
 

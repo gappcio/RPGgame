@@ -4,12 +4,12 @@ importer="scene"
 importer_version=1
 type="PackedScene"
 uid="uid://q08hghps1wwk"
-path="res://.godot/imported/COLLISION_CUBE1x3.blend-a01efdabaf92c3a40e052a0d4121f0c7.scn"
+path="res://.godot/imported/COLLISION_CUBE1x3.blend-7ac7425efe067b741cf257654bf7cdd0.scn"
 
 [deps]
 
-source_file="res://Assets/Scenes/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x3.blend"
-dest_files=["res://.godot/imported/COLLISION_CUBE1x3.blend-a01efdabaf92c3a40e052a0d4121f0c7.scn"]
+source_file="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x3.blend"
+dest_files=["res://.godot/imported/COLLISION_CUBE1x3.blend-7ac7425efe067b741cf257654bf7cdd0.scn"]
 
 [params]
 
