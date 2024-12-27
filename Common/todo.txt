@@ -1,0 +1,41 @@
+PROJECT STRUCTURE:
+	
+	- addons
+	- Assets
+		- Audio
+			- Music
+			- SFX
+		- Fonts
+		- Sprites
+			- Tileset
+	- Common - all things that work behind the scenes
+		- Room Manager
+		- Window Manager
+		- Collisions
+		- Camera
+		- Weather Manager
+		- Day Night Manager
+		- UI
+		- Inventory Manger
+	- Entities - all game world objects
+		- ENTITY_NAME
+			- Sprites
+			- scene files
+			- script files
+	- Locals - files for localization
+	- Rooms - map scenes
+		- ROOM_NAME
+			- exported map files
+			- scene files
+			- script files
+	- Utils - idk
+		- Global Script
+		- Global Signals
+TODO:
+	
+	- window manager - change resolution
+	
+	- room manager - change between rooms
+	
+	- collisions - make more collisions for gridmap
+	
