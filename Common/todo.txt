@@ -39,3 +39,6 @@ TODO:
 	
 	- collisions - make more collisions for gridmap
 	
+
+
+BE READY FOR GODOT 4.4 AND JOLT INTEGRATION

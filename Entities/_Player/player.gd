@@ -7,7 +7,7 @@ class_name Player
 var SPEED = 5.0
 var ACCEL = 0.75
 var DECCEL = 0.2
-var JUMP_FORCE_BASE = 4.5 * GLOBAL.PIXEL_Y
+var JUMP_FORCE_BASE = 4.5 * GLOBAL.TILE_Y
 var jump_force = JUMP_FORCE_BASE
 
 var GRAVITY_BASE = ProjectSettings.get_setting("physics/3d/default_gravity")
@@ -145,10 +145,10 @@ func _physics_process(delta: float) -> void:
 	
 	if direction:
 		velocity.x = lerp(velocity.x, direction.x * SPEED, ACCEL)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, ACCEL * GLOBAL.PIXEL_Z)
+		velocity.z = lerp(velocity.z, direction.z * SPEED, ACCEL * GLOBAL.TILE_Z)
 	else:
 		velocity.x = lerp(velocity.x, 0.0, DECCEL)
-		velocity.z = lerp(velocity.z, 0.0, DECCEL * GLOBAL.PIXEL_Z)
+		velocity.z = lerp(velocity.z, 0.0, DECCEL * GLOBAL.TILE_Z)
 
 	if velocity.x != 0.0 || velocity.z != 0.0:
 		is_moving = true;
@@ -164,9 +164,9 @@ func _physics_process(delta: float) -> void:
 	
 	# snap position to base pixel size divided by window scale to avoid jitter
 	
-	position.x = snapped(position.x, (GLOBAL.PIXEL_X / 16.0) / 3.0)
-	position.y = snapped(position.y, (GLOBAL.PIXEL_Y / 16.0) / 3.0)
-	position.z = snapped(position.z, (GLOBAL.PIXEL_Z / 16.0) / 3.0)
+	position.x = snapped(position.x, (GLOBAL.TILE_X / 16.0) / 3.0)
+	position.y = snapped(position.y, (GLOBAL.TILE_Y / 16.0) / 3.0)
+	position.z = snapped(position.z, (GLOBAL.TILE_Z / 16.0) / 3.0)
 	
 	#if velocity.x == 0.0 && velocity.z == 0.0:
 	#	position.x = snapped(position.x, 0.0625)

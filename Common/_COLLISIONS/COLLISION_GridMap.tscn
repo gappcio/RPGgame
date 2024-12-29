@@ -9,3 +9,4 @@ mesh_library = ExtResource("1_a765y")
 physics_material = SubResource("PhysicsMaterial_i53wp")
 cell_size = Vector3(1, 1.414, 1.414)
 cell_octant_size = 16
+metadata/_editor_floor_ = Vector3(0, 0, 0)
