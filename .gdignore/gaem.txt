@@ -184,13 +184,46 @@ zmęczenie - regeneracja energii spada do 0 (tier 1), ujemna regeneracja energii
 
 BACKSTORY:
 
-profesor podczas studiów (około 1995) poznał się z kilkoma innymi wysoko inteligentnymi ludźmi,
+profesor podczas studiów (około 1995) poznał się z kilkoma innymi wysoko inteligentnymi ludźmi, wśród nich jest też główny czarny charakter gry, z początku
+grupa ta uzywała małych uczelnianych laboratoriów do przeprowadzania dziwacznych eksperymentów, w końcu po jakimś czasie zaczęli potajemnie testować takie patenty
+jak np. teleportacja z uzyciem magii itp., w tym czasie też zaczęli dostrzegać problemy dręczące ludzkość i chcieli wykorzystać swój intelekt i wiedzę do polepszenia świata
+profesor skupił się na teleportacji, w końcu wynajdując portal używając magicznych kryształów którym można transportować mniejsze przedmioty, w końcu stało się to jego głównym wynalazkiem
+dzieki któremu zmienił świat, dzięki zmniejszeniu energii zużytej na transport na mniejsze odległości, po tym eksperymentował też z teleportacją istot żywych, a przed rozpoczęciem głównej fabuły
+i pojawieniem sie gracza od lat pracował nad przemieszczaniem się w inne alternatywne wszechświaty, w tym czasie też przeniósł swoje badania do tajnej bazy z czasów zimnej wojny, kiedy dowiedział się
+o tym że antagonista zaczął pracować nad wirusami i kontrolą umysłu z jego wcześniejszego projektu, od tego czasu nie ma z antagonistą już kontaktu, a urywa się też z innymi starymi znajomymi, dlatego profesor podejrzewa
+że czarny charakter chce zrobić coś na skalę światową, a jako że już dawno stracił nadzieje na lepszy świat przez zmianę klimatu, ogromną polaryzację społeczeństwa i groźby wybuchu globalnego nuklearnego konfliktu, postanowił
+że dokończy swój projekt teleportu między światami i wykorzysta go by uciec z córką. szukając życia w innych światach natrafia na planetę prawie perfekcyjnie pasującą do przeniesienia się, wtedy dochodzi do incydentu
+podczas którego gracz zostaje przeteleportowany do ośrodku profesora, efektem tej teleportacji są lekkie ubytki w pamięci i chwilowa utrata świadomości
 
 HISTORIA:
+
+(prolog)
+
+- profesor wie że jego dawny znajomy planuje coś na dużą skalę
+- profesor zauważył że od paru lat traci kontakt ze starymi znajomymi
+- laboratorium znajduje sie w górach, kawałek dalej znajduje się teleport prowadzący na zaplecze restauracji, której właścicielami są znajomi profesora,
+dzieki temu są dostarczane mu odpowiednie materiały do pracy i przeżycia
+- profesor ma swój dom w lesie w gminie, gdzie mieszka z córką, jednak od paru lat nie wychodzi już poza laboratorium, jednak jego córka uparła się że nie może tam cały czas żyć i podróżuje po świecie
+- antagonista do niedawna jeszcze nie wiedział gdzie profesor mieszka, ale w końcu trafił na trop gminy w polskopodobnym kraju
+- gracz więc jest jedyną osobą która prowadzi akcję naprzód
+
+- teleporter wymaga ogromu energii czerpanej z kalidu (calidium/kalid (łac. calidus - ciepły/gorący)) - materiału odkrytego podczas zimnej wojny który miał napędzić zapotrzebowania energetyczne
+do machiny wojennej USA, jednak bardziej opłacalny okazał się uran, który jest powszechnie występujący, w tym czasie zostało i tak otwarte kilka kopalni
 
 bohater budzi się w teleporterze w ciemnym pomieszczeniu, który wygląda na stare laboratorium, jedynym źródłem światła są lampki z maszyn wokół niego
 nagle zapala się światło i widzi przed sobą postać profesora
 
+(akt 1)
+
+
+(akt 2)
+
+- odkrycie fałszywej epidemii w "afryce"
+- stara kopalnia kalidu
+
+(akt 3)
+
+(akt 4)
 
 
 
@@ -226,22 +259,26 @@ warunkach żeby nie dopuścić do bezrobocia i klęski systemu)
 
 JAK TO CHCE OSIAGNAC:
 zarazić wszystkich ludzi niewykrywalną chorobą która aktywuje się w określonym momencie i czesc ludzi zabije po czym sama zniknie z martwego organizmu,
-część ludzi przeżyje, o tym kto przeżyje decyduje ich wartość, czyli no kurwa jeszcze nie wiem jakas inteligencja czy cos bo glowny zły 
-by nie chciał żeby przeżyły jakieś patusy i zjeby tu trzeba coś wymyślić
+część ludzi przeżyje, o tym kto przeżyje decyduje ich psychika, do nowego świata nadają się tylko osoby które będą pracowały aby stworzyć lepszy, więc
+nie powinny być to osoby o bardzo niskiej inteligencji, ludzie z zaburzeniami psychicznymi, chorzy fizycznie, niepełnosprawni o każdym stopniu, ale też
+osoby nie pochodzące z głównej cywilizacji
 
-w niektorych biedniejszych rejonach tworzy fałszywą epidemie i podaje "lek" który ma 100% działanie i uzdrowienie pacjenta, jednak z nim przedostaje
-się ta niewykrywalna choroba, ta epidemia jest szalenie zaraźliwa 
-dlatego podczas swojej podróży bohater trafi też w akcie drugim do kraju "afrykanskiego" gdzie oprócz znalezienia potrzebnych rzeczy dowie się o chorobie i sam się nią zarazi i wsm wyleczy
+antagonista jest szefem dużej korporacji spożywczej (takiej jak np nestle, coca cola), do której dostał się podstępem używając urządzenia do kontroli umysłu (urzadzenie to jest tajne i technologia ta jest nieznana,
+wiadomo jedynie ze aby to osiągnąć musiał poznać odpowiednie sekrety ludzkiego umysłu gdyż na tym polega w tym świecie magia, aby jej używać trzeba wiedzieć co chce się zrobić)
+w firmie ma też podstawionych ludzi w wielu rejonach na świecie, a także wykupił inne różne korporacje np farmaceutyczne, aby tam dodawać wirusa do leków, suplementów itp,
+jednak dystrybucja wirusa głównie odbywa się przez produkty spożywcze, a korporacja rozprowadza je po całym świecie, więc te produkty są w sklepach, a także w sieciach restauracji
 
-w bardziej rozwinietych krajach za to do jedzenia dodaje się tajemnie tego wirusa czy cos nwm jak to nazwac bo to musi być niewykrywalne bardzo 
-(dobrze ze magia istnieje), bohater tak na prawde trafia w okres czasu kiedy plan ten już ma się ku koncowi i większość swiata jest już prawdopodobnie 
-zarazona a teraz główny zły jedynie domyka sprawy typu niszczenie dowodów żeby nikt nigdy go nie znalazł a także szuka dawnych znajomych których 
-oczywiście musi zabić bo istnieje duza szansa że choroba ich nie zabije
+wirus ten jest hybrydą, maskuje się aby pozować na naturalny składnik, dopiero po aktywacji przekształca się w śmiertelną formę i namnaża się, jest użyta do tego magia o tak niskiej energii, że
+nawet bardzo zaawansowani magowie nie są w stanie jej wykryć, więc żywność bez problemu przechodzi także testy magiczne, a samego wirusa wystarczy odrobina, najważniejsze żeby dostał się do ofiary
+i tam czekał na aktywację
+
+w drugim akcie gracz trafia do kraju "afrykańskiego", gdzie jest testowana ta choroba, dzieje się to w taki 
+
 
 STRUKTURA ORGANIZACJI:
 poziom 1
  - antagonista
- - najbardziej zaufani ludzie, w tym naukowcy którzy pomogli stworzyć magiczną kontrolę pamięci
+ - najbardziej zaufani ludzie, w tym naukowcy którzy pomogli stworzyć magiczną kontrolę umysłu
  kazdy zna pelen plan dzialania i cel 
 
 poziom 2
