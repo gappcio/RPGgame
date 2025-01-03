@@ -213,8 +213,22 @@ do machiny wojennej USA, jednak bardziej opłacalny okazał się uran, który je
 bohater budzi się w teleporterze w ciemnym pomieszczeniu, który wygląda na stare laboratorium, jedynym źródłem światła są lampki z maszyn wokół niego
 nagle zapala się światło i widzi przed sobą postać profesora
 
+podczas incydentu z teleportacją doszło do kilku trzęsień które spowodowały że w niektórych miejscach nie ma prądu, niektóre miejsca są zagruzowane,
+zepsuł się główny portal do miasta
+
+tutorial w górach:
+aby naprawić portal do miasta potrzebujemy magicznych kryształów, jednak nie mamy dostępu do magazynu gdzie są przechowywane, jednak poza laboratorium profesor ma
+małą chatkę, gdzie czasem chodzi odpocząć kiedy brakuje mu natury, tam w schowanku znajduje się jeszcze trochę kryształów, trzeba je przynieść
+po znalezieniu ich w drodze powrotnej spotykamy kilka potworów które zostały zwabione wibracjami ziemi podczas incydentu (1 tutorial walki)
+
 (akt 1)
 
+aby naprawić bazę potrzebne są jej plany, znajdują się one w starym domu profesora, w którym czasami przebywa jego córka kiedy nie jest w podróży,
+jednak ostatnio dała się w końcu namówić na własny pokój w bazie, dlatego zabrała plany żeby łatwiej zobrazować sobie gdzie będzie jej najlepiej, zrozumiała
+że przebywanie w starym domu jest już teraz zbyt niebezpieczne, jednak gdy przybywamy we wskazane miejsce są tam najemnicy antagonisty którzy złapali jego córkę
+która akurat teraz wróciła z podróży nikomu nic wcześniej nie mówiąc, w pośpiechu wracamy do głównej bazy, po drodze za nami biegnie ranny centaur, zabiera nas
+i tłumaczy że został zraniony przez (pijanego) myśliwego, biegnie ze strachem aż do głównego miasta, gdzie uspokajamy go i mówimy że nawet nie jest postrzelony,
+dajemy mu trochę pieniędzy na jedzenie w restauracji (wątek nowego znajomego - umiejętność: szybka podróż)
 
 (akt 2)
 
@@ -256,6 +270,7 @@ każda potrzeba by była podzielona na kategorie, gdzie jedna grupa społecznoś
 - złoty środek kolektywizmu z indywidualizmem
 - kazdy czlowiek ma zapewnione podstawowe potrzeby, na więcej musi pracować (trzeba zbadać ile % ludzi jest w stanie żyć w najbardziej podstawowych
 warunkach żeby nie dopuścić do bezrobocia i klęski systemu)
+- wiekszosc upierdliwych prac bedzie wykonywana przez maszyny
 
 JAK TO CHCE OSIAGNAC:
 zarazić wszystkich ludzi niewykrywalną chorobą która aktywuje się w określonym momencie i czesc ludzi zabije po czym sama zniknie z martwego organizmu,
@@ -288,6 +303,10 @@ poziom 3
  - ludzie od logistyki itp, nie wiedzą że są częścią wielkiej konspiracji, dla nich (i dla reszty ludzkości) ta organizacja jest [no trzeba wymyslic co to jest wsm]
 
 
+w trakcie gry poznajemy cały plan antagonisty i zauważamy że ma on pewien sens, mianowicie ludzkość w obecnym stanie zmierza do samozniszczenia,
+trzeba wpleść tu wątek przeniesienia całej ludzkości do formy cyfrowej jako forma ochrony
+
+
 teleporter do innego wymiaru wymaga w chuj energii która jest czerpana z bardzo rzadkiego materiału, który został odkryty podczas zimnej wojny i byly
 krótko prowadzone nad nim badania, jednak ze względu na bardzo rzadkie występowanie na ziemi, zmieniono uwagę na o wiele mniej skuteczny, ale bardziej
 opłacalny pod względem wydobycia uran, przez ten czas zostało otworzone na świecie kilka kopalni specjalizujących się w wydobyciu tego materiału, jednak 
@@ -303,15 +322,15 @@ pierwsza kopalnia znajduje się w kraju polskopodobnym tam gdzie dzieje sie pier
 
 (czerwiec)
 akt drugi, kraj afrykanski pogrążany w epidemii oraz wojnie domowej, kiedyś wydobywane były tam diamenty które napędzały wojnę między rządem a rebeliantami,
-obecnie wojnę domową napędza pośrednik związany z głównym zlym który zbiera z tej kopalni materiał i kontroluje do niej dostęp, bo potrzebuje go do maszyny 
-magicznej która kontroluje umysły ludzi współpracujących z nim aby jego plan się powiódł i nikt nie wygadal bo by był przypał
+obecnie wojnę domową napędza pośrednik związany z głównym zlym który zbiera z tej kopalni materiał i kontroluje do niej dostęp
 
 (lipiec)
 trzeci akt to jakaś wyspa tropikalna idk co jeszcze tam zrobić (kultura typu kraj kolonialny w Ameryce albo oceania) trzeba cos z dobrym konfliktem wewnętrznym
 jak w poprzednim akcie albo może wzorowane na Wietnamie albo Kambodży ale bardziej wyspiarsko
 
 (sierpien)
-czwarty ostatni akt to jakiś górska i śnieżna okolica, daleko na północ nwm jaka kultura, myślałem nad Rosją ale już mamy słowiańskie klimaty w pierwszym akcie więc może kanada/usa
+czwarty ostatni akt to jakiś górska i śnieżna okolica, daleko na północ nwm jaka kultura, myślałem nad krajem inspirowanym japonią który posiada też terytoria
+wysunięte na północ ograniczone górami które mają śnieg w sierpniu
 
 baza  profesura zlokalizowana jest w górach, została wybudowana podczas zimnej wojny jako baza operacji wojskowych/wielki kurwa bunkier,
 teraz profesur wykorzystuje ją jako jego główne laboratorium do pracy nad teleporterem między wymiarami
@@ -386,7 +405,6 @@ są też używane w mechanizmach magicznych
 
 kryształy zużywają się, więc trzeba je co jakiś czas wymieniać
 wydobyciem ich zajmują się rządy i korporacje
-wyrastają w różnych miejscach, wzrost ich budzi istniejące blisko życie
 
 jeśli zaklęcie wymaga więcej energii niż jest w danym człowieku,
 musi on być otoczony dużą ilością kryształów, tak aby łączna ich energia
@@ -397,7 +415,12 @@ dlatego też zmieniło się nazewnictwo, nikt nie nazywa tego zjawiska magią
 (tu trzeba wymyślić jakąś nazwę najlepiej słowo z 2 słów greckich)
 z tego względu jest to po prostu oddzielna dziedzina nauki
 
+--RÓŻNE FAKTY TEGO ŚWIATA--
 
+świadomość jest jedną z fundamentalnych sił wszechświata, aby ją odbierać potrzebne są określone systemy, takie jak mózg
+mózg jest więc tak jakby anteną która jedynie odbiera świadomość, która jest ograniczana przez sam mózg przez np. ego, pamięć itp.
+dlatego możliwe jest stworzenie sztucznego mózgu który tak samo będzie odbierał świadomość jak mózg biologiczny stworzony przez ewolucję
+poziomy świadomości są różne, bo jest to spektrum na którym jak na razie człowiek jest najwyżej położony
 
 magia działa na takiej zasadzie że wokół żyjących stworzeń tworzy taką jakby siatkę dzięki której się
 komunikuje, więc tak na prawde kazdy ma jakies nawet minimalne zdolności magiczne
