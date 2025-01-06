@@ -40,5 +40,10 @@ TODO:
 	- collisions - make more collisions for gridmap
 	
 
+MAPMAKING:
+	- draft in tiled
+	- trace in crocotile3d
+	- apply scales (yz 1.414) in blender
+	- import in godot
 
 BE READY FOR GODOT 4.4 AND JOLT INTEGRATION

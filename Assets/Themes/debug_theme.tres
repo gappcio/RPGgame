@@ -1,0 +1,7 @@
+[gd_resource type="Theme" load_steps=2 format=3 uid="uid://dyftgwpfvfqdb"]
+
+[ext_resource type="FontFile" uid="uid://cgximlb6ayqve" path="res://Assets/Fonts/SourceCodePro-Regular.ttf" id="1_bgyyd"]
+
+[resource]
+default_font = ExtResource("1_bgyyd")
+default_font_size = 12

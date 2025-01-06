@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://bat7ywt12tufn"]
+[gd_scene load_steps=15 format=3 uid="uid://bat7ywt12tufn"]
 
 [ext_resource type="PackedScene" uid="uid://c1ald0swgcr3y" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x1.blend" id="1_5g74u"]
 [ext_resource type="PackedScene" uid="uid://bw6fl6iuxx8b4" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE1x2.blend" id="2_e6lnr"]
@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://di4o2sl5ii1jj" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_SLOPE1x1.blend" id="4_jhc8h"]
 [ext_resource type="PackedScene" uid="uid://xr6ojb5ht206" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_SLOPE1x1_RL.blend" id="5_cb46f"]
 [ext_resource type="PackedScene" uid="uid://cbua7gbiaswd0" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE2x2x1.blend" id="6_57l5f"]
+[ext_resource type="PackedScene" uid="uid://cg2phryuoga37" path="res://Common/_COLLISIONS/BlenderFiles/COLLISION_SLOPE_SIDEWAYS1x1.blend" id="7_uyhft"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_sc6eq"]
 size = Vector3(1, 1.414, 1.414)
@@ -17,13 +18,16 @@ size = Vector3(1, 2.828, 1.414)
 size = Vector3(1, 4.243, 1)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_whqmo"]
-points = PackedVector3Array(0.5, -0.769, 0.77, -0.5, -0.769, 0.77, -0.5, -0.707, -0.707, 0.5, -0.707, -0.707, -0.5, 0.707, -0.707, 0.5, 0.707, -0.707)
+points = PackedVector3Array(0.5, -0.707, 0.707, -0.5, -0.707, 0.707, -0.5, -0.707, -0.707, 0.5, -0.707, -0.707, -0.5, 0.707, -0.707, 0.5, 0.707, -0.707)
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_wttbl"]
-points = PackedVector3Array(-0.562, -0.795, -0.707, -0.562, -0.795, 0.707, 0.5, -0.707, 0.707, 0.5, -0.707, -0.707, 0.5, 0.707, -0.707, 0.5, 0.707, 0.707)
+points = PackedVector3Array(-0.5, -0.707, -0.707, -0.5, -0.707, 0.707, 0.5, -0.707, 0.707, 0.5, -0.707, -0.707, 0.5, 0.707, -0.707, 0.5, 0.707, 0.707)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_7qa6m"]
 size = Vector3(3, 1.414, 4.242)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_0gtdu"]
+points = PackedVector3Array(0.5, -0.707, 0.707, -0.5, 0.707, -0.707, 0.5, 0.707, -0.707, -0.5, -0.707, -0.707, 0.5, 0.707, 0.707, 0.5, -0.707, -0.707)
 
 [node name="COLLISION_MeshLib" type="Node3D"]
 
@@ -76,9 +80,18 @@ visible = false
 [node name="CollisionShape3D" type="CollisionShape3D" parent="COLLISION_CUBE3x3x1/Cube3x3x1/StaticBody3D"]
 shape = SubResource("BoxShape3D_7qa6m")
 
+[node name="COLLISION_SLOPE_SIDEWAYS1x1" parent="." instance=ExtResource("7_uyhft")]
+visible = false
+
+[node name="StaticBody3D" type="StaticBody3D" parent="COLLISION_SLOPE_SIDEWAYS1x1/SlopeSideways1x1" index="0"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="COLLISION_SLOPE_SIDEWAYS1x1/SlopeSideways1x1/StaticBody3D"]
+shape = SubResource("ConvexPolygonShape3D_0gtdu")
+
 [editable path="COLLISION_CUBE1x1"]
 [editable path="COLLISION_CUBE1x2"]
 [editable path="COLLISION_CUBE1x3"]
 [editable path="COLLISION_SLOPE1x1"]
 [editable path="COLLISION_SLOPE1x1_RL"]
 [editable path="COLLISION_CUBE3x3x1"]
+[editable path="COLLISION_SLOPE_SIDEWAYS1x1"]

@@ -164,9 +164,9 @@ func _physics_process(delta: float) -> void:
 	
 	# snap position to base pixel size divided by window scale to avoid jitter
 	
-	position.x = snapped(position.x, (GLOBAL.TILE_X / 16.0) / 3.0)
-	position.y = snapped(position.y, (GLOBAL.TILE_Y / 16.0) / 3.0)
-	position.z = snapped(position.z, (GLOBAL.TILE_Z / 16.0) / 3.0)
+	position.x = snapped(position.x, (GLOBAL.TILE_X / 16.0) / 1.0)
+	position.y = snapped(position.y, (GLOBAL.TILE_Y / 16.0) / 1.0)
+	position.z = snapped(position.z, (GLOBAL.TILE_Z / 16.0) / 1.0)
 	
 	#if velocity.x == 0.0 && velocity.z == 0.0:
 	#	position.x = snapped(position.x, 0.0625)

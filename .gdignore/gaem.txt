@@ -58,9 +58,44 @@ PUSTA DŁOŃ
 LEWY PRZYCISK
 uderzenie pięścią
 
+SLOTY UBRANIOWE
+
+- nakrycie glowy
+- przedmiot na twarz
+- odziez wierzchnia 1
+- odziez wierzchnia 2
+- odziez wierzchnia 3
+- okrycie szyi
+- rekawiczki
+- spodnie
+- skarpety
+- obuwie
+- slot dodatkowy 1 (na kolczyki, obraczki itp)
+- slot dodatkowy 2
+- slot dodatkowy 3
+
 RODZAJE PRZEDMIOTÓW (max stack do dalszego ustalenia w ramach balansu)
 zasoby - wielkie (np. kłody - max stack 10), średnie (np. kamienie, patyki - max 20), małe (np. liście - max 99)
 funkcjonalność - brak, (patyk - można użyć jako broń)
+
+odziez (max stack 1)
+	- nakrycie glowy
+	- okulary
+	- maska
+	- kolczyki
+	- rekawiczki
+	- koszulka
+	- bluza
+	- kurtka
+	- swetr
+	- szal
+	- shorty
+	- spodnie
+	- obuwie
+	- skarpety
+	- obraczka
+funkcjonalność pasywna - zmienia obrone, zmienia temperaturę, badz efekty
+
 
 jedzenie (dalszy podział na owoce, warzywa, słodycze, dania, pieczywo) - dania (max stack 1), reszta 20
 funkcjonalność - akcja jedzenia, zmienia zdrowie, energię, temperaturę, bądź zmienia efekty

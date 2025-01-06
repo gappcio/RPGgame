@@ -19,9 +19,3 @@ func _process(delta: float) -> void:
 	
 	if !player.is_jumping:
 		global_position.y = snapped(lerp(global_position.y, player.global_position.y + 48.0, camera_speed * .5), (GLOBAL.TILE_Y / 16.0) / GLOBAL.window_scale)
-	
-	if Input.is_action_pressed("camera_left"):
-		sun.rotation.y -= 0.1;
-		
-	if Input.is_action_pressed("camera_right"):
-		sun.rotation.y += 0.1;

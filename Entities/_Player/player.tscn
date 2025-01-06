@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Entities/_Player/Sprites/spr_player_basic.png" id="2_2532p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7r0b"]
-radius = 0.45
+radius = 0.35
 height = 2.4
 
 [sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_fdd6m"]
@@ -185,13 +185,13 @@ script = ExtResource("1_v0ns8")
 
 [node name="CollisionStanding" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
-visible = false
 shape = SubResource("CapsuleShape3D_o7r0b")
-disabled = true
 
 [node name="CollisionStanding2" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2, 0)
+visible = false
 shape = SubResource("ConvexPolygonShape3D_fdd6m")
+disabled = true
 
 [node name="BasicShadow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0, 1.285, -0.316)
