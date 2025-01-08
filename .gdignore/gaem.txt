@@ -435,15 +435,13 @@ istnieją różne jej rodzaje
 zaklęcia w postaci wypowiadanych słów istnieją dla początkujących użytkowników
 jako forma nauki, później nikt ich już nie używa
 
-aby używać magii potrzebne są kryształy, które wzmacniają pole magiczne
-są też używane w mechanizmach magicznych
+aby używać magii należy używać specjalnych kryształów, które są nośnikiem i wzmacniaczem magii
+kryształy te są używane w mechanizmach magicznych
+kryształy są hodowane z róznych substancji i do przewodzenia magii muszą zawierać jakiś element życia,
+magia wpływa nie tylko na umysł ale i na całe ciało, więc każda część organizmu wytwarza małe ilości pola magicznego
+nawet po śmierci istnieją małe zmiany w polu, dlatego kryształy hoduje się na organicznych substancjach
+moc kryształu zależy od użytych substancji, bardzo dobrymi nośnikami są świeże mózgi ludzkie (czarny rynek magii)
 
-kryształy zużywają się, więc trzeba je co jakiś czas wymieniać
-wydobyciem ich zajmują się rządy i korporacje
-
-jeśli zaklęcie wymaga więcej energii niż jest w danym człowieku,
-musi on być otoczony dużą ilością kryształów, tak aby łączna ich energia
-była wystarczająca na rzucenie zaklęcia
 
 obecnie magia jest rozumiana jako zjawisko naturalne, które jest badane przez naukę
 dlatego też zmieniło się nazewnictwo, nikt nie nazywa tego zjawiska magią
@@ -457,6 +455,9 @@ mózg jest więc tak jakby anteną która jedynie odbiera świadomość, która 
 dlatego możliwe jest stworzenie sztucznego mózgu który tak samo będzie odbierał świadomość jak mózg biologiczny stworzony przez ewolucję
 poziomy świadomości są różne, bo jest to spektrum na którym jak na razie człowiek jest najwyżej położony
 
+---------------------------
+nvm
+-------
 magia działa na takiej zasadzie że wokół żyjących stworzeń tworzy taką jakby siatkę dzięki której się
 komunikuje, więc tak na prawde kazdy ma jakies nawet minimalne zdolności magiczne
 
