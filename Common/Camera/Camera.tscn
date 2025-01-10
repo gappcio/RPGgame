@@ -1,0 +1,13 @@
+[gd_scene load_steps=2 format=3 uid="uid://xeqjgy6gnfs"]
+
+[ext_resource type="Script" path="res://Common/Camera/camera_3d.gd" id="1_m3qya"]
+
+[node name="Camera" type="Camera3D"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 14, 32, 43)
+keep_aspect = 0
+projection = 1
+fov = 30.0
+size = 30.0
+near = 0.001
+far = 100.0
+script = ExtResource("1_m3qya")

@@ -6,4 +6,5 @@ var TILE_X: float = 1.0;
 var TILE_Y: float = 1.414;
 var TILE_Z: float = 1.414;
 
-var window_scale: float = 4.0;
+var window_scale: float = 1.0;
+var window_base_resolution: Vector2i = Vector2i(480, 270);
