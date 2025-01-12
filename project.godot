@@ -10,8 +10,8 @@ config_version=5
 
 [application]
 
-config/name="3d2d"
-run/main_scene="res://Assets/Scenes/main.tscn"
+config/name="rpggame"
+run/main_scene="res://Common/MainScene/MainScene.tscn"
 config/features=PackedStringArray("4.3", "C#", "Forward Plus")
 config/icon="res://icon.svg"
 
@@ -39,6 +39,17 @@ version_control/autoload_on_startup=true
 [editor_plugins]
 
 enabled=PackedStringArray("res://addons/script-ide/plugin.cfg")
+
+[file_customization]
+
+folder_colors={
+"res://Assets/": "gray",
+"res://Common/": "red",
+"res://Entities/": "blue",
+"res://Entities/_Player/": "red",
+"res://Maps/": "green",
+"res://Maps/DEVROOM/": "red"
+}
 
 [input]
 

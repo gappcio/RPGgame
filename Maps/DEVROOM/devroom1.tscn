@@ -1,13 +1,11 @@
-[gd_scene load_steps=16 format=3 uid="uid://62n6lc63rm26"]
+[gd_scene load_steps=14 format=3 uid="uid://62n6lc63rm26"]
 
-[ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="1_7f1ch"]
-[ext_resource type="PackedScene" uid="uid://cmjplav76x5mc" path="res://Common/WindowManager/WindowManager.tscn" id="1_bgayh"]
-[ext_resource type="Material" uid="uid://b1d32sqbd6568" path="res://Assets/Materials/MAT_grass1.tres" id="1_ogvuv"]
-[ext_resource type="Material" uid="uid://der6s2dvr4qge" path="res://Assets/Materials/MAT_test.tres" id="2_0ppqn"]
-[ext_resource type="PackedScene" uid="uid://xeqjgy6gnfs" path="res://Common/Camera/Camera.tscn" id="2_eprxl"]
-[ext_resource type="PackedScene" uid="uid://crqp6ytp53h0h" path="res://Entities/_Player/player.tscn" id="3_re8pl"]
-[ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Assets/Maps/test.blend" id="6_3rrmn"]
-[ext_resource type="PackedScene" uid="uid://q28ieg5iro8" path="res://Common/_COLLISIONS/COLLISION_GridMap.tscn" id="7_the70"]
+[ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="3_yoxt3"]
+[ext_resource type="Material" uid="uid://der6s2dvr4qge" path="res://Assets/Materials/MAT_test.tres" id="4_sthxw"]
+[ext_resource type="Material" uid="uid://b1d32sqbd6568" path="res://Assets/Materials/MAT_grass1.tres" id="5_fjm1o"]
+[ext_resource type="PackedScene" uid="uid://crqp6ytp53h0h" path="res://Entities/_Player/player.tscn" id="6_ykkog"]
+[ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="7_scdsy"]
+[ext_resource type="PackedScene" uid="uid://q28ieg5iro8" path="res://Common/_COLLISIONS/COLLISION_GridMap.tscn" id="8_jkin7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7x6p"]
 ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
@@ -22,10 +20,10 @@ tonemap_mode = 2
 glow_enabled = true
 
 [sub_resource type="BoxMesh" id="BoxMesh_by83s"]
-material = ExtResource("2_0ppqn")
+material = ExtResource("4_sthxw")
 
 [sub_resource type="BoxMesh" id="BoxMesh_r0k5a"]
-material = ExtResource("1_ogvuv")
+material = ExtResource("5_fjm1o")
 size = Vector3(1, 1, 1.41)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_ncjy2"]
@@ -33,12 +31,7 @@ size = Vector3(31.02, 1, 25.38)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_oynwy"]
 
-[node name="Main" type="Node3D"]
-
-[node name="WindowManager" parent="." instance=ExtResource("1_bgayh")]
-
-[node name="Camera" parent="." instance=ExtResource("2_eprxl")]
-current = true
+[node name="MAP_DEVROOM1" type="Node3D"]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 visible = false
@@ -46,7 +39,7 @@ visible = false
 [node name="Label" type="Label" parent="GUI"]
 offset_right = 40.0
 offset_bottom = 23.0
-script = ExtResource("1_7f1ch")
+script = ExtResource("3_yoxt3")
 
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_daf4x")
@@ -460,13 +453,112 @@ skeleton = NodePath("../base_cube")
 transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
 
-[node name="Player" parent="." instance=ExtResource("3_re8pl")]
+[node name="block14" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 4.94, 12.43)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block14"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block14/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block15" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 3.53, 12.43)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block15"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block15/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block16" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 3.53, 13.84)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block16"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block16/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block17" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 4.94, 13.84)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block17"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block17/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block18" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 3.53, 15.25)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block18"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block18/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block19" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 2.12, 15.25)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block19"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block19/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block20" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 0.71, 15.25)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block20"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block20/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block21" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 0.71, 16.66)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block21"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block21/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="block22" type="MeshInstance3D" parent="Terrain"]
+transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1.41, 17.5, 2.12, 16.66)
+mesh = SubResource("BoxMesh_by83s")
+skeleton = NodePath("../base_cube")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="Terrain/block22"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block22/StaticBody3D"]
+transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+shape = SubResource("BoxShape3D_oynwy")
+
+[node name="Player" parent="." instance=ExtResource("6_ykkog")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.73778, 0, 14.6883)
 
-[node name="test" parent="." instance=ExtResource("6_3rrmn")]
+[node name="test" parent="." instance=ExtResource("7_scdsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
 
-[node name="COLLISIONGridMap" parent="." instance=ExtResource("7_the70")]
+[node name="COLLISIONGridMap" parent="." instance=ExtResource("8_jkin7")]
 visible = false
 data = {
 "cells": PackedInt32Array(-1, 5, 0, -1, 4, 0, -1, 6, 0, -2, 4, 0, -2, 5, 0, -2, 6, 0, -3, 6, 0, -3, 5, 0, -4, 5, 0, -4, 4, 0, -4, 6, 0, -5, 6, 0, -5, 5, 0, -5, 4, 0, -1, 11, 0, -2, 11, 0, -3, 11, 0, -4, 11, 0, -5, 11, 0, -5, 10, 0, -4, 10, 0, -3, 10, 0, -2, 10, 0, -1, 10, 0, 196607, 9, 0, 196606, 9, 0, 196605, 9, 0, 196604, 9, 0, 196603, 8, 0, 196604, 8, 0, 196605, 8, 0, 196606, 8, 0, 196607, 8, 0, 196607, 7, 0, 196606, 7, 0, 196605, 7, 0, 196604, 7, 0, 196603, 7, 0, -65506, 0, 0, -65506, 1, 0, -65506, 2, 0, -65506, 3, 0, -65506, 4, 0, -65506, 5, 0, -65506, 6, 0, -65506, 7, 0, -65506, 8, 0, -65506, 9, 0, -65506, 10, 0, -65506, 11, 0, -65506, 12, 0, -65506, 13, 0, -65506, 14, 0, -65506, 15, 0, -65506, 16, 0, 196606, 5, 5, 196606, 2, 5, 196603, 2, 5, 196600, 2, 5, 196597, 2, 5, 196603, 5, 5, 196601, 5, 0, 196601, 4, 0, 196594, 2, 5, 196589, 1, 5, 196592, 2, 0, 196591, 2, 0, 196591, 1, 0, 196591, 0, 0, 196592, 0, 0, 196592, 1, 0, 196593, 0, 0, 196594, 0, 0, 196595, 0, 0, 196596, 0, 0, 196597, 0, 0, 196598, 0, 0, 196599, 0, 0, 196600, 0, 0, 196601, 0, 0, 196602, 0, 0, 196603, 0, 0, 196604, 0, 0, 196605, 0, 0, 196606, 0, 0, 196607, 0, 0, 196601, 6, 0, 196602, 7, 0, 196593, 4, 0, 196594, 4, 0, 196595, 4, 0, 196596, 4, 0, 196597, 4, 0, 196598, 4, 0, 196599, 4, 0, 196600, 4, 0, 196600, 5, 0, 65521, 5, 2, 65522, 5, 2, 65523, 5, 2, 65524, 5, 2, 65525, 5, 2, 65526, 5, 2, 65527, 5, 2, 65531, 10, 2, 65532, 10, 2, 65533, 10, 2, 65534, 10, 2, 65535, 10, 2, 65531, 9, 2, 65531, 11, 4, 131068, 11, 4, 196605, 11, 4, 65530, 8, 6, 131064, 6, 6, 131065, 7, 6, 131066, 8, 6, 196602, 8, 6, 196601, 7, 6, 196600, 6, 6, 65520, 5, 393219, 131056, 4, 393219, 196592, 3, 393219, 65518, 5, 393219)

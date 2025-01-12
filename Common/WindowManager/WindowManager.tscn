@@ -45,6 +45,7 @@ vertical_alignment = 1
 
 [node name="FullscreenButton" type="CheckButton" parent="Control/CanvasLayer/Control/VBoxContainer/Fullscreen"]
 layout_mode = 2
+button_pressed = true
 
 [node name="WindowScale" type="HBoxContainer" parent="Control/CanvasLayer/Control/VBoxContainer"]
 layout_mode = 2
@@ -57,7 +58,7 @@ text = "window scale"
 layout_mode = 2
 min_value = 1.0
 max_value = 6.0
-value = 1.0
+value = 4.0
 alignment = 1
 
 [node name="VBoxContainer2" type="VBoxContainer" parent="Control/CanvasLayer/Control"]

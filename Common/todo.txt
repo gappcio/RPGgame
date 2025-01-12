@@ -23,7 +23,7 @@ PROJECT STRUCTURE:
 			- scene files
 			- script files
 	- Locals - files for localization
-	- Rooms - map scenes
+	- Maps - map scenes
 		- ROOM_NAME
 			- exported map files
 			- scene files
@@ -47,3 +47,18 @@ MAPMAKING:
 	- import in godot
 
 BE READY FOR GODOT 4.4 AND JOLT INTEGRATION
+
+RESOLUTIONS:
+	base 480x270 - camera size 30
+		- 960x540 - window scale 2
+		- 1440x810 - window scale 3
+		- 1920x1080 - window scale 4
+		
+		
+NODE STRUCTURE:
+	- root 
+		- GLOBAL
+		- MainScene
+			- Camera
+			- WindowManager
+			- map scene

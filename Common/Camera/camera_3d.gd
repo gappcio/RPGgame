@@ -1,7 +1,6 @@
 extends Camera3D
 
-@onready var player = $"../Player";
-@onready var sun = $"../DirectionalLight3D";
+@onready var player: Player = $"../MAP_DEVROOM1/Player"
 
 var camera_speed = 0.3;
 var camera_speed_y = 0.1;
