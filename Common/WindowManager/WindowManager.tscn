@@ -93,5 +93,16 @@ text = "window_size:"
 [node name="WindowSizeValue" type="Label" parent="Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer2"]
 layout_mode = 2
 
+[node name="HBoxContainer3" type="HBoxContainer" parent="Control/CanvasLayer/Control/VBoxContainer2"]
+layout_mode = 2
+
+[node name="FPSLabel" type="Label" parent="Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 0
+text = "FPS:"
+
+[node name="FPSValue" type="Label" parent="Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer3"]
+layout_mode = 2
+
 [connection signal="toggled" from="Control/CanvasLayer/Control/VBoxContainer/Fullscreen/FullscreenButton" to="." method="_on_fullscreen_button_toggled"]
 [connection signal="value_changed" from="Control/CanvasLayer/Control/VBoxContainer/WindowScale/WindowScaleInput" to="." method="_on_window_scale_input_value_changed"]

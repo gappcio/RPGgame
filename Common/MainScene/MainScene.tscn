@@ -13,10 +13,16 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Camera" parent="." instance=ExtResource("2_m0yeh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19, 0, 0)
+
+[node name="Camera3D" parent="Camera" index="1"]
+transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1, 32, 50)
 
 [node name="WindowManager" parent="." instance=ExtResource("3_0xth8")]
 
 [node name="MAP_DEVROOM1" parent="." instance=ExtResource("1_v3vin")]
 
+[editable path="Camera"]
 [editable path="MAP_DEVROOM1"]
+[editable path="MAP_DEVROOM1/CameraLimit"]
 [editable path="MAP_DEVROOM1/test"]

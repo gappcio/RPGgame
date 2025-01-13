@@ -176,7 +176,7 @@ _data = {
 "walk_up": SubResource("Animation_3ltif")
 }
 
-[node name="Player" type="CharacterBody3D"]
+[node name="Player" type="CharacterBody3D" groups=["player"]]
 floor_stop_on_slope = false
 floor_constant_speed = true
 floor_max_angle = 1.11003

@@ -4,7 +4,7 @@ class_name Player
 
 @onready var anim: AnimationPlayer = $Visual/AnimationPlayer
 
-var SPEED = 5.0
+var SPEED = 15.0
 var ACCEL = 0.75
 var DECCEL = 0.2
 var JUMP_FORCE_BASE = 4.5 * GLOBAL.TILE_Y

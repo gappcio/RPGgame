@@ -5,11 +5,13 @@ class_name WindowManager extends Node3D
 @onready var screen_size_value: Label = $Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer/ScreenSizeValue
 @onready var window_size_value: Label = $Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer2/WindowSizeValue
 @onready var window_scale_input: SpinBox = $Control/CanvasLayer/Control/VBoxContainer/WindowScale/WindowScaleInput
+@onready var fps_value: Label = $Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer3/FPSValue
 
 
 func _ready() -> void:
-	_on_fullscreen_button_toggled(true);
-	_on_window_scale_input_value_changed(int(floor(DisplayServer.screen_get_size()[0] / GLOBAL.window_base_resolution[0])));
+	#_on_fullscreen_button_toggled(true);
+	#_on_window_scale_input_value_changed(int(floor(DisplayServer.screen_get_size()[0] / GLOBAL.window_base_resolution[0])));
+	pass
 
 
 func _process(delta: float) -> void:
@@ -23,9 +25,10 @@ func _process(delta: float) -> void:
 	else:
 		canvas_layer.visible = false
 		
-func main():
+func main() -> void:
 	screen_size_value.text = str(DisplayServer.screen_get_size());
 	window_size_value.text = str(DisplayServer.window_get_size());
+	fps_value.text = str(Engine.get_frames_per_second());
 
 
 func _on_fullscreen_button_toggled(toggled_on: bool) -> void:

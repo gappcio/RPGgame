@@ -99,6 +99,14 @@ debug_toggle={
 ]
 }
 
+[layer_names]
+
+3d_physics/layer_1="player"
+3d_physics/layer_2="solid"
+3d_physics/layer_3="enemy"
+3d_physics/layer_4="camera_limit"
+3d_physics/layer_5="camera"
+
 [physics]
 
 3d/physics_engine="JoltPhysics3D"
