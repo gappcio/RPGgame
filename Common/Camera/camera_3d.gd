@@ -4,16 +4,15 @@ extends Camera3D
 @onready var player: Player = get_tree().get_nodes_in_group("player")[0];
 @onready var limit_box = get_tree().get_nodes_in_group("camera_limit")[0].get_child(0);
 @onready var label: Label = $"../Label"
-@onready var collision_limit: CollisionShape3D = $AreaLimit/CollisionLimit
 
 var camera_speed = 0.3;
 var camera_speed_y = 0.1;
 
 var CAMERA_BASE_X: float = 15.0;
-var CAMERA_BASE_Z: float = 44.0 * GLOBAL.TILE_Z;
+var CAMERA_BASE_Z: float = 42.45 * GLOBAL.TILE_Z;
 
 var CAMERA_SIZE_X: float = 30.0;
-var CAMERA_SIZE_Z: float = 16.875;
+var CAMERA_SIZE_Z: float = 16.875 * GLOBAL.TILE_Z;
 
 var limit_box_left: float = 0.0;
 var limit_box_right: float = 0.0;
@@ -38,11 +37,6 @@ func _process(delta: float) -> void:
 	else:
 		camera_speed_y = 0.1;
 	
-	limit_left = collision_limit.global_position.x - (collision_limit.shape.size.x / 2);
-	limit_right = collision_limit.global_position.x + (collision_limit.shape.size.x / 2);
-	limit_up = collision_limit.global_position.z - (collision_limit.shape.size.z / 2);
-	limit_down = collision_limit.global_position.z + (collision_limit.shape.size.z / 2);
-	
 	var posx = snapped(lerp(global_position.x, player.global_position.x, camera_speed), (GLOBAL.TILE_X / 16.0) / GLOBAL.window_scale);
 	var posy = snapped(lerp(global_position.y, player.global_position.y + 48.0, camera_speed * .5 * camera_speed_y), (GLOBAL.TILE_Y / 16.0) / GLOBAL.window_scale);
 	var posz = snapped(lerp(global_position.z, player.global_position.z + 46.0, camera_speed), (GLOBAL.TILE_Z / 16.0) / GLOBAL.window_scale);
@@ -50,6 +44,18 @@ func _process(delta: float) -> void:
 	global_position.x = posx;
 	global_position.y = posy;
 	global_position.z = posz;
+	
+	if global_position.x <= limit_box_left + CAMERA_SIZE_X / 2:
+		global_position.x = limit_box_left + CAMERA_SIZE_X / 2;
+		
+	if global_position.x >= limit_box_right - CAMERA_SIZE_X / 2:
+		global_position.x = limit_box_right - CAMERA_SIZE_X / 2;
+		
+	if global_position.z - CAMERA_BASE_Z <= limit_box_up:
+		global_position.z = limit_box_up + CAMERA_BASE_Z;
+		
+	if global_position.z - CAMERA_BASE_Z >= limit_box_down - (CAMERA_SIZE_Z / 1):
+		global_position.z = limit_box_down + CAMERA_BASE_Z - (CAMERA_SIZE_Z / 1);
 
 	label.	text = "pos.x: " + str(global_position.x) + "\n" +\
 	"pos.z: " + str(global_position.z) + "\n" +\
@@ -57,7 +63,6 @@ func _process(delta: float) -> void:
 	"limit_box_right: " + str(limit_box_right) + "\n" +\
 	"limit_box_up: " + str(limit_box_up) + "\n" +\
 	"limit_box_down: " + str(limit_box_down) + "\n" +\
-	"limit_left: " + str(limit_left) + "\n" +\
-	"limit_right: " + str(limit_right) + "\n" +\
-	"limit_up: " + str(limit_up) + "\n" +\
-	"limit_down: " + str(limit_down) + "\n"
+	"pos.x: " + str(global_position.x - CAMERA_BASE_X) + "\n" +\
+	"pos.z: " + str(global_position.z - CAMERA_BASE_Z) + "\n" +\
+	"up - size_z/2: " + str(limit_box_down + CAMERA_BASE_Z - CAMERA_SIZE_Z / 2) + "\n"

@@ -1,12 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://xeqjgy6gnfs"]
+[gd_scene load_steps=2 format=3 uid="uid://xeqjgy6gnfs"]
 
 [ext_resource type="Script" path="res://Common/Camera/camera_3d.gd" id="1_m3qya"]
 
-[sub_resource type="BoxShape3D" id="BoxShape3D_we0w5"]
-size = Vector3(30, 100, 16.875)
-
 [node name="Camera" type="Node3D"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 
 [node name="Label" type="Label" parent="."]
 anchors_preset = 15
@@ -25,11 +21,5 @@ near = 0.001
 far = 100.0
 script = ExtResource("1_m3qya")
 
-[node name="AreaLimit" type="StaticBody3D" parent="Camera3D"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, -0.707107, 0, 0.707107, 0.707107, -15, 8.48528, -53.7401)
-collision_layer = 16
-collision_mask = 8
-
-[node name="CollisionLimit" type="CollisionShape3D" parent="Camera3D/AreaLimit"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15, 0, 8.438)
-shape = SubResource("BoxShape3D_we0w5")
+[node name="Camera3D2" type="Camera3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.680721, 0.732543, 0, -0.732543, 0.680721, 14, 31, 51)
