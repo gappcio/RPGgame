@@ -1,25 +1,8 @@
-[gd_resource type="Resource" script_class="InventoryData" load_steps=8 format=3 uid="uid://cpmq8f8diteag"]
+[gd_resource type="Resource" script_class="InventoryData" load_steps=3 format=3 uid="uid://cpmq8f8diteag"]
 
 [ext_resource type="Script" path="res://Common/InventorySystem/slot_data.gd" id="1_6uuiw"]
 [ext_resource type="Script" path="res://Common/InventorySystem/inventory_data.gd" id="2_di01a"]
-[ext_resource type="Resource" uid="uid://bvt7qobmrg1ug" path="res://Entities/Items/stick.tres" id="2_k8hgm"]
-[ext_resource type="Resource" uid="uid://dihobvwap0n0e" path="res://Entities/Items/quartz.tres" id="3_xltgy"]
-
-[sub_resource type="Resource" id="Resource_x84fy"]
-script = ExtResource("1_6uuiw")
-item_data = ExtResource("2_k8hgm")
-amount = 3
-
-[sub_resource type="Resource" id="Resource_i2udn"]
-script = ExtResource("1_6uuiw")
-item_data = ExtResource("3_xltgy")
-amount = 8
-
-[sub_resource type="Resource" id="Resource_ci5ba"]
-script = ExtResource("1_6uuiw")
-item_data = ExtResource("2_k8hgm")
-amount = 1
 
 [resource]
 script = ExtResource("2_di01a")
-inv_slot_data = Array[ExtResource("1_6uuiw")]([SubResource("Resource_x84fy"), SubResource("Resource_i2udn"), null, null, SubResource("Resource_ci5ba"), null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+inv_slot_data = Array[ExtResource("1_6uuiw")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

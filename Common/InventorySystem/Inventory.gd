@@ -28,9 +28,26 @@ func populate_grid(inv_slot_data: Array[SlotData]) -> void:
 	for i in item_grid.get_children():
 		i.queue_free();
 		
+		if GAME.debug_inventory:
+			print("INVENTORY DEBUG: Cleared inventory.");
+	
+	var i = 0;
+	
 	for slot_data in inv_slot_data:
 		var slot = SLOT.instantiate();
 		item_grid.add_child(slot);
+		slot.id = i;
+		
+		if GAME.debug_inventory:
+			print("INVENTORY DEBUG: Added slot on position: %s." % slot.id);
 	
 		if slot_data:
-			slot.set_slot_data(slot_data)
+			slot.set_slot_data(slot_data);
+			if GAME.debug_inventory:
+				print("INVENTORY DEBUG: Set slot data at slot id %s." % slot.id);
+			
+		i += 1;
+
+func add_item(item: String, amount: int) -> void:
+	var slot = item_grid.get_child(0);
+	print(slot)

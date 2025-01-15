@@ -12,6 +12,6 @@ script = ExtResource("1_ev6td")
 texture = SubResource("AtlasTexture_6krxf")
 name = "Quartz"
 type = 1
-max_stack = 10
+max_stack = 20
 health = 0.0
 stamina = 0.0

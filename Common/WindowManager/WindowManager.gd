@@ -16,7 +16,7 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_just_pressed("debug_toggle"):
+	if Input.is_action_just_pressed("debug_toggle") && !Console.enabled:
 		active = !active
 
 	if active:
