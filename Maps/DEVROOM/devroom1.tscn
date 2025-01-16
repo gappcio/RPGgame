@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://62n6lc63rm26"]
+[gd_scene load_steps=17 format=3 uid="uid://62n6lc63rm26"]
 
 [ext_resource type="PackedScene" uid="uid://y8y13cr0rnyl" path="res://Common/Camera/CameraLimit.tscn" id="2_4c7ht"]
 [ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="3_yoxt3"]
@@ -6,10 +6,13 @@
 [ext_resource type="Material" uid="uid://b1d32sqbd6568" path="res://Assets/Materials/MAT_grass1.tres" id="5_fjm1o"]
 [ext_resource type="PackedScene" uid="uid://crqp6ytp53h0h" path="res://Entities/_Player/player.tscn" id="6_ykkog"]
 [ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="7_scdsy"]
+[ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="8_duyq7"]
 [ext_resource type="PackedScene" uid="uid://q28ieg5iro8" path="res://Common/_COLLISIONS/COLLISION_GridMap.tscn" id="8_jkin7"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7x6p"]
-ground_horizon_color = Color(0.64625, 0.65575, 0.67075, 1)
+sky_top_color = Color(0.113725, 0.588235, 0.94902, 1)
+sky_horizon_color = Color(0.3685, 0.584575, 0.67, 1)
+sky_curve = 0.109807
 
 [sub_resource type="Sky" id="Sky_ey3v0"]
 sky_material = SubResource("ProceduralSkyMaterial_w7x6p")
@@ -19,6 +22,8 @@ background_mode = 2
 sky = SubResource("Sky_ey3v0")
 tonemap_mode = 2
 glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4hcus"]
 size = Vector3(72, 1, 39.6)
@@ -48,8 +53,8 @@ script = ExtResource("3_yoxt3")
 [node name="WorldEnvironment" type="WorldEnvironment" parent="."]
 environment = SubResource("Environment_daf4x")
 
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
-transform = Transform3D(0.707107, -0.612372, 0.353553, 0, 0.5, 0.866025, -0.707107, -0.612372, 0.353553, 0, 0, 0)
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." groups=["sun"]]
+transform = Transform3D(0.876307, -0.417211, 0.240877, 0, 0.5, 0.866025, -0.481754, -0.758903, 0.438153, 0, 0, 0)
 shadow_enabled = true
 directional_shadow_split_1 = 0.05
 
@@ -62,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 19.8)
 shape = SubResource("BoxShape3D_4hcus")
 
 [node name="Player" parent="." instance=ExtResource("6_ykkog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -18.2622, 0, 22.6883)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6621, 4, 6.3774)
 
 [node name="test" parent="." instance=ExtResource("7_scdsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
@@ -706,6 +711,25 @@ skeleton = NodePath("../base_cube")
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Terrain/block35/StaticBody3D"]
 transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2049, 3, 13.5039)
+light_color = Color(0.823414, 0.159701, 6.73831e-07, 1)
+light_energy = 7.029
+omni_range = 12.0
+omni_attenuation = -0.418
+
+[node name="TreeBirch" parent="." instance=ExtResource("8_duyq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 13)
+
+[node name="TreeBirch2" parent="." instance=ExtResource("8_duyq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 11)
+
+[node name="TreeBirch3" parent="." instance=ExtResource("8_duyq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 16)
+
+[node name="TreeBirch4" parent="." instance=ExtResource("8_duyq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 9)
 
 [editable path="CameraLimit"]
 [editable path="test"]

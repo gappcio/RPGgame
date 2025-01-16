@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://crqp6ytp53h0h"]
+[gd_scene load_steps=17 format=3 uid="uid://crqp6ytp53h0h"]
 
 [ext_resource type="Script" path="res://Entities/_Player/player.gd" id="1_v0ns8"]
 [ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Entities/_Player/Sprites/spr_player_basic.png" id="2_2532p"]
@@ -15,6 +15,15 @@ radius = 0.3
 height = 2.6
 radial_segments = 16
 rings = 6
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvunb"]
+transparency = 4
+albedo_texture = ExtResource("2_2532p")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+texture_filter = 0
+billboard_mode = 2
+billboard_keep_scale = true
 
 [sub_resource type="Animation" id="Animation_wadm3"]
 resource_name = "RESET"
@@ -204,10 +213,12 @@ mesh = SubResource("CapsuleMesh_sh0go")
 
 [node name="SpriteFull" type="Sprite3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1, 0, 1.41, 0)
+sorting_offset = -1.41
+material_override = SubResource("StandardMaterial3D_pvunb")
 cast_shadow = 0
 pixel_size = 0.0625
+billboard = 2
 shaded = true
-alpha_cut = 2
 texture_filter = 0
 texture = ExtResource("2_2532p")
 hframes = 4

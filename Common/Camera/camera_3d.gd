@@ -4,6 +4,7 @@ extends Camera3D
 @onready var player: Player = get_tree().get_nodes_in_group("player")[0];
 @onready var limit_box = get_tree().get_nodes_in_group("camera_limit")[0].get_child(0);
 @onready var label: Label = $"../Label"
+@onready var sun: DirectionalLight3D = get_tree().get_nodes_in_group("sun")[0];
 
 var camera_speed = 0.3;
 var camera_speed_y = 0.1;
@@ -31,6 +32,12 @@ func _ready() -> void:
 	limit_box_down = limit_box.global_position.z + (limit_box.shape.size.z / 2);
 
 func _process(delta: float) -> void:
+	
+	if Input.is_action_pressed("camera_left"):
+		sun.rotation.y -= 0.05;
+	
+	if Input.is_action_pressed("camera_right"):
+		sun.rotation.y += 0.05;
 	
 	if !player.is_jumping:
 		camera_speed_y = 1.0;

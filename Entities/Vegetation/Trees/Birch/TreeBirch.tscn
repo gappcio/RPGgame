@@ -1,0 +1,63 @@
+[gd_scene load_steps=7 format=3 uid="uid://capi4r314uane"]
+
+[ext_resource type="Texture2D" uid="uid://deo32m6rosa67" path="res://Entities/Vegetation/Trees/Birch/birch.png" id="1_ugso0"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cgllv"]
+radius = 0.6
+height = 13.8
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_1xtif"]
+transparency = 1
+albedo_texture = ExtResource("1_ugso0")
+backlight_enabled = true
+backlight = Color(1, 1, 1, 1)
+texture_filter = 0
+billboard_keep_scale = true
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_flinn"]
+lightmap_size_hint = Vector2i(32, 62)
+material = SubResource("StandardMaterial3D_1xtif")
+size = Vector2(6, 12)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_1t4ao"]
+height = 11.714
+radial_segments = 8
+
+[sub_resource type="SphereMesh" id="SphereMesh_fneaj"]
+radius = 1.936
+height = 11.706
+
+[node name="TreeBirch" type="StaticBody3D"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, 6.345, 0)
+shape = SubResource("CapsuleShape3D_cgllv")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1.414, 0, 1, -6.18079e-08, 0, 8.484, 0)
+sorting_offset = -8.484
+mesh = SubResource("PlaneMesh_flinn")
+skeleton = NodePath("../Sprite3D")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, 0, 8.484, 0)
+visible = false
+pixel_size = 0.0625
+shaded = true
+double_sided = false
+texture_filter = 0
+texture = ExtResource("1_ugso0")
+
+[node name="Node3D" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 0.984808, 0.173648, 0, -0.173648, 0.984808, 0, 0, -1)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 1.49012e-08, 0, -1.49012e-08, 1, 0.3, 5.71318, 0.492404)
+cast_shadow = 3
+mesh = SubResource("CylinderMesh_1t4ao")
+skeleton = NodePath("../..")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
+cast_shadow = 3
+mesh = SubResource("SphereMesh_fneaj")
