@@ -3,6 +3,7 @@ extends CharacterBody3D
 class_name Player
 
 @onready var anim: AnimationPlayer = $Visual/AnimationPlayer
+@export var inventory: Inventory;
 
 var SPEED = 5.0
 var ACCEL = 0.75
@@ -48,6 +49,9 @@ enum STATE {
 
 var state = STATE.idle
 
+func _ready() -> void:
+	print(inventory)
+
 func _process(delta: float) -> void:
 	
 	if !is_moving:
@@ -56,6 +60,9 @@ func _process(delta: float) -> void:
 	else:
 		anim.play("walk_" + str(direction_string))
 		anim.speed_scale = velocity.length() * 0.25;
+		
+	if Input.is_action_just_pressed("camera_left"):
+		inventory.add_item("stick", 1);
 
 func _physics_process(delta: float) -> void:
 	

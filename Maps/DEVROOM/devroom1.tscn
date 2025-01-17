@@ -67,7 +67,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 19.8)
 shape = SubResource("BoxShape3D_4hcus")
 
 [node name="Player" parent="." instance=ExtResource("6_ykkog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6621, 4, 6.3774)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6621, 0, 16.3774)
 
 [node name="test" parent="." instance=ExtResource("7_scdsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
@@ -713,23 +713,26 @@ transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2049, 3, 13.5039)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2049, 3, 19.1599)
 light_color = Color(0.823414, 0.159701, 6.73831e-07, 1)
 light_energy = 7.029
 omni_range = 12.0
 omni_attenuation = -0.418
 
 [node name="TreeBirch" parent="." instance=ExtResource("8_duyq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 13)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10.172)
 
 [node name="TreeBirch2" parent="." instance=ExtResource("8_duyq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -15, 0, 11)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.242, 0, 5.344)
 
 [node name="TreeBirch3" parent="." instance=ExtResource("8_duyq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 16)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11.758)
+
+[node name="TreeBirch5" parent="." instance=ExtResource("8_duyq7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11.758)
 
 [node name="TreeBirch4" parent="." instance=ExtResource("8_duyq7")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 9)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.172, 4.242, 6.172)
 
 [editable path="CameraLimit"]
 [editable path="test"]

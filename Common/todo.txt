@@ -62,3 +62,7 @@ NODE STRUCTURE:
 			- Camera
 			- WindowManager
 			- map scene
+
+RENDERING:
+	VisualInstance3D -> sorting -> offset -> set to bottom of the sprite if the sprite is using transparency
+	alternatively use depth prepass (check the performance cost)

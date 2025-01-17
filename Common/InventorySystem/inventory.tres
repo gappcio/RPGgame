@@ -5,4 +5,4 @@
 
 [resource]
 script = ExtResource("2_di01a")
-inv_slot_data = Array[ExtResource("1_6uuiw")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])
+inventory_data = Array[ExtResource("1_6uuiw")]([null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null, null])

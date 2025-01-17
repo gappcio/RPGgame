@@ -11,7 +11,7 @@ const SLOT = preload("res://Common/InventorySystem/Slot.tscn");
 
 func _ready() -> void:
 	var inventory_data = preload("res://Common/InventorySystem/inventory.tres");
-	populate_grid(inventory_data.inv_slot_data);
+	populate_grid(inventory_data.inventory_data);
 
 func _process(delta: float) -> void:
 	
@@ -49,5 +49,10 @@ func populate_grid(inv_slot_data: Array[SlotData]) -> void:
 		i += 1;
 
 func add_item(item: String, amount: int) -> void:
-	var slot = item_grid.get_child(0);
-	print(slot)
+	var slot = item_grid.get_child(1);
+	var slot_data = SlotData.new();
+	if item == "stick":
+		var data = load("res://Entities/Items/quartz.tres");
+		slot_data.item_data = data;
+		slot_data.amount = amount;
+	slot.set_slot_data(slot_data);

@@ -14,4 +14,4 @@ func console_pong() -> void:
 
 func console_give_item(item_id: int, amount: int):
 	print("a")
-	inventory.add_item(str(item_id), amount);
+	#inventory.add_item(str(item_id), amount);

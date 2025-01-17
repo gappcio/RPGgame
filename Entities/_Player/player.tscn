@@ -17,7 +17,7 @@ radial_segments = 16
 rings = 6
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_pvunb"]
-transparency = 4
+transparency = 1
 albedo_texture = ExtResource("2_2532p")
 backlight_enabled = true
 backlight = Color(1, 1, 1, 1)
@@ -213,7 +213,6 @@ mesh = SubResource("CapsuleMesh_sh0go")
 
 [node name="SpriteFull" type="Sprite3D" parent="Visual"]
 transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1, 0, 1.41, 0)
-sorting_offset = -1.41
 material_override = SubResource("StandardMaterial3D_pvunb")
 cast_shadow = 0
 pixel_size = 0.0625

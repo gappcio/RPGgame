@@ -1,5 +1,6 @@
-[gd_scene load_steps=7 format=3 uid="uid://capi4r314uane"]
+[gd_scene load_steps=8 format=3 uid="uid://capi4r314uane"]
 
+[ext_resource type="PackedScene" uid="uid://b6bkfdicu4lu7" path="res://Entities/Vegetation/Trees/Birch/birch1.blend" id="1_k3ttl"]
 [ext_resource type="Texture2D" uid="uid://deo32m6rosa67" path="res://Entities/Vegetation/Trees/Birch/birch.png" id="1_ugso0"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_cgllv"]
@@ -29,12 +30,20 @@ height = 11.706
 
 [node name="TreeBirch" type="StaticBody3D"]
 
+[node name="birch1" parent="." instance=ExtResource("1_k3ttl")]
+transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, 0, 8.484, 0)
+
+[node name="birch" parent="birch1" index="0"]
+sorting_offset = -8.484
+cast_shadow = 0
+
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.245, 6.345, 0)
 shape = SubResource("CapsuleShape3D_cgllv")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1.414, 0, 1, -6.18079e-08, 0, 8.484, 0)
+visible = false
 sorting_offset = -8.484
 mesh = SubResource("PlaneMesh_flinn")
 skeleton = NodePath("../Sprite3D")
@@ -61,3 +70,5 @@ skeleton = NodePath("../..")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
 cast_shadow = 3
 mesh = SubResource("SphereMesh_fneaj")
+
+[editable path="birch1"]
