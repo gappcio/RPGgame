@@ -20,6 +20,7 @@ config/icon="res://icon.svg"
 GLOBAL="*res://Utils/Globals/Globals.gd"
 GAME="*res://Common/MainScene/GameManager.gd"
 Console="*res://addons/console/console.gd"
+ITEM="*res://Utils/ItemEnums/ItemEnums.gd"
 
 [display]
 

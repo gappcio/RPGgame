@@ -62,7 +62,7 @@ func _process(delta: float) -> void:
 		anim.speed_scale = velocity.length() * 0.25;
 		
 	if Input.is_action_just_pressed("camera_left"):
-		inventory.add_item("stick", 1);
+		inventory.add_item(ITEM.ITEM_ID.stick, 1);
 
 func _physics_process(delta: float) -> void:
 	

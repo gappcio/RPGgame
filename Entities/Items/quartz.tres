@@ -10,8 +10,4 @@ region = Rect2(32, 0, 32, 32)
 [resource]
 script = ExtResource("1_ev6td")
 texture = SubResource("AtlasTexture_6krxf")
-name = "Quartz"
-type = 1
-max_stack = 20
-health = 0.0
-stamina = 0.0
+id = 1

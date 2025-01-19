@@ -10,8 +10,4 @@ region = Rect2(160, 0, 32, 32)
 [resource]
 script = ExtResource("1_qd66c")
 texture = SubResource("AtlasTexture_invsx")
-name = "Stick"
-type = 1
-max_stack = 1
-health = 0.0
-stamina = 0.0
+id = 2

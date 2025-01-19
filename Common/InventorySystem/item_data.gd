@@ -1,25 +1,15 @@
 extends Resource
 class_name ItemData
 
-enum ITEM_TYPE {
-	none,
-	resource,
-	food,
-	drink,
-	melee,
-	tool
-}
-
 ## Item texture from item atlas
 @export var texture: AtlasTexture;
-## Item name
-@export var name: String = "";
-## Item type
-@export var type = ITEM_TYPE.none;
-## Max stack on slot
-@export var max_stack: int = 1;
-@export var health: float = 0.0;
-@export var stamina: float = 0.0;
+## Item ID
+@export var id: int;
+
+var type = ITEM.ITEM_TYPE.none;
+var max_stack: int = 1;
+var health: float = 0.0;
+var stamina: float = 0.0;
 
 # level
 # damage
@@ -28,3 +18,30 @@ enum ITEM_TYPE {
 # temperature
 # capacity
 # max capacity
+
+func _ready() -> void:
+	set_item_info();
+
+func set_item_info() -> void:
+	match(id):
+		ITEM.ITEM_ID.none:
+			pass
+		ITEM.ITEM_ID.quartz:
+			type = ITEM.ITEM_TYPE.resource;
+			max_stack = set_item_stack_info();
+		ITEM.ITEM_ID.stick:
+			type = ITEM.ITEM_TYPE.resource;
+			max_stack = set_item_stack_info();
+
+func set_item_stack_info() -> int:
+	var _max_stack;
+	match(type):
+		ITEM.ITEM_TYPE.resource:
+			_max_stack = 20;
+		ITEM.ITEM_TYPE.food:
+			_max_stack = 20;
+		ITEM.ITEM_TYPE.drink,\
+		ITEM.ITEM_TYPE.tool,\
+		ITEM.ITEM_TYPE.melee:
+			_max_stack = 1;
+	return _max_stack;
