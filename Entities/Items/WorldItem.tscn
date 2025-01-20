@@ -1,0 +1,46 @@
+[gd_scene load_steps=5 format=3 uid="uid://bwf0rx4mrslhx"]
+
+[ext_resource type="Texture2D" uid="uid://baiug4gnrueqf" path="res://Common/InventorySystem/item_atlas_texture.tres" id="1_8676v"]
+[ext_resource type="Script" path="res://Entities/Items/WorldItem.gd" id="1_ys7mv"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_18mug"]
+radius = 0.1414
+height = 1.1312
+
+[sub_resource type="SphereShape3D" id="SphereShape3D_ou5m3"]
+radius = 0.707
+
+[node name="WorldItem" type="CharacterBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.414, 0)
+collision_layer = 32
+script = ExtResource("1_ys7mv")
+amount = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9, 0)
+shape = SubResource("CapsuleShape3D_18mug")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, 0, -0.707, 0)
+sorting_offset = 1.414
+pixel_size = 0.0625
+shaded = true
+texture_filter = 0
+texture = ExtResource("1_8676v")
+
+[node name="CollectArea" type="Area3D" parent="."]
+visible = false
+collision_layer = 32
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="CollectArea"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.8484, 0)
+shape = SubResource("SphereShape3D_ou5m3")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 0.3
+one_shot = true
+autostart = true
+
+[connection signal="body_entered" from="CollectArea" to="." method="_on_collect_area_body_entered"]
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

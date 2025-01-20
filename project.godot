@@ -114,6 +114,7 @@ inventory_toggle={
 3d_physics/layer_3="enemy"
 3d_physics/layer_4="camera_limit"
 3d_physics/layer_5="camera"
+3d_physics/layer_6="item"
 
 [physics]
 

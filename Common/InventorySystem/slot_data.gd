@@ -9,4 +9,5 @@ func set_amount(_amount: int) -> void:
 	if amount > item_data.max_stack:
 		amount = item_data.max_stack;
 		if GAME.debug_inventory:
+			pass
 			push_error("INVENTORY DEBUG: %s amount exceeds max_stack." % item_data.name);

@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://62n6lc63rm26"]
+[gd_scene load_steps=19 format=3 uid="uid://62n6lc63rm26"]
 
 [ext_resource type="PackedScene" uid="uid://y8y13cr0rnyl" path="res://Common/Camera/CameraLimit.tscn" id="2_4c7ht"]
 [ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="3_yoxt3"]
@@ -8,6 +8,8 @@
 [ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="7_scdsy"]
 [ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="8_duyq7"]
 [ext_resource type="PackedScene" uid="uid://q28ieg5iro8" path="res://Common/_COLLISIONS/COLLISION_GridMap.tscn" id="8_jkin7"]
+[ext_resource type="PackedScene" uid="uid://bwf0rx4mrslhx" path="res://Entities/Items/WorldItem.tscn" id="9_upcp5"]
+[ext_resource type="Resource" uid="uid://bvt7qobmrg1ug" path="res://Entities/Items/ItemResource/stick.tres" id="10_hqp6k"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7x6p"]
 sky_top_color = Color(0.113725, 0.588235, 0.94902, 1)
@@ -67,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 19.8)
 shape = SubResource("BoxShape3D_4hcus")
 
 [node name="Player" parent="." instance=ExtResource("6_ykkog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6621, 0, 16.3774)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6621, 0, 12.8424)
 
 [node name="test" parent="." instance=ExtResource("7_scdsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
@@ -733,6 +735,10 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11.758)
 
 [node name="TreeBirch4" parent="." instance=ExtResource("8_duyq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.172, 4.242, 6.172)
+
+[node name="WorldItem" parent="." instance=ExtResource("9_upcp5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7362, 3.535, 15.8368)
+item = ExtResource("10_hqp6k")
 
 [editable path="CameraLimit"]
 [editable path="test"]

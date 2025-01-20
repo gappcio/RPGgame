@@ -59,8 +59,17 @@ func get_ready() -> void:
 func add_item(item: int, amount: int) -> void:
 	# If item exists
 	if item_exists(item):
-		pass
 		# Check if added amount would be greater than maxstack
+		
+		var i = 0;
+		for slot in inventory_array:
+			if slot != null:
+				if slot.item_data.id == item:
+					var grid_slot = item_grid.get_child(i);
+					slot.amount += amount;
+					grid_slot.update_amount(slot.amount);
+					return;
+			i += 1;
 	else:
 		# Add it on first empty slot
 		var i = 0;
@@ -69,14 +78,21 @@ func add_item(item: int, amount: int) -> void:
 				var grid_slot = item_grid.get_child(i);
 				var slot_data = SlotData.new();
 				var data_name = ITEM.ITEM_ID.keys()[item];
-				var data = load("res://Entities/Items/%s.tres" % data_name);
-				data.set_item_info();
-				slot_data.item_data = data;
-				slot_data.amount = amount;
-				grid_slot.set_slot_data(slot_data);
-				inventory_array[0] = slot_data;
-				
-		i += 1;
+				var data = load("res://Entities/Items/ItemResource/%s.tres" % data_name);
+				if data:
+					data.set_item_info();
+					slot_data.item_data = data;
+					slot_data.amount = amount;
+					grid_slot.set_slot_data(slot_data);
+					inventory_array[i] = slot_data;
+				else:
+					push_error("Item resource not found");
+					return;
+				return;
+			else:
+				# Inventory is full -> Drop item
+				pass
+			i += 1;
 
 func item_exists(item: int) -> bool:
 	for slot in inventory_array:
@@ -84,3 +100,18 @@ func item_exists(item: int) -> bool:
 			if slot.item_data.id == item:
 				return true;
 	return false;
+
+func item_drop(item: int, amount: int, _position: Vector3) -> void:
+	var item_object_scene = load("res://Entities/Items/WorldItem.tscn");
+	var item_object = item_object_scene.instantiate();
+	var data_name = ITEM.ITEM_ID.keys()[item];
+	var data = load("res://Entities/Items/ItemResource/%s.tres" % data_name);
+	var map = GLOBAL.get_map();
+	if data:
+		data.set_item_info();
+		item_object.item = data;
+		item_object.amount = amount;
+		map.add_child(item_object);
+		item_object.global_position = Vector3(_position.x, _position.y + 2, _position.z);
+		var rng = RandomNumberGenerator.new();
+		item_object.velocity = Vector3(rng.randf_range(-15.0, 15.0), rng.randf_range(1.0, 5.0), rng.randf_range(-15.0, 15.0));
