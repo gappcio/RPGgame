@@ -71,4 +71,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 9, 0)
 cast_shadow = 3
 mesh = SubResource("SphereMesh_fneaj")
 
+[node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
+aabb = AABB(-10.425, 1.88, -8.215, 1, 1, 1)
+
 [editable path="birch1"]

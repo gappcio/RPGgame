@@ -33,11 +33,11 @@ func _ready() -> void:
 
 func _process(delta: float) -> void:
 	
-	if Input.is_action_pressed("camera_left"):
-		sun.rotation.y -= 0.05;
-	
-	if Input.is_action_pressed("camera_right"):
-		sun.rotation.y += 0.05;
+	#if Input.is_action_pressed("camera_left"):
+		#sun.rotation.y -= 0.05;
+	#
+	#if Input.is_action_pressed("camera_right"):
+		#sun.rotation.y += 0.05;
 	
 	if !player.is_jumping:
 		camera_speed_y = 1.0;

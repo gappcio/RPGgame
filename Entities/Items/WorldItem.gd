@@ -33,6 +33,26 @@ func _physics_process(delta: float) -> void:
 	velocity.x = lerp(velocity.x, 0.0, 0.2);
 	velocity.z = lerp(velocity.z, 0.0, 0.2);
 	
+	# sin 0 = 0; sin 90 = 1
+	# cos 0 = 1; cos 90 = 1
+	
+	if Input.is_action_pressed("camera_left"):
+		sprite.rotation.z -= 0.01;
+		
+	if Input.is_action_pressed("camera_right"):
+		sprite.rotation.z += 0.01;
+	
+	if sprite.rotation.z >= deg_to_rad(360): sprite.rotation.z = 0;
+	
+	sprite.scale.x = (0.414 * abs(sin(sprite.rotation.z))) + 1;
+	sprite.scale.y = (0.414 * abs(cos(sprite.rotation.z))) + 1;
+	
+	#sprite.scale.x = (0.21 * sin((sprite.rotation.z - 0.79) * 2)) + 1.21;
+	#sprite.scale.y = (0.21 * cos((sprite.rotation.z) * 2)) + 1.21;
+	
+	# for 90  scale.x = 1.414  scale.y = 1
+	# for 0   scale.x = 1	   scale.y = 1.414
+	
 	position.x = snapped(position.x, (GLOBAL.TILE_X / 16.0) / GLOBAL.window_scale);
 	position.y = snapped(position.y, (GLOBAL.TILE_Y / 16.0) / GLOBAL.window_scale);
 	position.z = snapped(position.z, (GLOBAL.TILE_Z / 16.0) / GLOBAL.window_scale);

@@ -61,11 +61,11 @@ func _process(delta: float) -> void:
 		anim.play("walk_" + str(direction_string))
 		anim.speed_scale = velocity.length() * 0.25;
 		
-	if Input.is_action_just_pressed("camera_left"):
-		inventory.add_item(ITEM.ITEM_ID.stick, 1);
-		
-	if Input.is_action_just_pressed("camera_right"):
-		inventory.item_drop(ITEM.ITEM_ID.quartz, 1, global_position);
+	#if Input.is_action_just_pressed("camera_left"):
+		#inventory.add_item(ITEM.ITEM_ID.stick, 1);
+		#
+	#if Input.is_action_just_pressed("camera_right"):
+		#inventory.item_drop(ITEM.ITEM_ID.quartz, 1, global_position);
 
 func _physics_process(delta: float) -> void:
 	

@@ -1,4 +1,4 @@
-[gd_scene load_steps=19 format=3 uid="uid://62n6lc63rm26"]
+[gd_scene load_steps=20 format=3 uid="uid://62n6lc63rm26"]
 
 [ext_resource type="PackedScene" uid="uid://y8y13cr0rnyl" path="res://Common/Camera/CameraLimit.tscn" id="2_4c7ht"]
 [ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="3_yoxt3"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://q28ieg5iro8" path="res://Common/_COLLISIONS/COLLISION_GridMap.tscn" id="8_jkin7"]
 [ext_resource type="PackedScene" uid="uid://bwf0rx4mrslhx" path="res://Entities/Items/WorldItem.tscn" id="9_upcp5"]
 [ext_resource type="Resource" uid="uid://bvt7qobmrg1ug" path="res://Entities/Items/ItemResource/stick.tres" id="10_hqp6k"]
+[ext_resource type="Texture2D" uid="uid://baiug4gnrueqf" path="res://Common/InventorySystem/item_atlas_texture.tres" id="11_hdpqc"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7x6p"]
 sky_top_color = Color(0.113725, 0.588235, 0.94902, 1)
@@ -716,6 +717,7 @@ shape = SubResource("BoxShape3D_oynwy")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2049, 3, 19.1599)
+visible = false
 light_color = Color(0.823414, 0.159701, 6.73831e-07, 1)
 light_energy = 7.029
 omni_range = 12.0
@@ -737,8 +739,38 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9, 0, 11.758)
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.172, 4.242, 6.172)
 
 [node name="WorldItem" parent="." instance=ExtResource("9_upcp5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7362, 3.535, 15.8368)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7362, 1.414, 15.8368)
 item = ExtResource("10_hqp6k")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, -13.2916, 0.707, 16.1196)
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("11_hdpqc")
+
+[node name="Sprite3D2" type="Sprite3D" parent="."]
+transform = Transform3D(-0.0450203, -1.28921, 0, 1.28921, -0.0450203, 0, 0, 0, 1, -11.8776, 0.707, 16.1196)
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("11_hdpqc")
+
+[node name="Sprite3D3" type="Sprite3D" parent="."]
+transform = Transform3D(-6.18079e-08, -1, 0, 1.414, -4.37114e-08, 0, 0, 0, 1, -10.4636, 0.707, 16.1196)
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("11_hdpqc")
+
+[node name="Sprite3D4" type="Sprite3D" parent="."]
+transform = Transform3D(-1, 1.23616e-07, 0, -8.74228e-08, -1.414, 0, 0, 0, 1, -7.6356, 0.707, 16.1196)
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("11_hdpqc")
+
+[node name="Sprite3D5" type="Sprite3D" parent="."]
+transform = Transform3D(-0.912168, -0.912168, 0, 0.912168, -0.912168, 0, 0, 0, 1, -9.0496, 0.707, 16.1196)
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("11_hdpqc")
 
 [editable path="CameraLimit"]
 [editable path="test"]
