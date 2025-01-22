@@ -54,6 +54,7 @@ region = Rect2(416, 0, 32, 32)
 visible = false
 
 [node name="Label" type="Label" parent="GUI"]
+visible = false
 offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_yoxt3")

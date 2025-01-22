@@ -6,7 +6,7 @@ extends Camera3D
 @onready var label: Label = $"../Label"
 @onready var sun: DirectionalLight3D = get_tree().get_nodes_in_group("sun")[0];
 
-var camera_speed = 0.3;
+var camera_speed = 0.1;
 var camera_speed_y = 0.1;
 
 var CAMERA_BASE_X: float = 15.0;
@@ -64,12 +64,12 @@ func _process(delta: float) -> void:
 	if global_position.z - CAMERA_BASE_Z >= limit_box_down - (CAMERA_SIZE_Z / 1):
 		global_position.z = limit_box_down + CAMERA_BASE_Z - (CAMERA_SIZE_Z / 1);
 
-	label.	text = "pos.x: " + str(global_position.x) + "\n" +\
-	"pos.z: " + str(global_position.z) + "\n" +\
-	"limit_box_left: " + str(limit_box_left) + "\n" +\
-	"limit_box_right: " + str(limit_box_right) + "\n" +\
-	"limit_box_up: " + str(limit_box_up) + "\n" +\
-	"limit_box_down: " + str(limit_box_down) + "\n" +\
-	"pos.x: " + str(global_position.x - CAMERA_BASE_X) + "\n" +\
-	"pos.z: " + str(global_position.z - CAMERA_BASE_Z) + "\n" +\
-	"up - size_z/2: " + str(limit_box_down + CAMERA_BASE_Z - CAMERA_SIZE_Z / 2) + "\n"
+	#label.	text = "pos.x: " + str(global_position.x) + "\n" +\
+	#"pos.z: " + str(global_position.z) + "\n" +\
+	#"limit_box_left: " + str(limit_box_left) + "\n" +\
+	#"limit_box_right: " + str(limit_box_right) + "\n" +\
+	#"limit_box_up: " + str(limit_box_up) + "\n" +\
+	#"limit_box_down: " + str(limit_box_down) + "\n" +\
+	#"pos.x: " + str(global_position.x - CAMERA_BASE_X) + "\n" +\
+	#"pos.z: " + str(global_position.z - CAMERA_BASE_Z) + "\n" +\
+	#"up - size_z/2: " + str(limit_box_down + CAMERA_BASE_Z - CAMERA_SIZE_Z / 2) + "\n"
