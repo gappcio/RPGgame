@@ -1,7 +1,8 @@
-[gd_scene load_steps=5 format=3 uid="uid://bwf0rx4mrslhx"]
+[gd_scene load_steps=6 format=3 uid="uid://bwf0rx4mrslhx"]
 
 [ext_resource type="Texture2D" uid="uid://baiug4gnrueqf" path="res://Common/InventorySystem/item_atlas_texture.tres" id="1_8676v"]
 [ext_resource type="Script" path="res://Entities/Items/WorldItem.gd" id="1_ys7mv"]
+[ext_resource type="PackedScene" uid="uid://jrsavpf6lrg0" path="res://Utils/Rotation/SpriteRotation.tscn" id="3_p5k5l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_18mug"]
 radius = 0.1414
@@ -41,6 +42,9 @@ shape = SubResource("SphereShape3D_ou5m3")
 wait_time = 0.3
 one_shot = true
 autostart = true
+
+[node name="SpriteRotation" parent="." node_paths=PackedStringArray("mesh_node") instance=ExtResource("3_p5k5l")]
+mesh_node = NodePath("../Sprite3D")
 
 [connection signal="body_entered" from="CollectArea" to="." method="_on_collect_area_body_entered"]
 [connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

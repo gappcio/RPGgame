@@ -30,10 +30,12 @@ height = 11.706
 
 [node name="TreeBirch" type="StaticBody3D"]
 
-[node name="birch1" parent="." instance=ExtResource("1_k3ttl")]
+[node name="Pivot" type="Node3D" parent="."]
+
+[node name="birch1" parent="Pivot" instance=ExtResource("1_k3ttl")]
 transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, 0, 8.484, 0)
 
-[node name="birch" parent="birch1" index="0"]
+[node name="birch" parent="Pivot/birch1" index="0"]
 sorting_offset = -8.484
 cast_shadow = 0
 
@@ -72,7 +74,6 @@ cast_shadow = 3
 mesh = SubResource("SphereMesh_fneaj")
 
 [node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
-aabb = AABB(-10.425, 1.88, -8.215, 1, 1, 1)
+aabb = AABB(-0.5, 1.88, -8.215, 1, 1, 1)
 
-[editable path="birch1"]
+[editable path="Pivot/birch1"]

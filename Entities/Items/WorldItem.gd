@@ -7,12 +7,15 @@ class_name WorldItem
 @onready var sprite: Sprite3D = $Sprite3D;
 @onready var collect_area: Area3D = $CollectArea
 @onready var timer: Timer = $Timer
+@onready var sprite_rotation: SpriteRotation = $SpriteRotation
+
 
 var GRAVITY_BASE = ProjectSettings.get_setting("physics/3d/default_gravity");
 var gravity = GRAVITY_BASE;
 
 var can_be_collected = false;
 var bounces = 2;
+
 
 func _ready() -> void:
 	sprite.texture = item.texture;
@@ -24,10 +27,10 @@ func _process(delta: float) -> void:
 func _physics_process(delta: float) -> void:
 	
 	if !is_on_floor():
-		velocity.y -= gravity * delta
+		velocity.y -= gravity * delta;
 	else:
 		if bounces > 0:
-			velocity.y = -velocity.y / 2;
+			velocity.y = 3;
 			bounces -= 1;
 		
 	velocity.x = lerp(velocity.x, 0.0, 0.2);
@@ -37,15 +40,27 @@ func _physics_process(delta: float) -> void:
 	# cos 0 = 1; cos 90 = 1
 	
 	if Input.is_action_pressed("camera_left"):
-		sprite.rotation.z -= 0.01;
+		sprite.rotation.z -= 0.05;
 		
 	if Input.is_action_pressed("camera_right"):
-		sprite.rotation.z += 0.01;
+		sprite.rotation.z += 0.05;
+
 	
-	if sprite.rotation.z >= deg_to_rad(360): sprite.rotation.z = 0;
+	# 0, 1
+	# pi/2, 1.414
+	# pi, 1
 	
-	sprite.scale.x = (0.414 * abs(sin(sprite.rotation.z))) + 1;
-	sprite.scale.y = (0.414 * abs(cos(sprite.rotation.z))) + 1;
+	#var sinesqr = (sin(sprite.rotation.z))**2;
+	#var cosinesqr = (cos(sprite.rotation.z))**2;
+	
+	#sprite.scale.x = GLOBAL.TILE_Z * 1 / max(abs( sin(sprite.rotation.z) ) + abs( cos(sprite.rotation.z) ), 1);
+	#sprite.scale.y = GLOBAL.TILE_Z * 1 / max(abs( cos(sprite.rotation.z) ) + abs( sin(sprite.rotation.z) ), 1);
+	
+	#sprite.scale.x = 1 / sqrt(cosinesqr + .5 * sinesqr);
+	#sprite.scale.y = 1 / sqrt(sinesqr + .5 * cosinesqr);
+	
+	#sprite.scale.x = (0.414 * abs(sin(sprite.rotation.z))) + 1;
+	#sprite.scale.y = (0.414 * abs(cos(sprite.rotation.z))) + 1;
 	
 	#sprite.scale.x = (0.21 * sin((sprite.rotation.z - 0.79) * 2)) + 1.21;
 	#sprite.scale.y = (0.21 * cos((sprite.rotation.z) * 2)) + 1.21;

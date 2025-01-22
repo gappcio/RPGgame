@@ -1,0 +1,24 @@
+[gd_scene load_steps=4 format=3 uid="uid://jrsavpf6lrg0"]
+
+[ext_resource type="Script" path="res://Utils/Rotation/sprite_rotation.gd" id="1_mtoc2"]
+
+[sub_resource type="Curve" id="Curve_rkld5"]
+min_value = 1.0
+max_value = 1.41
+_data = [Vector2(0, 1), 0.0, 3.28, 0, 1, Vector2(0.125, 1.41), 3.28, -3.28, 1, 1, Vector2(0.25, 1), -3.28, 3.28, 1, 1, Vector2(0.375, 1.41), 3.28, -3.28, 1, 1, Vector2(0.5, 1), -3.28, 3.28, 1, 1, Vector2(0.625, 1.41), 3.28, -3.28, 1, 1, Vector2(0.75, 1), -3.28, 3.28, 1, 1, Vector2(0.875, 1.41), 3.28, -3.28, 1, 1, Vector2(1, 1), -3.28, 0.0, 1, 0]
+point_count = 9
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[sub_resource type="Curve" id="Curve_1ujqj"]
+min_value = 1.0
+max_value = 1.41
+_data = [Vector2(0, 1.41), 0.0, -3.28, 0, 1, Vector2(0.125, 1), -3.28, 3.28, 1, 1, Vector2(0.25, 1.41), 3.28, -3.28, 1, 1, Vector2(0.375, 1), -3.28, 3.28, 1, 1, Vector2(0.5, 1.41), 3.28, -3.28, 1, 1, Vector2(0.625, 1), -3.28, 3.28, 1, 1, Vector2(0.75, 1.41), 3.28, -3.28, 1, 1, Vector2(0.875, 1), -3.28, 3.28, 1, 1, Vector2(1, 1.41), 3.28, 0.0, 1, 0]
+point_count = 9
+metadata/_snap_enabled = true
+metadata/_snap_count = 8
+
+[node name="SpriteRotation" type="Node"]
+script = ExtResource("1_mtoc2")
+curve_x = SubResource("Curve_rkld5")
+curve_y = SubResource("Curve_1ujqj")
