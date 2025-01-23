@@ -9,6 +9,7 @@ func _ready() -> void:
 	Console.add_command("ping", console_pong);
 	Console.add_command("give", console_give_item, 2);
 	
+	
 func console_pong() -> void:
 	Console.print_line("pong");
 

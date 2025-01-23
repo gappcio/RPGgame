@@ -6,8 +6,8 @@ extends Camera3D
 @onready var label: Label = $"../Label"
 @onready var sun: DirectionalLight3D = get_tree().get_nodes_in_group("sun")[0];
 
-var camera_speed = 0.1;
-var camera_speed_y = 0.1;
+var camera_speed: float = 20.0;
+var camera_speed_y: float = 0.1;
 
 var CAMERA_BASE_X: float = 15.0;
 var CAMERA_BASE_Z: float = 42.45 * GLOBAL.TILE_Z;
@@ -44,9 +44,13 @@ func _process(delta: float) -> void:
 	else:
 		camera_speed_y = 0.1;
 	
-	var posx = snapped(lerp(global_position.x, player.global_position.x, camera_speed), (GLOBAL.TILE_X / 16.0) / GLOBAL.window_scale);
-	var posy = snapped(lerp(global_position.y, player.global_position.y + 48.0, camera_speed * .5 * camera_speed_y), (GLOBAL.TILE_Y / 16.0) / GLOBAL.window_scale);
-	var posz = snapped(lerp(global_position.z, player.global_position.z + 46.0, camera_speed), (GLOBAL.TILE_Z / 16.0) / GLOBAL.window_scale);
+	#var posx = snapped(lerp(global_position.x, player.global_position.x, camera_speed), GLOBAL.PIXEL_X / GLOBAL.window_scale);
+	#var posy = snapped(lerp(global_position.y, player.global_position.y + 48.0, camera_speed * .5 * camera_speed_y), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
+	#var posz = snapped(lerp(global_position.z, player.global_position.z + 46.0, camera_speed), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
+
+	var posx = snapped(GLOBAL.lerp_fr(global_position.x, player.global_position.x, camera_speed, delta), GLOBAL.PIXEL_X / GLOBAL.window_scale);
+	var posy = snapped(GLOBAL.lerp_fr(global_position.y, player.global_position.y + 48.0, camera_speed * .5 * camera_speed_y, delta), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
+	var posz = snapped(GLOBAL.lerp_fr(global_position.z, player.global_position.z + 46.0, camera_speed, delta), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
 
 	global_position.x = posx;
 	global_position.y = posy;
