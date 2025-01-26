@@ -39,11 +39,11 @@ func _physics_process(delta: float) -> void:
 	# sin 0 = 0; sin 90 = 1
 	# cos 0 = 1; cos 90 = 1
 	
-	if Input.is_action_pressed("camera_left"):
-		sprite.rotation.z -= 0.05;
-		
-	if Input.is_action_pressed("camera_right"):
-		sprite.rotation.z += 0.05;
+	#if Input.is_action_pressed("camera_left"):
+		#sprite.rotation.z -= 0.05;
+		#
+	#if Input.is_action_pressed("camera_right"):
+		#sprite.rotation.z += 0.05;
 
 	
 	# 0, 1
