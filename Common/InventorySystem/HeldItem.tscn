@@ -1,0 +1,31 @@
+[gd_scene load_steps=3 format=3 uid="uid://rpf6no4nkrn4"]
+
+[ext_resource type="FontFile" uid="uid://bcqjjqltd1kun" path="res://Assets/Fonts/Consolas.ttf" id="1_3gbr2"]
+[ext_resource type="Script" path="res://Common/InventorySystem/held_item.gd" id="1_eq3s2"]
+
+[node name="HeldItem" type="PanelContainer"]
+custom_minimum_size = Vector2(24, 24)
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -456.0
+offset_bottom = -246.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_eq3s2")
+
+[node name="TextureRect" type="TextureRect" parent="."]
+layout_mode = 2
+expand_mode = 1
+stretch_mode = 5
+
+[node name="AmountLabel" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 8
+theme_override_fonts/font = ExtResource("1_3gbr2")
+theme_override_font_sizes/font_size = 12
+text = "1"
+horizontal_alignment = 2
+vertical_alignment = 1

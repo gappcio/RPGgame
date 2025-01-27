@@ -38,10 +38,11 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Inventory" parent="UI/CanvasInventory/InventoryInferface" node_paths=PackedStringArray("canvas_layer") instance=ExtResource("3_dp4xh")]
+[node name="Inventory" parent="UI/CanvasInventory/InventoryInferface" node_paths=PackedStringArray("canvas_layer", "inventory_interface") instance=ExtResource("3_dp4xh")]
 unique_name_in_owner = true
 layout_mode = 1
 canvas_layer = NodePath("../..")
+inventory_interface = NodePath("..")
 
 [node name="MAP_DEVROOM1" parent="." instance=ExtResource("1_v3vin")]
 

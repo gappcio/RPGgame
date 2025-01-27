@@ -4,7 +4,6 @@ extends PanelContainer
 @onready var amount_label: Label = $AmountLabel
 
 var id: int;
-
 signal slot_clicked(index: int, button: int, shift: bool);
 
 func remove_slot_data() -> void:

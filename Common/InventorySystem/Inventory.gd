@@ -2,6 +2,7 @@ extends PanelContainer
 class_name Inventory
 
 const SLOT = preload("res://Common/InventorySystem/Slot.tscn");
+const HELD_SLOT = preload("res://Common/InventorySystem/HeldItem.tscn");
 const SLOTS_WIDTH = 12;
 const SLOTS_HEIGHT = 4;
 var inventory_slots_amount = 48;
@@ -9,9 +10,11 @@ var inventory_slots_amount = 48;
 @export var active: bool;
 @export var canvas_layer: CanvasLayer;
 @export var inventory_array: Array[SlotData];
+@export var inventory_interface: Control;
 
 @onready var item_grid: GridContainer = $ItemGrid;
 var page: int = 0;
+var held_item = null;
 
 func _ready() -> void:
 	inventory_array.resize(inventory_slots_amount);
@@ -26,6 +29,8 @@ func _process(delta: float) -> void:
 		canvas_layer.visible = true;
 	else:
 		canvas_layer.visible = false;
+		
+	#held_item = inventory_interface.get_node_or_null("HeldItem");
 
 func get_ready() -> void:
 	
@@ -95,7 +100,6 @@ func add_item(item: int, amount: int) -> void:
 					inventory_array[i] = slot_data;
 				else:
 					push_error("Item resource not found");
-					return;
 				return;
 			i += 1;
 	else:
@@ -134,15 +138,103 @@ func item_drop(item: int, amount: int, _position: Vector3) -> void:
 		item_object.velocity = Vector3(rng.randf_range(-15.0, 15.0), rng.randf_range(1.0, 5.0), rng.randf_range(-15.0, 15.0));
 
 func on_slot_clicked(index: int, button: int, shift: bool):
+	var held_item = inventory_interface.get_node_or_null("HeldItem");
 	match(button):
 		MOUSE_BUTTON_LEFT:
-			# Create new held item data
-			var held_item = HeldItem.new();
-			
-			# Clear slot data on index
-			var grid_slot = item_grid.get_child(index);
-			grid_slot.remove_slot_data();
-			inventory_array[index] = null;
+			# If we are not holding anything
+			if !held_item:
+				# If there is an item on a slot
+				if inventory_array[index]:
+					# Create new held item data
+					var held_slot_data = SlotData.new();
+					var held_slot = HELD_SLOT.instantiate();
+					inventory_interface.add_child(held_slot);
+					var item_id = inventory_array[index].item_data.id;
+					var item_amount = inventory_array[index].amount;
+					var data_name = ITEM.ITEM_ID.keys()[item_id];
+					var data = load("res://Entities/Items/ItemResource/%s.tres" % data_name);
+					
+					if data:
+						data.set_item_info();
+						held_slot.item_data = data;
+						held_slot.amount = item_amount;
+						held_slot_data.item_data = data;
+						held_slot_data.amount = item_amount;
+						held_slot.set_slot_data(held_slot_data);
+					else:
+						push_error("Item resource not found");
+					
+					# Show held item and update its position
+					held_slot.self_modulate = Color(1.0, 1.0, 1.0, 0.0);
+					held_slot.position = get_global_mouse_position();
+					
+					held_item = held_slot;
+					
+					# Clear slot data on index
+					var grid_slot = item_grid.get_child(index);
+					grid_slot.remove_slot_data();
+					inventory_array[index] = null;
+				
+			else:
+				# If we are holding an item
+
+				# If there is something on a slot already
+				if inventory_array[index]:
+					# If held item is same as the item on slot
+					var grid_slot = item_grid.get_child(index);
+					if inventory_array[index].item_data.id == held_item.item_data.id:
+						# Add amount on slot
+						if inventory_array[index].amount + held_item.amount > inventory_array[index].item_data.max_stack:
+							held_item.amount -= inventory_array[index].item_data.max_stack - inventory_array[index].amount;
+							inventory_array[index].amount = inventory_array[index].item_data.max_stack;
+							grid_slot.update_amount(inventory_array[index].amount);
+							held_item.update_amount(held_item.amount);
+						else:
+							inventory_array[index].amount += held_item.amount;
+							grid_slot.update_amount(inventory_array[index].amount);
+							held_item.queue_free();
+					else:
+						# If held item is of another id
+						# Swap slot with held item
+						# FIX IT
+						var new_slot_data = SlotData.new();
+						var new_held_data = SlotData.new();
+						
+						new_held_data.item_data = held_item.item_data;
+						new_held_data.amount = held_item.amount;
+						
+						new_slot_data.item_data = inventory_array[index].item_data;
+						new_slot_data.amount =  inventory_array[index].amount;
+						
+						new_held_data.item_data.set_item_info();
+						held_item.set_slot_data(new_slot_data);
+						held_item.item_data = new_slot_data.item_data;
+						held_item.amount = new_slot_data.amount;
+						
+						new_slot_data.item_data.set_item_info();
+						grid_slot.set_slot_data(new_held_data);
+						inventory_array[index].item_data = new_held_data.item_data;
+						inventory_array[index].amount = new_held_data.amount;
+						
+						
+				else:
+					# If there is nothing on that slot, put the item there
+					var grid_slot = item_grid.get_child(index);
+					var slot_data = SlotData.new();
+					var item_id = held_item.item_data.id;
+					var item_amount = held_item.amount;
+					var data_name = ITEM.ITEM_ID.keys()[item_id];
+					var data = load("res://Entities/Items/ItemResource/%s.tres" % data_name);
+					if data:
+						data.set_item_info();
+						slot_data.item_data = data;
+						slot_data.amount = item_amount;
+						grid_slot.set_slot_data(slot_data);
+						inventory_array[index] = slot_data;
+					else:
+						push_error("Item resource not found");
+						
+					held_item.queue_free();
 						
 
 		MOUSE_BUTTON_RIGHT:
