@@ -23,6 +23,7 @@ func set_slot_data(slot_data: SlotData) -> void:
 	update_amount(slot_data.amount);
 
 func update_amount(amount: int) -> void:
-	if amount > 1:
-		amount_label.text = "%s" % amount;
-		amount_label.show();
+	var text = "%s" % amount;
+	if amount == 1: text = " ";
+	amount_label.text = text;
+	amount_label.show();

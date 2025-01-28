@@ -196,26 +196,26 @@ func on_slot_clicked(index: int, button: int, shift: bool):
 					else:
 						# If held item is of another id
 						# Swap slot with held item
-						# FIX IT
+						
 						var new_slot_data = SlotData.new();
-						var new_held_data = SlotData.new();
+						var temp_data = SlotData.new();
 						
-						new_held_data.item_data = held_item.item_data;
-						new_held_data.amount = held_item.amount;
+						var temp_item = inventory_array[index].item_data;
+						var temp_amount = inventory_array[index].amount;
 						
-						new_slot_data.item_data = inventory_array[index].item_data;
-						new_slot_data.amount =  inventory_array[index].amount;
+						inventory_array[index].item_data = held_item.item_data;
+						inventory_array[index].amount = held_item.amount;
+						new_slot_data.item_data = held_item.item_data;
+						new_slot_data.amount = held_item.amount;
+						grid_slot.set_slot_data(new_slot_data);
+						grid_slot.update_amount(held_item.amount);
 						
-						new_held_data.item_data.set_item_info();
-						held_item.set_slot_data(new_slot_data);
-						held_item.item_data = new_slot_data.item_data;
-						held_item.amount = new_slot_data.amount;
-						
-						new_slot_data.item_data.set_item_info();
-						grid_slot.set_slot_data(new_held_data);
-						inventory_array[index].item_data = new_held_data.item_data;
-						inventory_array[index].amount = new_held_data.amount;
-						
+						held_item.item_data = temp_item;
+						held_item.amount = temp_amount;
+						temp_data.item_data = temp_item;
+						temp_data.amount = temp_amount;
+						held_item.set_slot_data(temp_data);
+						held_item.update_amount(temp_amount);
 						
 				else:
 					# If there is nothing on that slot, put the item there
@@ -238,6 +238,71 @@ func on_slot_clicked(index: int, button: int, shift: bool):
 						
 
 		MOUSE_BUTTON_RIGHT:
-			pass
+			# If we are not holding anything
+			if !held_item:
+				# If there is an item on a slot
+				if inventory_array[index]:
+					# Create new held item data
+					
+					var held_slot_data = SlotData.new();
+					var held_slot = HELD_SLOT.instantiate();
+					inventory_interface.add_child(held_slot);
+					var item_id = inventory_array[index].item_data.id;
+					var data_name = ITEM.ITEM_ID.keys()[item_id];
+					var data = load("res://Entities/Items/ItemResource/%s.tres" % data_name);
+					
+					# Pick only 1 of the selected item
+					
+					if data:
+						data.set_item_info();
+						held_slot.item_data = data;
+						held_slot.amount = 1;
+						held_slot_data.item_data = data;
+						held_slot_data.amount = 1;
+						held_slot.set_slot_data(held_slot_data);
+					else:
+						push_error("Item resource not found");
+					
+					# Show held item and update its position
+					held_slot.self_modulate = Color(1.0, 1.0, 1.0, 0.0);
+					held_slot.position = get_global_mouse_position();
+					
+					held_item = held_slot;
+					
+					# Remove 1 of the item on selected slot
+					var grid_slot = item_grid.get_child(index);
+					inventory_array[index].amount -= 1;
+					grid_slot.update_amount(inventory_array[index].amount);
+					if inventory_array[index].amount < 1:
+						grid_slot.remove_slot_data();
+						inventory_array[index] = null;
+				
+			else:
+				# If we are holding an item
+
+				# If there is something on a slot already
+				if inventory_array[index]:
+					# If held item is same as the item on slot
+					var grid_slot = item_grid.get_child(index);
+					if inventory_array[index].item_data.id == held_item.item_data.id:
+						# Remove 1 item from slot and add it to held slot
+						
+						if held_item.amount < inventory_array[index].item_data.max_stack:
+							held_item.amount += 1;
+							inventory_array[index].amount -= 1;
+							
+							grid_slot.update_amount(inventory_array[index].amount);
+							held_item.update_amount(held_item.amount);
+							
+							if inventory_array[index].amount < 1:
+								inventory_array[index] = null;
+								grid_slot.remove_slot_data();
+						
+					else:
+						# If held item is of another id
+						return;
+				else:
+					# If there is nothing on that slot
+					return;
 		MOUSE_BUTTON_MIDDLE:
 			pass

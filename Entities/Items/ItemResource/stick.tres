@@ -1,13 +1,9 @@
-[gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://bvt7qobmrg1ug"]
+[gd_resource type="Resource" script_class="ItemData" load_steps=3 format=3 uid="uid://bvt7qobmrg1ug"]
 
 [ext_resource type="Script" path="res://Common/InventorySystem/item_data.gd" id="1_qd66c"]
-[ext_resource type="Texture2D" uid="uid://cykn4q81kipob" path="res://Assets/Sprites/Items/item_atlas.png" id="2_vw52n"]
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_invsx"]
-atlas = ExtResource("2_vw52n")
-region = Rect2(160, 0, 32, 32)
+[ext_resource type="Texture2D" uid="uid://baiug4gnrueqf" path="res://Common/InventorySystem/item_atlas_texture.tres" id="2_7s82f"]
 
 [resource]
 script = ExtResource("1_qd66c")
-texture = SubResource("AtlasTexture_invsx")
+texture = ExtResource("2_7s82f")
 id = 2
