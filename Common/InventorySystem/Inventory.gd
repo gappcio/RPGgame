@@ -15,9 +15,11 @@ var inventory_slots_amount = 48;
 @onready var item_grid: GridContainer = $ItemGrid;
 var page: int = 0;
 var held_item = null;
+var player: Player = null;
 
 func _ready() -> void:
 	inventory_array.resize(inventory_slots_amount);
+	var player = get_tree().get_nodes_in_group("player")[0];
 	get_ready();
 
 func _process(delta: float) -> void:
@@ -67,43 +69,56 @@ func add_item(item: int, amount: int) -> void:
 	if !is_inventory_full():
 		var i = 0;
 		for slot in inventory_array:
-			if slot != null:
-				# If amount on slot != maxstack
-				if slot.item_data.id == item && slot.amount != slot.item_data.max_stack:
-					# If added amount + slot amount > maxstack
-					if slot.amount + amount > slot.item_data.max_stack:
-						var grid_slot = item_grid.get_child(i);
-						var reminder = slot.amount + amount - slot.item_data.max_stack;
-						slot.amount = slot.item_data.max_stack;
-						grid_slot.update_amount(slot.amount);
-						add_item(item, reminder);
-						return;
-					else:
-						var grid_slot = item_grid.get_child(i);
-						slot.amount += amount;
-						grid_slot.update_amount(slot.amount);
-						return;
+			# If amount on slot != maxstack
+			if slot && slot.item_data.id == item && slot.amount != slot.item_data.max_stack:
+				# If added amount + slot amount > maxstack
+				if slot.amount + amount > slot.item_data.max_stack:
+					# Max out stack -> check for place for the reminder
+					var grid_slot = item_grid.get_child(i);
+					var reminder = slot.amount + amount - slot.item_data.max_stack;
+					slot.amount = slot.item_data.max_stack;
+					grid_slot.update_amount(slot.amount);
+					add_item(item, reminder);
+					return;
 				else:
-					i += 1;
-					continue;
-					
+					# There is place on that stack -> add amount
+					var grid_slot = item_grid.get_child(i);
+					slot.amount += amount;
+					grid_slot.update_amount(slot.amount);
+					return;
 			else:
-				var grid_slot = item_grid.get_child(i);
-				var slot_data = SlotData.new();
-				var data_name = ITEM.ITEM_ID.keys()[item];
-				var data = load("res://Entities/Items/ItemResource/%s.tres" % data_name);
-				if data:
-					data.set_item_info();
-					slot_data.item_data = data;
-					slot_data.amount = amount;
-					grid_slot.set_slot_data(slot_data);
-					inventory_array[i] = slot_data;
-				else:
-					push_error("Item resource not found");
-				return;
-			i += 1;
+				i += 1;
+				
+				# If there is no item of that id in the inventory
+				if (i > inventory_slots_amount - 1):
+					var j = 0;
+					for _slot in inventory_array:
+						if _slot == null:
+							var grid_slot = item_grid.get_child(j);
+							var slot_data = SlotData.new();
+							var data_name = ITEM.ITEM_ID.keys()[item];
+							var data = load("res://Entities/Items/ItemResource/%s.tres" % data_name);
+							if data:
+								data.set_item_info();
+								slot_data.item_data = data;
+								slot_data.amount = amount;
+								grid_slot.set_slot_data(slot_data);
+								inventory_array[j] = slot_data;
+							else:
+								push_error("Item resource not found");
+							return;
+						else:
+							j += 1;
+							
+							# If there is no place drop the item
+							if (j > inventory_slots_amount - 1):
+								if player:
+									item_drop(item, amount, player.global_position);
+								return;
+			#i += 1;
 	else:
-		item_drop(item, amount, Player.global_position);
+		if player:
+			item_drop(item, amount, player.global_position);
 		return;
 		
 func is_inventory_full() -> bool:
@@ -115,12 +130,14 @@ func is_inventory_full() -> bool:
 			return false;
 	return true;
 
-func item_exists(item: int) -> bool:
+func item_exists(item: int) -> Variant:
+	var i = 0;
 	for slot in inventory_array:
 		if slot != null:
 			if slot.item_data.id == item:
-				return true;
-	return false;
+				return i;
+		i += 1;
+	return null;
 
 func item_drop(item: int, amount: int, _position: Vector3) -> void:
 	var item_object_scene = load("res://Entities/Items/WorldItem.tscn");
