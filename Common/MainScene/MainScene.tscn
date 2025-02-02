@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://douityyj76al4"]
+[gd_scene load_steps=8 format=3 uid="uid://douityyj76al4"]
 
 [ext_resource type="Script" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
+[ext_resource type="PackedScene" uid="uid://dyt3dg1al01ao" path="res://Utils/TimeSystem/Time.tscn" id="2_fiet3"]
 [ext_resource type="PackedScene" uid="uid://xeqjgy6gnfs" path="res://Common/Camera/Camera.tscn" id="2_m0yeh"]
 [ext_resource type="PackedScene" uid="uid://cmjplav76x5mc" path="res://Common/WindowManager/WindowManager.tscn" id="3_0xth8"]
 [ext_resource type="PackedScene" uid="uid://dafx4llrs7i7h" path="res://Common/InventorySystem/Inventory.tscn" id="3_dp4xh"]
@@ -17,6 +18,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_d6va0")
+
+[node name="Time" parent="." instance=ExtResource("2_fiet3")]
 
 [node name="Camera" parent="." instance=ExtResource("2_m0yeh")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -7)
@@ -46,7 +49,10 @@ inventory_interface = NodePath("..")
 
 [node name="MAP_DEVROOM1" parent="." instance=ExtResource("1_v3vin")]
 
-[node name="Player" parent="MAP_DEVROOM1" index="4" node_paths=PackedStringArray("inventory")]
+[node name="Sun" parent="MAP_DEVROOM1/DayNightManager" index="1"]
+transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
+
+[node name="Player" parent="MAP_DEVROOM1" index="3" node_paths=PackedStringArray("inventory")]
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_DEVROOM1"]
@@ -61,5 +67,6 @@ shape = SubResource("BoxShape3D_o8jpl")
 [editable path="Camera"]
 [editable path="WindowManager"]
 [editable path="MAP_DEVROOM1"]
+[editable path="MAP_DEVROOM1/DayNightManager"]
 [editable path="MAP_DEVROOM1/CameraLimit"]
 [editable path="MAP_DEVROOM1/test"]

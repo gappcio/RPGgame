@@ -228,3 +228,9 @@ root_node = NodePath("../..")
 libraries = {
 "": SubResource("AnimationLibrary_yt2hf")
 }
+
+[node name="OmniLight3D" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+visible = false
+omni_range = 5.559
+omni_attenuation = 1.637

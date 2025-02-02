@@ -1,5 +1,6 @@
 [gd_scene load_steps=22 format=3 uid="uid://62n6lc63rm26"]
 
+[ext_resource type="PackedScene" uid="uid://cs6wsgu1hgtlc" path="res://Common/DayNightManager/DayNightManager.tscn" id="1_meejb"]
 [ext_resource type="PackedScene" uid="uid://y8y13cr0rnyl" path="res://Common/Camera/CameraLimit.tscn" id="2_4c7ht"]
 [ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="3_yoxt3"]
 [ext_resource type="Material" uid="uid://der6s2dvr4qge" path="res://Assets/Materials/MAT_test.tres" id="4_sthxw"]
@@ -12,22 +13,7 @@
 [ext_resource type="Resource" uid="uid://bvt7qobmrg1ug" path="res://Entities/Items/ItemResource/stick.tres" id="10_hqp6k"]
 [ext_resource type="Texture2D" uid="uid://baiug4gnrueqf" path="res://Common/InventorySystem/item_atlas_texture.tres" id="11_hdpqc"]
 [ext_resource type="Texture2D" uid="uid://cykn4q81kipob" path="res://Assets/Sprites/Items/item_atlas.png" id="12_hl3ia"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_w7x6p"]
-sky_top_color = Color(0.113725, 0.588235, 0.94902, 1)
-sky_horizon_color = Color(0.3685, 0.584575, 0.67, 1)
-sky_curve = 0.109807
-
-[sub_resource type="Sky" id="Sky_ey3v0"]
-sky_material = SubResource("ProceduralSkyMaterial_w7x6p")
-
-[sub_resource type="Environment" id="Environment_daf4x"]
-background_mode = 2
-sky = SubResource("Sky_ey3v0")
-tonemap_mode = 2
-glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
+[ext_resource type="PackedScene" uid="uid://brqbqdvbxy6ok" path="res://Entities/Vegetation/TEST/TestTree.tscn" id="13_ypg2v"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_4hcus"]
 size = Vector3(72, 1, 39.6)
@@ -48,7 +34,12 @@ size = Vector3(31.02, 1, 25.38)
 atlas = ExtResource("12_hl3ia")
 region = Rect2(416, 0, 32, 32)
 
+[sub_resource type="BoxMesh" id="BoxMesh_skdnx"]
+size = Vector3(200, 1, 300)
+
 [node name="MAP_DEVROOM1" type="Node3D"]
+
+[node name="DayNightManager" parent="." instance=ExtResource("1_meejb")]
 
 [node name="GUI" type="CanvasLayer" parent="."]
 visible = false
@@ -59,14 +50,6 @@ offset_right = 40.0
 offset_bottom = 23.0
 script = ExtResource("3_yoxt3")
 
-[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_daf4x")
-
-[node name="DirectionalLight3D" type="DirectionalLight3D" parent="." groups=["sun"]]
-transform = Transform3D(0.876307, -0.417211, 0.240877, 0, 0.5, 0.866025, -0.481754, -0.758903, 0.438153, 0, 0, 0)
-shadow_enabled = true
-directional_shadow_split_1 = 0.05
-
 [node name="CameraLimit" parent="." instance=ExtResource("2_4c7ht")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
 collision_mask = 23
@@ -76,7 +59,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 19.8)
 shape = SubResource("BoxShape3D_4hcus")
 
 [node name="Player" parent="." instance=ExtResource("6_ykkog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.6621, 0, 12.8424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6621, 0, 17.8424)
 
 [node name="test" parent="." instance=ExtResource("7_scdsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
@@ -722,7 +705,7 @@ transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -14.2049, 3, 19.1599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2049, 3, 19.1599)
 visible = false
 light_color = Color(0.823414, 0.159701, 6.73831e-07, 1)
 light_energy = 7.029
@@ -771,6 +754,13 @@ transform = Transform3D(0.857013, -0.857013, 0, 0.857013, 0.857013, 0, 0, 0, 1, 
 pixel_size = 0.0625
 texture_filter = 0
 texture = SubResource("AtlasTexture_ab2o5")
+
+[node name="TestTree" parent="." instance=ExtResource("13_ypg2v")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, 21)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -6, 0)
+mesh = SubResource("BoxMesh_skdnx")
 
 [editable path="CameraLimit"]
 [editable path="test"]

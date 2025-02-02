@@ -1,0 +1,32 @@
+[gd_scene load_steps=5 format=3 uid="uid://brqbqdvbxy6ok"]
+
+[ext_resource type="Texture2D" uid="uid://d0ujkg8j8168c" path="res://Assets/Textures/testveg.png" id="1_dwkua"]
+[ext_resource type="Texture2D" uid="uid://cyfx1tm46bu5d" path="res://Assets/Textures/testveg_n.png" id="2_le3no"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_rp7tq"]
+transparency = 1
+albedo_texture = ExtResource("1_dwkua")
+normal_enabled = true
+normal_texture = ExtResource("2_le3no")
+backlight_enabled = true
+texture_filter = 0
+point_size = 14.4
+
+[sub_resource type="PlaneMesh" id="PlaneMesh_lkffl"]
+material = SubResource("StandardMaterial3D_rp7tq")
+size = Vector2(1.375, 3.194)
+
+[node name="TestTree" type="Node3D"]
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+visible = false
+pixel_size = 0.0625
+texture_filter = 0
+texture = ExtResource("1_dwkua")
+
+[node name="Node3D" type="Node3D" parent="."]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1.414, 0, 1, -6.18079e-08, 0, 2.258, 0)
+mesh = SubResource("PlaneMesh_lkffl")
+skeleton = NodePath("../..")

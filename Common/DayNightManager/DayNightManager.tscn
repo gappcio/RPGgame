@@ -1,0 +1,74 @@
+[gd_scene load_steps=8 format=3 uid="uid://cs6wsgu1hgtlc"]
+
+[ext_resource type="Script" path="res://Common/DayNightManager/DayNightManager.gd" id="1_7a0v7"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_obgon"]
+sky_top_color = Color(0.113725, 0.588235, 0.94902, 1)
+sky_horizon_color = Color(0.3685, 0.584575, 0.67, 1)
+sky_curve = 0.109807
+
+[sub_resource type="Sky" id="Sky_ey3v0"]
+sky_material = SubResource("ProceduralSkyMaterial_obgon")
+
+[sub_resource type="Environment" id="Environment_hiv1h"]
+background_mode = 2
+sky = SubResource("Sky_ey3v0")
+tonemap_mode = 2
+glow_enabled = true
+volumetric_fog_enabled = true
+volumetric_fog_density = 0.0
+
+[sub_resource type="Animation" id="Animation_uqvw8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(-1.0472, 0.502655, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_2k5xh"]
+resource_name = "daynight_act1_may"
+length = 24.0
+loop_mode = 1
+step = 1.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 5, 12, 17, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(1.5708, 3.14159, 0), Vector3(-0.698132, 1.5708, 0), Vector3(-1.39626, 0, 0), Vector3(-0.698132, -1.5708, 0), Vector3(1.5708, -3.14159, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t4l4y"]
+_data = {
+"RESET": SubResource("Animation_uqvw8"),
+"daynight_act1_may": SubResource("Animation_2k5xh")
+}
+
+[node name="DayNightManager" type="Node3D"]
+script = ExtResource("1_7a0v7")
+
+[node name="Environment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_hiv1h")
+
+[node name="Sun" type="DirectionalLight3D" parent="." groups=["sun"]]
+transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
+shadow_enabled = true
+directional_shadow_split_1 = 0.05
+
+[node name="SunCycle" type="AnimationPlayer" parent="."]
+libraries = {
+"": SubResource("AnimationLibrary_t4l4y")
+}
