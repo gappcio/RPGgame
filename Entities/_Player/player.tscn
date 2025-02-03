@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://crqp6ytp53h0h"]
+[gd_scene load_steps=18 format=3 uid="uid://crqp6ytp53h0h"]
 
 [ext_resource type="Script" path="res://Entities/_Player/player.gd" id="1_v0ns8"]
 [ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Entities/_Player/Sprites/spr_player_basic.png" id="2_2532p"]
@@ -22,8 +22,11 @@ albedo_texture = ExtResource("2_2532p")
 backlight_enabled = true
 backlight = Color(1, 1, 1, 1)
 texture_filter = 0
-billboard_mode = 2
 billboard_keep_scale = true
+
+[sub_resource type="QuadMesh" id="QuadMesh_vfyul"]
+material = SubResource("StandardMaterial3D_pvunb")
+size = Vector2(4, 4)
 
 [sub_resource type="Animation" id="Animation_wadm3"]
 resource_name = "RESET"
@@ -212,16 +215,19 @@ mesh = SubResource("CapsuleMesh_sh0go")
 [node name="Visual" type="Node3D" parent="."]
 
 [node name="SpriteFull" type="Sprite3D" parent="Visual"]
-transform = Transform3D(1, 0, 0, 0, 1.41, 0, 0, 0, 1, 0, 1.41, 0)
-material_override = SubResource("StandardMaterial3D_pvunb")
+transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, 0, 1.414, 0)
 cast_shadow = 0
 pixel_size = 0.0625
-billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("2_2532p")
 hframes = 4
 vframes = 4
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]
+transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, 0, 1.414, 0)
+visible = false
+mesh = SubResource("QuadMesh_vfyul")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 root_node = NodePath("../..")

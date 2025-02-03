@@ -1,0 +1,18 @@
+[gd_resource type="ProceduralSkyMaterial" load_steps=3 format=3 uid="uid://c5pdgoc1h4mur"]
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_aposx"]
+noise_type = 3
+frequency = 0.0069
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_0rr5w"]
+seamless = true
+noise = SubResource("FastNoiseLite_aposx")
+
+[resource]
+sky_top_color = Color(0.466667, 0.690196, 1, 1)
+sky_horizon_color = Color(0.421022, 0.501875, 0.632243, 1)
+sky_curve = 0.113679
+sky_cover = SubResource("NoiseTexture2D_0rr5w")
+sky_cover_modulate = Color(0, 0, 0, 1)
+ground_bottom_color = Color(0.328783, 0.318006, 0.23686, 1)
+ground_horizon_color = Color(0.680767, 0.723385, 0.873022, 1)

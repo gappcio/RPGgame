@@ -40,6 +40,7 @@ size = Vector3(200, 1, 300)
 [node name="MAP_DEVROOM1" type="Node3D"]
 
 [node name="DayNightManager" parent="." instance=ExtResource("1_meejb")]
+cycle_length = 10.0
 
 [node name="GUI" type="CanvasLayer" parent="."]
 visible = false
@@ -706,11 +707,17 @@ shape = SubResource("BoxShape3D_oynwy")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2049, 3, 19.1599)
-visible = false
 light_color = Color(0.823414, 0.159701, 6.73831e-07, 1)
 light_energy = 7.029
+shadow_enabled = true
 omni_range = 12.0
 omni_attenuation = -0.418
+
+[node name="OmniLight3D2" type="OmniLight3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0649, 3, 21.9879)
+shadow_enabled = true
+omni_range = 5.656
+omni_attenuation = -0.193
 
 [node name="TreeBirch" parent="." instance=ExtResource("8_duyq7")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 10.172)

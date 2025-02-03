@@ -1,7 +1,7 @@
 extends Control
 class_name Game
 
-@export var debug_inventory: bool = true;
+@export var debug_inventory: bool = false;
 @onready var inventory: Inventory = $/root/MainScene/UI/CanvasInventory/InventoryInferface/Inventory
 
 func _ready() -> void:

@@ -1,22 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://cs6wsgu1hgtlc"]
 
 [ext_resource type="Script" path="res://Common/DayNightManager/DayNightManager.gd" id="1_7a0v7"]
-
-[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_obgon"]
-sky_top_color = Color(0.113725, 0.588235, 0.94902, 1)
-sky_horizon_color = Color(0.3685, 0.584575, 0.67, 1)
-sky_curve = 0.109807
-
-[sub_resource type="Sky" id="Sky_ey3v0"]
-sky_material = SubResource("ProceduralSkyMaterial_obgon")
-
-[sub_resource type="Environment" id="Environment_hiv1h"]
-background_mode = 2
-sky = SubResource("Sky_ey3v0")
-tonemap_mode = 2
-glow_enabled = true
-volumetric_fog_enabled = true
-volumetric_fog_density = 0.0
+[ext_resource type="Environment" uid="uid://c1vtccxka8ife" path="res://Common/DayNightManager/Envs/test_environment.tres" id="2_hnxhj"]
+[ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="2_ulmjj"]
+[ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="3_tsi1c"]
 
 [sub_resource type="Animation" id="Animation_uqvw8"]
 length = 0.001
@@ -32,6 +19,42 @@ tracks/0/keys = {
 "update": 0,
 "values": [Vector3(-1.0472, 0.502655, 0)]
 }
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sun:shadow_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [1.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0, 0, 0, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [0.0]
+}
 
 [sub_resource type="Animation" id="Animation_2k5xh"]
 resource_name = "daynight_act1_may"
@@ -45,10 +68,46 @@ tracks/0/path = NodePath("Sun:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5, 12, 17, 24),
+"times": PackedFloat32Array(0, 5.05097, 12, 21.318, 24),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1),
 "update": 0,
-"values": [Vector3(1.5708, 3.14159, 0), Vector3(-0.698132, 1.5708, 0), Vector3(-1.39626, 0, 0), Vector3(-0.698132, -1.5708, 0), Vector3(1.5708, -3.14159, 0)]
+"values": [Vector3(1.5708, 1.4748, 0), Vector3(-0.549779, 1.41372, 0), Vector3(-1.0472, 0, 0), Vector3(-0.558505, -1.48353, 0), Vector3(1.5708, -1.55334, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Sun:shadow_opacity")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 4.59423, 5.32188, 21, 21.6478, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 0.0, 0.0]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath(".:color")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0, 4.92572, 12, 21.2724, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1)]
+}
+tracks/3/type = "value"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath(".:energy")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"times": PackedFloat32Array(0, 5, 12, 21.2476, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.25, 0.25, 1.0, 0.25, 0.25]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t4l4y"]
@@ -59,16 +118,29 @@ _data = {
 
 [node name="DayNightManager" type="Node3D"]
 script = ExtResource("1_7a0v7")
+environment = ExtResource("2_hnxhj")
 
 [node name="Environment" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_hiv1h")
+environment = ExtResource("2_hnxhj")
 
 [node name="Sun" type="DirectionalLight3D" parent="." groups=["sun"]]
-transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
+transform = Transform3D(0.876307, -0.417212, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758905, 0.438151, 0, 0, 0)
 shadow_enabled = true
+directional_shadow_mode = 0
 directional_shadow_split_1 = 0.05
 
 [node name="SunCycle" type="AnimationPlayer" parent="."]
 libraries = {
 "": SubResource("AnimationLibrary_t4l4y")
 }
+speed_scale = 6.0
+
+[node name="test" parent="." instance=ExtResource("2_ulmjj")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
+visible = false
+
+[node name="TreeBirch" parent="." instance=ExtResource("3_tsi1c")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 18.656)
+visible = false
+
+[editable path="test"]

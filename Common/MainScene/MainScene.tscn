@@ -50,10 +50,28 @@ inventory_interface = NodePath("..")
 [node name="MAP_DEVROOM1" parent="." instance=ExtResource("1_v3vin")]
 
 [node name="Sun" parent="MAP_DEVROOM1/DayNightManager" index="1"]
-transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
+transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499997, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
+
+[node name="SunCycle" parent="MAP_DEVROOM1/DayNightManager" index="2"]
+speed_scale = 2.4
+
+[node name="Cube" parent="MAP_DEVROOM1/DayNightManager/test" index="0"]
+visible = false
 
 [node name="Player" parent="MAP_DEVROOM1" index="3" node_paths=PackedStringArray("inventory")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6621, 0, 20.8424)
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
+
+[node name="OmniLight3D" parent="MAP_DEVROOM1" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2049, 7.9, 19.1599)
+
+[node name="OmniLight3D2" parent="MAP_DEVROOM1" index="8"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.72677, 0.9, 21.3983)
+light_size = 0.025
+omni_range = 9.0
+
+[node name="MeshInstance3D" parent="MAP_DEVROOM1" index="20"]
+visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_DEVROOM1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, 0)
@@ -68,5 +86,6 @@ shape = SubResource("BoxShape3D_o8jpl")
 [editable path="WindowManager"]
 [editable path="MAP_DEVROOM1"]
 [editable path="MAP_DEVROOM1/DayNightManager"]
+[editable path="MAP_DEVROOM1/DayNightManager/test"]
 [editable path="MAP_DEVROOM1/CameraLimit"]
 [editable path="MAP_DEVROOM1/test"]
