@@ -40,7 +40,10 @@ size = Vector3(200, 1, 300)
 [node name="MAP_DEVROOM1" type="Node3D"]
 
 [node name="DayNightManager" parent="." instance=ExtResource("1_meejb")]
+enable_cycle = null
+hour = null
 cycle_length = 10.0
+sky_color = Color(0.483002, 0.437495, 0.909283, 1)
 
 [node name="GUI" type="CanvasLayer" parent="."]
 visible = false
@@ -60,7 +63,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6, 0, 19.8)
 shape = SubResource("BoxShape3D_4hcus")
 
 [node name="Player" parent="." instance=ExtResource("6_ykkog")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6621, 0, 17.8424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6621, 0, 16.7112)
 
 [node name="test" parent="." instance=ExtResource("7_scdsy")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
@@ -705,16 +708,17 @@ skeleton = NodePath("../base_cube")
 transform = Transform3D(0.99999, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)
 shape = SubResource("BoxShape3D_oynwy")
 
-[node name="OmniLight3D" type="OmniLight3D" parent="."]
+[node name="OmniLight3D" type="OmniLight3D" parent="." groups=["light"]]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -22.2049, 3, 19.1599)
+visible = false
 light_color = Color(0.823414, 0.159701, 6.73831e-07, 1)
 light_energy = 7.029
 shadow_enabled = true
 omni_range = 12.0
 omni_attenuation = -0.418
 
-[node name="OmniLight3D2" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.0649, 3, 21.9879)
+[node name="OmniLight3D2" type="OmniLight3D" parent="." groups=["light"]]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.7617, 2.0102, 15.0593)
 shadow_enabled = true
 omni_range = 5.656
 omni_attenuation = -0.193

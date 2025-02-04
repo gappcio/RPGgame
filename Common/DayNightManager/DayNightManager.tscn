@@ -1,9 +1,10 @@
-[gd_scene load_steps=8 format=3 uid="uid://cs6wsgu1hgtlc"]
+[gd_scene load_steps=12 format=3 uid="uid://cs6wsgu1hgtlc"]
 
 [ext_resource type="Script" path="res://Common/DayNightManager/DayNightManager.gd" id="1_7a0v7"]
 [ext_resource type="Environment" uid="uid://c1vtccxka8ife" path="res://Common/DayNightManager/Envs/test_environment.tres" id="2_hnxhj"]
 [ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="2_ulmjj"]
 [ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="3_tsi1c"]
+[ext_resource type="Shader" path="res://Common/DayNightManager/shader_daynight.gdshader" id="5_48iaa"]
 
 [sub_resource type="Animation" id="Animation_uqvw8"]
 length = 0.001
@@ -22,38 +23,50 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sun:shadow_opacity")
+tracks/1/path = NodePath(".:color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [1.0]
+"values": [Color(0, 0, 0, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:color")
+tracks/2/path = NodePath(".:energy")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [Color(0, 0, 0, 1)]
+"values": [0.0]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
 tracks/3/enabled = true
-tracks/3/path = NodePath(".:energy")
+tracks/3/path = NodePath("Sun:light_energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
-"values": [0.0]
+"values": [1.0]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath(".:sky_horizon_color")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Color(0.682818, 0.815275, 1, 1)]
 }
 
 [sub_resource type="Animation" id="Animation_2k5xh"]
@@ -68,34 +81,34 @@ tracks/0/path = NodePath("Sun:rotation")
 tracks/0/interp = 1
 tracks/0/loop_wrap = false
 tracks/0/keys = {
-"times": PackedFloat32Array(0, 5.05097, 12, 21.318, 24),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(5, 12, 22),
+"transitions": PackedFloat32Array(1, 1, 1),
 "update": 0,
-"values": [Vector3(1.5708, 1.4748, 0), Vector3(-0.549779, 1.41372, 0), Vector3(-1.0472, 0, 0), Vector3(-0.558505, -1.48353, 0), Vector3(1.5708, -1.55334, 0)]
+"values": [Vector3(-0.698132, 1.39626, 0), Vector3(-1.0472, 0, 0), Vector3(-0.349066, -1.39626, 0)]
 }
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath("Sun:shadow_opacity")
+tracks/1/path = NodePath(".:sky_color")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
-"times": PackedFloat32Array(0, 4.59423, 5.32188, 21, 21.6478, 24),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.74277, 5.48305, 6.15005, 12, 19.6384, 20.7948, 21.7609, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.0, 0.0, 1.0, 1.0, 0.0, 0.0]
+"values": [Color(0, 0.192157, 0.423529, 1), Color(0, 0.192157, 0.423529, 1), Color(0.573204, 0.483313, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.783855, 0.413726, 0.561463, 1), Color(0.20891, 0.128783, 0.434015, 1), Color(0, 0.191555, 0.421588, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
 tracks/2/enabled = true
-tracks/2/path = NodePath(".:color")
+tracks/2/path = NodePath(".:sky_horizon_color")
 tracks/2/interp = 1
 tracks/2/loop_wrap = true
 tracks/2/keys = {
-"times": PackedFloat32Array(0, 4.92572, 12, 21.2724, 24),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 4.72882, 5.45015, 6.15005, 12, 19.6356, 20.8285, 21.7642, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1)]
+"values": [Color(6.257e-07, 0.23293, 0.502473, 1), Color(6.257e-07, 0.23293, 0.502473, 1), Color(0.950539, 0.6009, 0.421781, 1), Color(0.682817, 0.815275, 1, 1), Color(0.682817, 0.815275, 1, 1), Color(0.682817, 0.815275, 1, 1), Color(1, 0.432253, 0.294204, 1), Color(0.605471, 0.451354, 0.954508, 1), Color(6.257e-07, 0.23293, 0.502473, 1)]
 }
 tracks/3/type = "value"
 tracks/3/imported = false
@@ -104,10 +117,22 @@ tracks/3/path = NodePath(".:energy")
 tracks/3/interp = 1
 tracks/3/loop_wrap = true
 tracks/3/keys = {
-"times": PackedFloat32Array(0, 5, 12, 21.2476, 24),
-"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"times": PackedFloat32Array(0, 5, 6, 20, 22, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [0.25, 0.25, 1.0, 0.25, 0.25]
+"values": [0.5, 0.5, 1.0, 1.0, 0.5, 0.5]
+}
+tracks/4/type = "value"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Sun:light_energy")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"times": PackedFloat32Array(0, 5, 6, 12, 21, 22, 24),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [0.0, 0.0, 1.0, 1.0, 1.0, 0.0, 0.0]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t4l4y"]
@@ -116,9 +141,22 @@ _data = {
 "daynight_act1_may": SubResource("Animation_2k5xh")
 }
 
+[sub_resource type="Gradient" id="Gradient_lles7"]
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_370bh"]
+gradient = SubResource("Gradient_lles7")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_0xsdl"]
+shader = ExtResource("5_48iaa")
+shader_parameter/time = 0.948219
+shader_parameter/tex = SubResource("GradientTexture2D_370bh")
+
 [node name="DayNightManager" type="Node3D"]
 script = ExtResource("1_7a0v7")
+hour = 6.0
 environment = ExtResource("2_hnxhj")
+sky_color = Color(0.474662, 0.674671, 1, 1)
+sky_horizon_color = Color(0.682818, 0.815275, 1, 1)
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_hnxhj")
@@ -137,10 +175,17 @@ speed_scale = 6.0
 
 [node name="test" parent="." instance=ExtResource("2_ulmjj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
-visible = false
 
 [node name="TreeBirch" parent="." instance=ExtResource("3_tsi1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 18.656)
+
+[node name="ColorRect" type="ColorRect" parent="."]
 visible = false
+material = SubResource("ShaderMaterial_0xsdl")
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
 
 [editable path="test"]

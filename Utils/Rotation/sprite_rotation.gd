@@ -37,6 +37,8 @@ func _ready() -> void:
 	curve_yy.add_point(Vector2(1, GLOBAL.TILE_Z), -3.28, 0.0, Curve.TANGENT_LINEAR, Curve.TANGENT_LINEAR);
 
 func _process(delta: float) -> void:
+	
+	# optimize
 	if mesh_node.rotation.z >= deg_to_rad(360): mesh_node.rotation.z = 0;
 	if mesh_node.rotation.z <= deg_to_rad(-360): mesh_node.rotation.z = 0;
 	

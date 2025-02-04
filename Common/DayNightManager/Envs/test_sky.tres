@@ -9,10 +9,10 @@ seamless = true
 noise = SubResource("FastNoiseLite_aposx")
 
 [resource]
-sky_top_color = Color(0.466667, 0.690196, 1, 1)
-sky_horizon_color = Color(0.421022, 0.501875, 0.632243, 1)
+sky_top_color = Color(0.0836707, 0.166414, 0.426565, 1)
+sky_horizon_color = Color(0.242854, 0.32054, 0.683784, 1)
 sky_curve = 0.113679
 sky_cover = SubResource("NoiseTexture2D_0rr5w")
 sky_cover_modulate = Color(0, 0, 0, 1)
-ground_bottom_color = Color(0.328783, 0.318006, 0.23686, 1)
-ground_horizon_color = Color(0.680767, 0.723385, 0.873022, 1)
+ground_bottom_color = Color(0.292024, 0.33173, 0.235428, 1)
+ground_horizon_color = Color(0.541571, 0.595429, 0.795677, 1)
