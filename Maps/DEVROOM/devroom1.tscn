@@ -40,8 +40,6 @@ size = Vector3(200, 1, 300)
 [node name="MAP_DEVROOM1" type="Node3D"]
 
 [node name="DayNightManager" parent="." instance=ExtResource("1_meejb")]
-enable_cycle = null
-hour = null
 cycle_length = 10.0
 sky_color = Color(0.483002, 0.437495, 0.909283, 1)
 

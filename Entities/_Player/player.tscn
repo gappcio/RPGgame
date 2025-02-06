@@ -11,8 +11,8 @@ height = 2.4
 points = PackedVector3Array(0, -1.2, 0.2, -0.2, -1.2, 0, 0.2, -1.2, 0, 0, -1.2, -0.2, 0, -0.75, 0.4, -0.4, -0.75, 0, 0.4, -0.75, 0, 0, -0.75, -0.4, -0.45, 0, 0, 0.45, 0, 0, 0, 0, -0.4, 0, 0, 0.4, 0.2, 1.2, 0, -0.2, 1.2, 0, 0, 1.2, 0.2, 0, 1.2, -0.2)
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh0go"]
-radius = 0.3
-height = 2.6
+radius = 0.367
+height = 2.664
 radial_segments = 16
 rings = 6
 
@@ -215,7 +215,7 @@ shape = SubResource("ConvexPolygonShape3D_fdd6m")
 disabled = true
 
 [node name="BasicShadow" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0, 1.285, -0.316)
+transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0, 1.285, -0.359922)
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_sh0go")
 
@@ -244,7 +244,9 @@ libraries = {
 }
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61812, 0.496947)
 visible = false
-omni_range = 5.559
-omni_attenuation = 1.637
+light_energy = 0.27
+shadow_enabled = true
+omni_range = 2.814
+omni_attenuation = 0.592

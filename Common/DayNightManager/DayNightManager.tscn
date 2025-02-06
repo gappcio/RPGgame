@@ -96,7 +96,7 @@ tracks/1/keys = {
 "times": PackedFloat32Array(0, 4.74277, 5.48305, 6.15005, 12, 19.6384, 20.7948, 21.7609, 24),
 "transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1, 1, 1),
 "update": 0,
-"values": [Color(0, 0.192157, 0.423529, 1), Color(0, 0.192157, 0.423529, 1), Color(0.573204, 0.483313, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.783855, 0.413726, 0.561463, 1), Color(0.20891, 0.128783, 0.434015, 1), Color(0, 0.191555, 0.421588, 1)]
+"values": [Color(0.0117647, 0, 0.741176, 1), Color(0.0117647, 0, 0.741176, 1), Color(0.573204, 0.483313, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.466667, 0.690196, 1, 1), Color(0.783855, 0.413726, 0.561463, 1), Color(0.152507, 0.0516, 0.43, 1), Color(0.0123331, 0, 0.74, 1)]
 }
 tracks/2/type = "value"
 tracks/2/imported = false
@@ -153,9 +153,8 @@ shader_parameter/tex = SubResource("GradientTexture2D_370bh")
 
 [node name="DayNightManager" type="Node3D"]
 script = ExtResource("1_7a0v7")
-hour = 6.0
 environment = ExtResource("2_hnxhj")
-sky_color = Color(0.474662, 0.674671, 1, 1)
+sky_color = Color(0.0117647, 0, 0.741176, 1)
 sky_horizon_color = Color(0.682818, 0.815275, 1, 1)
 
 [node name="Environment" type="WorldEnvironment" parent="."]
@@ -164,8 +163,6 @@ environment = ExtResource("2_hnxhj")
 [node name="Sun" type="DirectionalLight3D" parent="." groups=["sun"]]
 transform = Transform3D(0.876307, -0.417212, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758905, 0.438151, 0, 0, 0)
 shadow_enabled = true
-directional_shadow_mode = 0
-directional_shadow_split_1 = 0.05
 
 [node name="SunCycle" type="AnimationPlayer" parent="."]
 libraries = {

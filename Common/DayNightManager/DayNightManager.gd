@@ -1,4 +1,4 @@
-@tool
+#@tool
 
 extends Node3D
 class_name DayNightCycleManager
@@ -14,7 +14,7 @@ class_name DayNightCycleManager
 @export_range(0, 23, 0.1) var hour: float = 12.0;
 ## Day night cycle in seconds
 ## Default: 1200 (20 minutes)
-@export var cycle_length: float = 4.0;
+@export var cycle_length: float = 1200.0;
 
 @export_group("Environment")
 @export var environment: Environment;
