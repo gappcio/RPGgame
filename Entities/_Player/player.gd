@@ -41,6 +41,8 @@ var input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_dow
 var direction = (transform.basis * Vector3(input_dir.x, 0.0, input_dir.y)).normalized()
 var direction_string = "down"
 
+var final_speed: float = SPEED;
+
 enum STATE {
 	idle,
 	walk,
@@ -75,6 +77,7 @@ func _physics_process(delta: float) -> void:
 	var key_up = Input.is_action_pressed("move_up")
 	var key_jump = Input.is_action_just_pressed("jump")
 	var key_jump_down = Input.is_action_pressed("jump")
+	var key_run = Input.is_action_pressed("run")
 	
 	if key_right: direction_string = "right"
 	if key_left: direction_string = "left"
@@ -154,11 +157,22 @@ func _physics_process(delta: float) -> void:
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	
 	if direction:
-		velocity.x = lerp(velocity.x, direction.x * SPEED, ACCEL)
-		velocity.z = lerp(velocity.z, direction.z * SPEED, ACCEL * GLOBAL.TILE_Z)
+		
+		if key_run:
+			final_speed = lerp(final_speed, SPEED * 1.5, ACCEL * .1);
+		else:
+			final_speed = lerp(final_speed, SPEED, DECCEL);
+		
+		velocity.x = lerp(velocity.x, direction.x * final_speed, ACCEL)
+		velocity.z = lerp(velocity.z, direction.z * final_speed * GLOBAL.TILE_Z, ACCEL * GLOBAL.TILE_Z)
 	else:
+		
+		final_speed = lerp(final_speed, SPEED, DECCEL);
+		
 		velocity.x = lerp(velocity.x, 0.0, DECCEL)
 		velocity.z = lerp(velocity.z, 0.0, DECCEL * GLOBAL.TILE_Z)
+
+	print("%.2f" % final_speed)
 
 	if velocity.x != 0.0 || velocity.z != 0.0:
 		is_moving = true;

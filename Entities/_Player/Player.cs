@@ -3,8 +3,22 @@ using System;
 
 public partial class Player : CharacterBody3D
 {
-	public const float Speed = 5.0f;
-	public const float JumpVelocity = 4.5f;
+/*
+	// Animation player ready
+	private AnimationPlayer anim;
+
+	public override void _Ready() {
+		anim = GetNode<AnimationPlayer>("Visual/AnimationPlayer");
+	}
+
+	//
+
+	private Node GLOBAL = GetNode<Node>("/root/GLOBALS");
+
+	//[Export]
+	//private Inventory inventory;
+	public const float SPEED = 5.0f;
+	public const float JUMP_FORCE_BASE = 4.5f;
 	
 	public float jumpTime = 0.0f;
 
@@ -42,4 +56,5 @@ public partial class Player : CharacterBody3D
 		Velocity = velocity;
 		MoveAndSlide();
 	}
+	*/
 }
