@@ -60,8 +60,15 @@ func _process(delta: float) -> void:
 		anim.play("idle_" + str(direction_string))
 		anim.speed_scale = 0.0
 	else:
+		
+		var anim_pos = anim.current_animation_position;	
 		anim.play("walk_" + str(direction_string))
-		anim.speed_scale = velocity.length() * 0.25;
+		anim.seek(anim_pos);
+		
+		if direction_string == "down" || direction_string == "up":
+			anim.speed_scale = velocity.length() * 0.25 / GLOBAL.TILE_Z;
+		else:
+			anim.speed_scale = velocity.length() * 0.25;
 		
 	if Input.is_action_just_pressed("camera_left"):
 		inventory.add_item(ITEM.ITEM_ID.stick, 3);

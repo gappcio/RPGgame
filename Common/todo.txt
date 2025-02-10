@@ -33,7 +33,7 @@ PROJECT STRUCTURE:
 		- Global Signals
 TODO:
 	
-	- window manager - change resolution
+	- window manager - change resolution - DONE
 	
 	- map manager - change between maps
 	
