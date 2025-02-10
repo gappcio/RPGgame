@@ -61,7 +61,7 @@ func _process(delta: float) -> void:
 		anim.speed_scale = 0.0
 	else:
 		
-		var anim_pos = anim.current_animation_position;	
+		var anim_pos = anim.current_animation_position;
 		anim.play("walk_" + str(direction_string))
 		anim.seek(anim_pos);
 		
