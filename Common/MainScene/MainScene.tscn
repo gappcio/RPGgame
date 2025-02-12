@@ -1,4 +1,4 @@
-[gd_scene load_steps=9 format=3 uid="uid://douityyj76al4"]
+[gd_scene load_steps=10 format=3 uid="uid://douityyj76al4"]
 
 [ext_resource type="Script" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
@@ -7,6 +7,7 @@
 [ext_resource type="PackedScene" uid="uid://cmjplav76x5mc" path="res://Common/WindowManager/WindowManager.tscn" id="3_0xth8"]
 [ext_resource type="PackedScene" uid="uid://dafx4llrs7i7h" path="res://Common/InventorySystem/Inventory.tscn" id="3_dp4xh"]
 [ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="7_j45y5"]
+[ext_resource type="Texture2D" uid="uid://c0uptts2wrxp6" path="res://Common/DayNightManager/LUTs/lut_default/lut_default_31.png" id="7_vd12f"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8jpl"]
 size = Vector3(1, 5, 40)
@@ -53,16 +54,16 @@ inventory_interface = NodePath("..")
 [node name="DayNightManager" parent="MAP_DEVROOM1" index="0"]
 enable_cycle = true
 cycle_length = 15.0
-sky_color = Color(0.326793, 0.271191, 0.886404, 1)
+sky_color = Color(0.0117647, 0, 0.741176, 1)
 
 [node name="Sun" parent="MAP_DEVROOM1/DayNightManager" index="1"]
 transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499997, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
 
 [node name="SunCycle" parent="MAP_DEVROOM1/DayNightManager" index="2"]
-speed_scale = 4.8
+speed_scale = 1.6
 
-[node name="Cube" parent="MAP_DEVROOM1/DayNightManager/test" index="0"]
-visible = false
+[node name="Sprite3D" parent="MAP_DEVROOM1/DayNightManager" index="5"]
+texture = ExtResource("7_vd12f")
 
 [node name="Player" parent="MAP_DEVROOM1" index="3" node_paths=PackedStringArray("inventory")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6621, 0, 20.8424)
@@ -101,6 +102,6 @@ spot_range = 10.0
 [editable path="WindowManager"]
 [editable path="MAP_DEVROOM1"]
 [editable path="MAP_DEVROOM1/DayNightManager"]
-[editable path="MAP_DEVROOM1/DayNightManager/test"]
+[editable path="MAP_DEVROOM1/DayNightManager/Node3D/test"]
 [editable path="MAP_DEVROOM1/CameraLimit"]
 [editable path="MAP_DEVROOM1/test"]

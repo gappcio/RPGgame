@@ -1,8 +1,7 @@
-#@tool
+@tool
 
 extends Node3D
 class_name DayNightCycleManager
-
 
 @onready var world_environment: WorldEnvironment = $Environment;
 @onready var sun: DirectionalLight3D = $Sun;
@@ -24,9 +23,26 @@ class_name DayNightCycleManager
 @export var sky_horizon_color: Color;
 @export var energy: float;
 
+var LUT_image: ImageTexture3D;
+var LUT_array: Array[Image] = [];
+var LUT_size: int = 32;
+
 func _ready() -> void:
 	time_start();
 	world_environment.environment = environment;
+	
+	LUT_array.resize(LUT_size);
+	for i in range(0, LUT_size):
+		var image_name = "lut_default_%s" % (i + 1);
+		var tex2d: CompressedTexture2D = load("res://Common/DayNightManager/LUTs/lut_default/%s.png" % image_name);
+		var image: Image = tex2d.get_image();
+		LUT_array[i] = image;
+	
+	LUT_image = ImageTexture3D.new();
+	LUT_image.create(Image.FORMAT_RGB8, LUT_size, LUT_size, LUT_size, false, LUT_array);
+	
+	world_environment.environment.adjustment_enabled = true;
+	#world_environment.environment.adjustment_color_correction = LUT_image;
 
 
 func _process(delta: float) -> void:

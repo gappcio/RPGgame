@@ -9,7 +9,13 @@ radiance_size = 2
 [resource]
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
-background_energy_multiplier = 0.579074
+background_energy_multiplier = 0.5
 sky = SubResource("Sky_svg4j")
 ambient_light_source = 3
 ambient_light_energy = 0.0
+ssao_horizon = 0.71
+glow_intensity = 0.0
+volumetric_fog_density = 0.181
+volumetric_fog_length = 49.2
+volumetric_fog_detail_spread = 0.5
+adjustment_enabled = true
