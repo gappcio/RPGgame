@@ -1,6 +1,7 @@
-[gd_resource type="Environment" load_steps=3 format=3 uid="uid://c1vtccxka8ife"]
+[gd_resource type="Environment" load_steps=4 format=3 uid="uid://c1vtccxka8ife"]
 
 [ext_resource type="Material" uid="uid://c5pdgoc1h4mur" path="res://Common/DayNightManager/Envs/test_sky.tres" id="1_b6r65"]
+[ext_resource type="CompressedTexture3D" uid="uid://cxce7f78t1ny7" path="res://Common/DayNightManager/LUTs/lut_default.png" id="1_f4t6t"]
 
 [sub_resource type="Sky" id="Sky_svg4j"]
 sky_material = ExtResource("1_b6r65")
@@ -9,7 +10,6 @@ radiance_size = 2
 [resource]
 background_mode = 2
 background_color = Color(1, 1, 1, 1)
-background_energy_multiplier = 0.5
 sky = SubResource("Sky_svg4j")
 ambient_light_source = 3
 ambient_light_energy = 0.0
@@ -19,3 +19,4 @@ volumetric_fog_density = 0.181
 volumetric_fog_length = 49.2
 volumetric_fog_detail_spread = 0.5
 adjustment_enabled = true
+adjustment_color_correction = ExtResource("1_f4t6t")

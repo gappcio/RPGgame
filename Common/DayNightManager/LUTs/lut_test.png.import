@@ -1,0 +1,26 @@
+[remap]
+
+importer="3d_texture"
+type="CompressedTexture3D"
+uid="uid://uwu4ugtwr1yk"
+path="res://.godot/imported/lut_test.png-0bec3202e9abb24fb0758c319c6b76ae.ctex3d"
+metadata={
+"vram_texture": false
+}
+
+[deps]
+
+source_file="res://Common/DayNightManager/LUTs/lut_test.png"
+dest_files=["res://.godot/imported/lut_test.png-0bec3202e9abb24fb0758c319c6b76ae.ctex3d"]
+
+[params]
+
+compress/mode=0
+compress/high_quality=false
+compress/lossy_quality=0.7
+compress/hdr_compression=1
+compress/channel_pack=0
+mipmaps/generate=false
+mipmaps/limit=-1
+slices/horizontal=33
+slices/vertical=1

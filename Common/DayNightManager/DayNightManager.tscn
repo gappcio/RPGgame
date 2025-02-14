@@ -1,10 +1,30 @@
-[gd_scene load_steps=12 format=3 uid="uid://cs6wsgu1hgtlc"]
+[gd_scene load_steps=16 format=3 uid="uid://cs6wsgu1hgtlc"]
 
 [ext_resource type="Script" path="res://Common/DayNightManager/DayNightManager.gd" id="1_7a0v7"]
 [ext_resource type="Environment" uid="uid://c1vtccxka8ife" path="res://Common/DayNightManager/Envs/test_environment.tres" id="2_hnxhj"]
 [ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="2_ulmjj"]
+[ext_resource type="CompressedTexture3D" uid="uid://uwu4ugtwr1yk" path="res://Common/DayNightManager/LUTs/lut_test.png" id="3_bfeip"]
 [ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="3_tsi1c"]
+[ext_resource type="Material" uid="uid://c5pdgoc1h4mur" path="res://Common/DayNightManager/Envs/test_sky.tres" id="4_7u806"]
 [ext_resource type="Shader" path="res://Common/DayNightManager/shader_daynight.gdshader" id="5_48iaa"]
+
+[sub_resource type="Sky" id="Sky_svg4j"]
+sky_material = ExtResource("4_7u806")
+radiance_size = 2
+
+[sub_resource type="Environment" id="Environment_rfxvy"]
+background_mode = 2
+background_color = Color(1, 1, 1, 1)
+sky = SubResource("Sky_svg4j")
+ambient_light_source = 3
+ambient_light_energy = 0.0
+ssao_horizon = 0.71
+glow_intensity = 0.0
+volumetric_fog_density = 0.181
+volumetric_fog_length = 49.2
+volumetric_fog_detail_spread = 0.5
+adjustment_enabled = true
+adjustment_color_correction = ExtResource("3_bfeip")
 
 [sub_resource type="Animation" id="Animation_uqvw8"]
 length = 0.001
@@ -149,16 +169,21 @@ gradient = SubResource("Gradient_lles7")
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xsdl"]
 shader = ExtResource("5_48iaa")
 shader_parameter/time = 0.948219
+shader_parameter/col = null
+shader_parameter/csb = null
 shader_parameter/tex = SubResource("GradientTexture2D_370bh")
 
 [node name="DayNightManager" type="Node3D"]
 script = ExtResource("1_7a0v7")
 environment = ExtResource("2_hnxhj")
-sky_color = Color(0.0117647, 0, 0.741176, 1)
+sky_color = Color(0.466667, 0.690196, 1, 1)
 sky_horizon_color = Color(0.682818, 0.815275, 1, 1)
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_hnxhj")
+
+[node name="Evnironment2" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_rfxvy")
 
 [node name="Sun" type="DirectionalLight3D" parent="." groups=["sun"]]
 transform = Transform3D(0.876307, -0.417212, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758905, 0.438151, 0, 0, 0)
@@ -168,7 +193,7 @@ shadow_enabled = true
 libraries = {
 "": SubResource("AnimationLibrary_t4l4y")
 }
-speed_scale = 6.0
+speed_scale = 0.02
 
 [node name="ColorRect" type="ColorRect" parent="."]
 visible = false
@@ -179,19 +204,19 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Node3D" type="Node3D" parent="."]
+[node name="preview" type="Node3D" parent="."]
 visible = false
 
-[node name="OmniLight3D" type="OmniLight3D" parent="Node3D"]
+[node name="OmniLight3D" type="OmniLight3D" parent="preview"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.40293, 1.10297, 16.8594)
 shadow_enabled = true
 omni_range = 5.485
 omni_attenuation = -0.935
 
-[node name="TreeBirch" parent="Node3D" instance=ExtResource("3_tsi1c")]
+[node name="TreeBirch" parent="preview" instance=ExtResource("3_tsi1c")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12, 0, 18.656)
 
-[node name="test" parent="Node3D" instance=ExtResource("2_ulmjj")]
+[node name="test" parent="preview" instance=ExtResource("2_ulmjj")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20, 0, 19.797)
 
-[editable path="Node3D/test"]
+[editable path="preview/test"]
