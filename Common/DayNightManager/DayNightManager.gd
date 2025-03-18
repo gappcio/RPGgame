@@ -58,18 +58,24 @@ func _process(delta: float) -> void:
 		if !enable_cycle:
 			sun_cycle.seek(hour);
 	
-	var csb: Array[float];
-	csb.resize(5);
-	csb[0] = 0.1;
-	csb[1] = 0.1;
-	csb[2] = 0.1;
-	csb[3] = 1.0;
-	csb[4] = 1.0;
+	if Input.is_action_just_pressed("camera_left"):
+		
+		var cc = world_environment.environment.adjustment_color_correction;
+		
+		
 	
-	var shader_time = sun_cycle.current_animation_position / sun_cycle.current_animation_length;
-	if color_rect != null:
-		color_rect.material.set_shader_parameter("time", shader_time);
-		color_rect.material.set_shader_parameter("csb", csb);
+	#var csb: Array[float];
+	#csb.resize(5);
+	#csb[0] = 0.1;
+	#csb[1] = 0.1;
+	#csb[2] = 0.1;
+	#csb[3] = 1.0;
+	#csb[4] = 1.0;
+	#
+	#var shader_time = sun_cycle.current_animation_position / sun_cycle.current_animation_length;
+	#if color_rect != null:
+		#color_rect.material.set_shader_parameter("time", shader_time);
+		#color_rect.material.set_shader_parameter("csb", csb);
 
 func time_start() -> void:
 	sun_cycle.play("daynight_act1_may");

@@ -1,30 +1,10 @@
-[gd_scene load_steps=16 format=3 uid="uid://cs6wsgu1hgtlc"]
+[gd_scene load_steps=12 format=3 uid="uid://cs6wsgu1hgtlc"]
 
 [ext_resource type="Script" path="res://Common/DayNightManager/DayNightManager.gd" id="1_7a0v7"]
 [ext_resource type="Environment" uid="uid://c1vtccxka8ife" path="res://Common/DayNightManager/Envs/test_environment.tres" id="2_hnxhj"]
 [ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="2_ulmjj"]
-[ext_resource type="CompressedTexture3D" uid="uid://uwu4ugtwr1yk" path="res://Common/DayNightManager/LUTs/lut_test.png" id="3_bfeip"]
 [ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="3_tsi1c"]
-[ext_resource type="Material" uid="uid://c5pdgoc1h4mur" path="res://Common/DayNightManager/Envs/test_sky.tres" id="4_7u806"]
 [ext_resource type="Shader" path="res://Common/DayNightManager/shader_daynight.gdshader" id="5_48iaa"]
-
-[sub_resource type="Sky" id="Sky_svg4j"]
-sky_material = ExtResource("4_7u806")
-radiance_size = 2
-
-[sub_resource type="Environment" id="Environment_rfxvy"]
-background_mode = 2
-background_color = Color(1, 1, 1, 1)
-sky = SubResource("Sky_svg4j")
-ambient_light_source = 3
-ambient_light_energy = 0.0
-ssao_horizon = 0.71
-glow_intensity = 0.0
-volumetric_fog_density = 0.181
-volumetric_fog_length = 49.2
-volumetric_fog_detail_spread = 0.5
-adjustment_enabled = true
-adjustment_color_correction = ExtResource("3_bfeip")
 
 [sub_resource type="Animation" id="Animation_uqvw8"]
 length = 0.001
@@ -181,9 +161,6 @@ sky_horizon_color = Color(0.682818, 0.815275, 1, 1)
 
 [node name="Environment" type="WorldEnvironment" parent="."]
 environment = ExtResource("2_hnxhj")
-
-[node name="Evnironment2" type="WorldEnvironment" parent="."]
-environment = SubResource("Environment_rfxvy")
 
 [node name="Sun" type="DirectionalLight3D" parent="." groups=["sun"]]
 transform = Transform3D(0.876307, -0.417212, 0.240876, 0, 0.499998, 0.866026, -0.481754, -0.758905, 0.438151, 0, 0, 0)
