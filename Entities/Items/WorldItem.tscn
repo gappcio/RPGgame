@@ -1,7 +1,7 @@
 [gd_scene load_steps=6 format=3 uid="uid://bwf0rx4mrslhx"]
 
 [ext_resource type="Texture2D" uid="uid://baiug4gnrueqf" path="res://Common/InventorySystem/item_atlas_texture.tres" id="1_8676v"]
-[ext_resource type="Script" path="res://Entities/Items/WorldItem.gd" id="1_ys7mv"]
+[ext_resource type="Script" uid="uid://dn37kvoj7qipw" path="res://Entities/Items/WorldItem.gd" id="1_ys7mv"]
 [ext_resource type="PackedScene" uid="uid://jrsavpf6lrg0" path="res://Utils/Rotation/SpriteRotation.tscn" id="3_p5k5l"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_18mug"]

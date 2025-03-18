@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cjb7vbgy3d5p"]
 
-[ext_resource type="Script" path="res://Common/InventorySystem/slot.gd" id="1_m7rpa"]
+[ext_resource type="Script" uid="uid://bchpqedyleray" path="res://Common/InventorySystem/slot.gd" id="1_m7rpa"]
 [ext_resource type="FontFile" uid="uid://bcqjjqltd1kun" path="res://Assets/Fonts/Consolas.ttf" id="2_tes3b"]
 
 [node name="Slot" type="PanelContainer"]

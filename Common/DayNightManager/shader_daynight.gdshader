@@ -19,15 +19,15 @@ void fragment() {
 	vec4 color = texture(tex, UV);
 	//vec3 gray = vec3(dot(color.rgb, vec3(.5, .5, .5)));
 	float gray = dot(color.rgb, vec3(0.299, 0.587, 0.114));
-	
+
 	vec3 out_col = gray > 0.5 ? 1.0 - (1.0 - 2.0 * (color.xyz - 0.5)) * (1.0 - col) : 2.0 * color.xyz * col;
 	out_col = mix(vec3(gray), out_col, saturation);
 	out_col = (out_col - .5) * contrast + .5;
 	out_col = out_col + pop_strength * max(gray - pop_threshold, 0.0);
 	out_col = out_col + brightness;
-	
+
 	COLOR = vec4(out_col, 1.0);
-	
+
 	//COLOR = vec4(gray, 1.0 - time);
 }
 

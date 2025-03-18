@@ -1,10 +1,10 @@
 [gd_scene load_steps=12 format=3 uid="uid://cs6wsgu1hgtlc"]
 
-[ext_resource type="Script" path="res://Common/DayNightManager/DayNightManager.gd" id="1_7a0v7"]
+[ext_resource type="Script" uid="uid://kko6d7wapdmq" path="res://Common/DayNightManager/DayNightManager.gd" id="1_7a0v7"]
 [ext_resource type="Environment" uid="uid://c1vtccxka8ife" path="res://Common/DayNightManager/Envs/test_environment.tres" id="2_hnxhj"]
 [ext_resource type="PackedScene" uid="uid://ctd88e70prc2r" path="res://Maps/DEVROOM/test.blend" id="2_ulmjj"]
 [ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="3_tsi1c"]
-[ext_resource type="Shader" path="res://Common/DayNightManager/shader_daynight.gdshader" id="5_48iaa"]
+[ext_resource type="Shader" uid="uid://l4culd5banxa" path="res://Common/DayNightManager/shader_daynight.gdshader" id="5_48iaa"]
 
 [sub_resource type="Animation" id="Animation_uqvw8"]
 length = 0.001
@@ -137,8 +137,8 @@ tracks/4/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_t4l4y"]
 _data = {
-"RESET": SubResource("Animation_uqvw8"),
-"daynight_act1_may": SubResource("Animation_2k5xh")
+&"RESET": SubResource("Animation_uqvw8"),
+&"daynight_act1_may": SubResource("Animation_2k5xh")
 }
 
 [sub_resource type="Gradient" id="Gradient_lles7"]
@@ -148,10 +148,10 @@ gradient = SubResource("Gradient_lles7")
 
 [sub_resource type="ShaderMaterial" id="ShaderMaterial_0xsdl"]
 shader = ExtResource("5_48iaa")
-shader_parameter/time = 0.948219
-shader_parameter/col = null
-shader_parameter/csb = null
 shader_parameter/tex = SubResource("GradientTexture2D_370bh")
+shader_parameter/time = 0.948219
+shader_parameter/col = Vector3(0, 0, 0)
+shader_parameter/csb = PackedFloat32Array(0, 0, 0, 0, 0)
 
 [node name="DayNightManager" type="Node3D"]
 script = ExtResource("1_7a0v7")
@@ -168,7 +168,7 @@ shadow_enabled = true
 
 [node name="SunCycle" type="AnimationPlayer" parent="."]
 libraries = {
-"": SubResource("AnimationLibrary_t4l4y")
+&"": SubResource("AnimationLibrary_t4l4y")
 }
 speed_scale = 0.02
 

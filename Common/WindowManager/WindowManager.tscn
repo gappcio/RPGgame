@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://cmjplav76x5mc"]
 
-[ext_resource type="Script" path="res://Common/WindowManager/WindowManager.gd" id="1_j4fvq"]
+[ext_resource type="Script" uid="uid://c5ymulo50kdbn" path="res://Common/WindowManager/WindowManager.gd" id="1_j4fvq"]
 [ext_resource type="Theme" uid="uid://dyftgwpfvfqdb" path="res://Assets/Themes/debug_theme.tres" id="2_obduc"]
 
 [node name="WindowManager" type="Node3D"]

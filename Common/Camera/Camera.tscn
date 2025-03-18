@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xeqjgy6gnfs"]
 
-[ext_resource type="Script" path="res://Common/Camera/camera_3d.gd" id="1_m3qya"]
+[ext_resource type="Script" uid="uid://dmvgb760fmsb7" path="res://Common/Camera/camera_3d.gd" id="1_m3qya"]
 
 [node name="Camera" type="Node3D"]
 
@@ -14,7 +14,6 @@ grow_vertical = 2
 [node name="Camera3D" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 15, 32, 44)
 keep_aspect = 0
-projection = 1
 current = true
 size = 30.0
 near = 0.001

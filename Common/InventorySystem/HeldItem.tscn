@@ -1,7 +1,7 @@
 [gd_scene load_steps=3 format=3 uid="uid://rpf6no4nkrn4"]
 
 [ext_resource type="FontFile" uid="uid://bcqjjqltd1kun" path="res://Assets/Fonts/Consolas.ttf" id="1_3gbr2"]
-[ext_resource type="Script" path="res://Common/InventorySystem/held_item.gd" id="1_eq3s2"]
+[ext_resource type="Script" uid="uid://cafkukrbl7cyy" path="res://Common/InventorySystem/held_item.gd" id="1_eq3s2"]
 
 [node name="HeldItem" type="PanelContainer"]
 custom_minimum_size = Vector2(24, 24)

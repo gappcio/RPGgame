@@ -2,7 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://cs6wsgu1hgtlc" path="res://Common/DayNightManager/DayNightManager.tscn" id="1_meejb"]
 [ext_resource type="PackedScene" uid="uid://y8y13cr0rnyl" path="res://Common/Camera/CameraLimit.tscn" id="2_4c7ht"]
-[ext_resource type="Script" path="res://Assets/Scenes/label.gd" id="3_yoxt3"]
+[ext_resource type="Script" uid="uid://b5dkaa7d3apoh" path="res://Assets/Scenes/label.gd" id="3_yoxt3"]
 [ext_resource type="Material" uid="uid://der6s2dvr4qge" path="res://Assets/Materials/MAT_test.tres" id="4_sthxw"]
 [ext_resource type="Material" uid="uid://b1d32sqbd6568" path="res://Assets/Materials/MAT_grass1.tres" id="5_fjm1o"]
 [ext_resource type="PackedScene" uid="uid://crqp6ytp53h0h" path="res://Entities/_Player/player.tscn" id="6_ykkog"]

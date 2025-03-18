@@ -1,6 +1,6 @@
 [gd_scene load_steps=19 format=3 uid="uid://crqp6ytp53h0h"]
 
-[ext_resource type="Script" path="res://Entities/_Player/player.gd" id="1_v0ns8"]
+[ext_resource type="Script" uid="uid://ikvdrjboayf" path="res://Entities/_Player/player.gd" id="1_v0ns8"]
 [ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Entities/_Player/Sprites/spr_player_basic.png" id="2_2532p"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7r0b"]
@@ -12,7 +12,7 @@ points = PackedVector3Array(0, -1.2, 0.2, -0.2, -1.2, 0, 0.2, -1.2, 0, 0, -1.2, 
 
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_sh0go"]
 radius = 0.367
-height = 2.664
+height = 1.889
 radial_segments = 16
 rings = 6
 
@@ -184,15 +184,15 @@ tracks/0/keys = {
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yt2hf"]
 _data = {
-"RESET": SubResource("Animation_wadm3"),
-"idle_down": SubResource("Animation_lqrfa"),
-"idle_left": SubResource("Animation_h4n4m"),
-"idle_right": SubResource("Animation_0nxy0"),
-"idle_up": SubResource("Animation_ek3xa"),
-"walk_down": SubResource("Animation_4bwoc"),
-"walk_left": SubResource("Animation_m0c0t"),
-"walk_right": SubResource("Animation_ne1ry"),
-"walk_up": SubResource("Animation_3ltif")
+&"RESET": SubResource("Animation_wadm3"),
+&"idle_down": SubResource("Animation_lqrfa"),
+&"idle_left": SubResource("Animation_h4n4m"),
+&"idle_right": SubResource("Animation_0nxy0"),
+&"idle_up": SubResource("Animation_ek3xa"),
+&"walk_down": SubResource("Animation_4bwoc"),
+&"walk_left": SubResource("Animation_m0c0t"),
+&"walk_right": SubResource("Animation_ne1ry"),
+&"walk_up": SubResource("Animation_3ltif")
 }
 
 [node name="Player" type="CharacterBody3D" groups=["player"]]
@@ -215,14 +215,14 @@ shape = SubResource("ConvexPolygonShape3D_fdd6m")
 disabled = true
 
 [node name="BasicShadow" type="MeshInstance3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0, 1.285, -0.359922)
+transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0, 0.980713, -0.359922)
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_sh0go")
 
 [node name="Visual" type="Node3D" parent="."]
 
 [node name="SpriteFull" type="Sprite3D" parent="Visual"]
-transform = Transform3D(1, 0, 0, 0, 1.414, 0, 0, 0, 1, 0, 1.414, 0)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 material_override = SubResource("StandardMaterial3D_vgrot")
 cast_shadow = 0
 pixel_size = 0.0625
@@ -240,7 +240,7 @@ mesh = SubResource("QuadMesh_vfyul")
 [node name="AnimationPlayer" type="AnimationPlayer" parent="Visual"]
 root_node = NodePath("../..")
 libraries = {
-"": SubResource("AnimationLibrary_yt2hf")
+&"": SubResource("AnimationLibrary_yt2hf")
 }
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]

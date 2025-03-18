@@ -1,6 +1,6 @@
 [gd_scene load_steps=9 format=3 uid="uid://douityyj76al4"]
 
-[ext_resource type="Script" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
+[ext_resource type="Script" uid="uid://c40fdw187e6iq" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
 [ext_resource type="PackedScene" uid="uid://dyt3dg1al01ao" path="res://Utils/TimeSystem/Time.tscn" id="2_fiet3"]
 [ext_resource type="PackedScene" uid="uid://xeqjgy6gnfs" path="res://Common/Camera/Camera.tscn" id="2_m0yeh"]
@@ -82,10 +82,10 @@ enable_cycle = true
 cycle_length = 15.0
 sky_color = Color(0.0117647, 0, 0.741176, 1)
 
-[node name="Sun" parent="MAP_DEVROOM1/DayNightManager" index="2"]
+[node name="Sun" parent="MAP_DEVROOM1/DayNightManager" index="1"]
 transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499997, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
 
-[node name="SunCycle" parent="MAP_DEVROOM1/DayNightManager" index="3"]
+[node name="SunCycle" parent="MAP_DEVROOM1/DayNightManager" index="2"]
 speed_scale = 1.6
 
 [node name="Player" parent="MAP_DEVROOM1" index="3" node_paths=PackedStringArray("inventory")]
@@ -101,11 +101,23 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72677, 0.9, 17.5983)
 omni_range = 11.52
 omni_attenuation = 0.422
 
+[node name="TreeBirch" parent="MAP_DEVROOM1" index="9"]
+transform = Transform3D(0.677082, 0, -0.735908, 0, 1, 0, 0.735908, 0, 0.677082, -12, 0, 10.172)
+
+[node name="TreeBirch2" parent="MAP_DEVROOM1" index="10"]
+transform = Transform3D(0.301971, 0, 0.953317, 0, 1, 0, -0.953317, 0, 0.301971, -19.242, 0, 5.344)
+
+[node name="TreeBirch3" parent="MAP_DEVROOM1" index="11"]
+transform = Transform3D(0.161828, 0, 0.986819, 0, 1, 0, -0.986819, 0, 0.161828, -18.4968, 0, 24.8521)
+
+[node name="TreeBirch5" parent="MAP_DEVROOM1" index="12"]
+transform = Transform3D(0.461687, 0, -0.887043, 0, 1, 0, 0.887043, 0, 0.461687, -24.4528, 0, 15.0265)
+
 [node name="MeshInstance3D" parent="MAP_DEVROOM1" index="20"]
 visible = false
 
 [node name="TreeBirch6" parent="MAP_DEVROOM1" instance=ExtResource("7_j45y5")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.1, 0, 20.758)
+transform = Transform3D(0.487692, 0, 0.873016, 0, 1, 0, -0.873016, 0, 0.487692, -5.1, 0, 20.758)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_DEVROOM1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, 0)

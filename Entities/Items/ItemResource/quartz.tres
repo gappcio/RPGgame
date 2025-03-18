@@ -1,6 +1,6 @@
 [gd_resource type="Resource" script_class="ItemData" load_steps=4 format=3 uid="uid://dihobvwap0n0e"]
 
-[ext_resource type="Script" path="res://Common/InventorySystem/item_data.gd" id="1_ev6td"]
+[ext_resource type="Script" uid="uid://be8qjkas78d6q" path="res://Common/InventorySystem/item_data.gd" id="1_ev6td"]
 [ext_resource type="Texture2D" uid="uid://cykn4q81kipob" path="res://Assets/Sprites/Items/item_atlas.png" id="2_gxrt4"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_6krxf"]
