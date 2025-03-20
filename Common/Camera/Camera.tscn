@@ -1,6 +1,6 @@
 [gd_scene load_steps=2 format=3 uid="uid://xeqjgy6gnfs"]
 
-[ext_resource type="Script" uid="uid://dmvgb760fmsb7" path="res://Common/Camera/camera_3d.gd" id="1_m3qya"]
+[ext_resource type="Script" uid="uid://d2lnub5a177ia" path="res://Common/Camera/CameraPivot.gd" id="1_oyhc3"]
 
 [node name="Camera" type="Node3D"]
 
@@ -11,14 +11,16 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
-[node name="Camera3D" type="Camera3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 15, 32, 44)
+[node name="SpringArm3D" type="SpringArm3D" parent="."]
+script = ExtResource("1_oyhc3")
+
+[node name="Camera3D" type="Camera3D" parent="SpringArm3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 4)
 keep_aspect = 0
 current = true
 size = 30.0
 near = 0.001
 far = 100.0
-script = ExtResource("1_m3qya")
 
 [node name="Camera3D2" type="Camera3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.680721, 0.732543, 0, -0.732543, 0.680721, 14, 31, 51)

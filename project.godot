@@ -129,7 +129,7 @@ inventory_shift={
 
 [physics]
 
-3d/physics_engine="JoltPhysics3D"
+3d/physics_engine="Jolt Physics"
 3d/default_gravity=12.0
 
 [rendering]

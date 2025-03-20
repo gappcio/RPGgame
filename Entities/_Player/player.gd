@@ -179,7 +179,7 @@ func _physics_process(delta: float) -> void:
 		velocity.x = lerp(velocity.x, 0.0, DECCEL)
 		velocity.z = lerp(velocity.z, 0.0, DECCEL * GLOBAL.TILE_Z)
 
-	print("%.2f" % final_speed)
+	#print("%.2f" % final_speed)
 
 	if velocity.x != 0.0 || velocity.z != 0.0:
 		is_moving = true;

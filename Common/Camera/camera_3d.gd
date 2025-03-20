@@ -3,8 +3,9 @@ extends Camera3D
 #@onready var player: Player = $"../MAP_DEVROOM1/Player";
 @onready var player: Player = get_tree().get_nodes_in_group("player")[0];
 @onready var limit_box = get_tree().get_nodes_in_group("camera_limit")[0].get_child(0);
-@onready var label: Label = $"../Label"
+@onready var label: Label = $"../../Label"
 @onready var sun: DirectionalLight3D = get_tree().get_nodes_in_group("sun")[0];
+@onready var spring_arm_3d: SpringArm3D = $Camera/SpringArm3D
 
 var camera_speed: float = 20.0;
 var camera_speed_y: float = 0.1;
@@ -25,13 +26,26 @@ var limit_right: float = 0.0;
 var limit_up: float = 0.0;
 var limit_down: float = 0.0;
 
+var mouse_sensitivity: float = 0.005;
+
 func _ready() -> void:
-	limit_box_left = limit_box.global_position.x - (limit_box.shape.size.x / 2);
-	limit_box_right = limit_box.global_position.x + (limit_box.shape.size.x / 2);
-	limit_box_up = limit_box.global_position.z - (limit_box.shape.size.z / 2);
-	limit_box_down = limit_box.global_position.z + (limit_box.shape.size.z / 2);
+	#limit_box_left = limit_box.global_position.x - (limit_box.shape.size.x / 2);
+	#limit_box_right = limit_box.global_position.x + (limit_box.shape.size.x / 2);
+	#limit_box_up = limit_box.global_position.z - (limit_box.shape.size.z / 2);
+	#limit_box_down = limit_box.global_position.z + (limit_box.shape.size.z / 2);
+	
+	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED);
+
+func _unhandled_input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion:
+		rotation.y -= event.relative.x * mouse_sensitivity;
+		rotation.y = wrapf(rotation.y, 0.0, TAU);
+		
+		rotation.x -= event.relative.y * mouse_sensitivity;
+		rotation.x = clamp(rotation.x, 0.0, 90.0);
 
 func _process(delta: float) -> void:
+	pass
 	
 	#if Input.is_action_pressed("camera_left"):
 		#sun.rotation.y -= 0.05;
@@ -39,34 +53,34 @@ func _process(delta: float) -> void:
 	#if Input.is_action_pressed("camera_right"):
 		#sun.rotation.y += 0.05;
 	
-	if !player.is_jumping:
-		camera_speed_y = 1.0;
-	else:
-		camera_speed_y = 0.1;
-	
+	#if !player.is_jumping:
+		#camera_speed_y = 1.0;
+	#else:
+		#camera_speed_y = 0.1;
+	#
 	#var posx = snapped(lerp(global_position.x, player.global_position.x, camera_speed), GLOBAL.PIXEL_X / GLOBAL.window_scale);
 	#var posy = snapped(lerp(global_position.y, player.global_position.y + 48.0, camera_speed * .5 * camera_speed_y), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
 	#var posz = snapped(lerp(global_position.z, player.global_position.z + 46.0, camera_speed), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
 
-	var posx = snapped(GLOBAL.lerp_fr(global_position.x, player.global_position.x, camera_speed, delta), GLOBAL.PIXEL_X / GLOBAL.window_scale);
-	var posy = snapped(GLOBAL.lerp_fr(global_position.y, player.global_position.y + 48.0, camera_speed * .5 * camera_speed_y, delta), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
-	var posz = snapped(GLOBAL.lerp_fr(global_position.z, player.global_position.z + 46.0, camera_speed, delta), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
-
-	global_position.x = posx;
-	global_position.y = posy;
-	global_position.z = posz;
-	
-	if global_position.x <= limit_box_left + CAMERA_SIZE_X / 2:
-		global_position.x = limit_box_left + CAMERA_SIZE_X / 2;
-		
-	if global_position.x >= limit_box_right - CAMERA_SIZE_X / 2:
-		global_position.x = limit_box_right - CAMERA_SIZE_X / 2;
-		
-	if global_position.z - CAMERA_BASE_Z <= limit_box_up:
-		global_position.z = limit_box_up + CAMERA_BASE_Z;
-		
-	if global_position.z - CAMERA_BASE_Z >= limit_box_down - (CAMERA_SIZE_Z / 1):
-		global_position.z = limit_box_down + CAMERA_BASE_Z - (CAMERA_SIZE_Z / 1);
+	#var posx = snapped(GLOBAL.lerp_fr(global_position.x, player.global_position.x, camera_speed, delta), GLOBAL.PIXEL_X / GLOBAL.window_scale);
+	#var posy = snapped(GLOBAL.lerp_fr(global_position.y, player.global_position.y + 48.0, camera_speed * .5 * camera_speed_y, delta), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
+	#var posz = snapped(GLOBAL.lerp_fr(global_position.z, player.global_position.z + 46.0, camera_speed, delta), GLOBAL.PIXEL_YZ / GLOBAL.window_scale);
+#
+	#global_position.x = posx;
+	#global_position.y = posy;
+	#global_position.z = posz;
+	#
+	#if global_position.x <= limit_box_left + CAMERA_SIZE_X / 2:
+		#global_position.x = limit_box_left + CAMERA_SIZE_X / 2;
+		#
+	#if global_position.x >= limit_box_right - CAMERA_SIZE_X / 2:
+		#global_position.x = limit_box_right - CAMERA_SIZE_X / 2;
+		#
+	#if global_position.z - CAMERA_BASE_Z <= limit_box_up:
+		#global_position.z = limit_box_up + CAMERA_BASE_Z;
+		#
+	#if global_position.z - CAMERA_BASE_Z >= limit_box_down - (CAMERA_SIZE_Z / 1):
+		#global_position.z = limit_box_down + CAMERA_BASE_Z - (CAMERA_SIZE_Z / 1);
 
 	#label.	text = "pos.x: " + str(global_position.x) + "\n" +\
 	#"pos.z: " + str(global_position.z) + "\n" +\

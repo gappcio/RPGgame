@@ -9,6 +9,7 @@ class_name WindowManager extends Node3D
 @onready var viewport: Control = $"../Viewport"
 @onready var sub_viewport: SubViewport = $"../Viewport/SubViewportContainer/SubViewport"
 @onready var sub_viewport_container: SubViewportContainer = $"../Viewport/SubViewportContainer"
+@onready var control: Control = $Control
 
 
 func _ready() -> void:

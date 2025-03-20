@@ -1,9 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://douityyj76al4"]
+[gd_scene load_steps=8 format=3 uid="uid://douityyj76al4"]
 
 [ext_resource type="Script" uid="uid://c40fdw187e6iq" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
 [ext_resource type="PackedScene" uid="uid://dyt3dg1al01ao" path="res://Utils/TimeSystem/Time.tscn" id="2_fiet3"]
-[ext_resource type="PackedScene" uid="uid://xeqjgy6gnfs" path="res://Common/Camera/Camera.tscn" id="2_m0yeh"]
 [ext_resource type="PackedScene" uid="uid://cmjplav76x5mc" path="res://Common/WindowManager/WindowManager.tscn" id="3_0xth8"]
 [ext_resource type="PackedScene" uid="uid://dafx4llrs7i7h" path="res://Common/InventorySystem/Inventory.tscn" id="3_dp4xh"]
 [ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="7_j45y5"]
@@ -21,39 +20,6 @@ grow_vertical = 2
 script = ExtResource("1_d6va0")
 
 [node name="Time" parent="." instance=ExtResource("2_fiet3")]
-
-[node name="Viewport" type="Control" parent="."]
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-
-[node name="SubViewportContainer" type="SubViewportContainer" parent="Viewport"]
-texture_filter = 1
-layout_mode = 1
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
-pivot_offset = Vector2(240, 135)
-
-[node name="SubViewport" type="SubViewport" parent="Viewport/SubViewportContainer"]
-handle_input_locally = false
-canvas_item_default_texture_filter = 0
-size = Vector2i(480, 270)
-render_target_update_mode = 4
-
-[node name="Camera" parent="Viewport/SubViewportContainer/SubViewport" instance=ExtResource("2_m0yeh")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11, 0, -7)
-
-[node name="Camera3D" parent="Viewport/SubViewportContainer/SubViewport/Camera" index="1"]
-transform = Transform3D(1, 0, 0, 0, 0.707107, 0.707107, 0, -0.707107, 0.707107, 1, 32, 50)
-
-[node name="ColorRect" type="ColorRect" parent="Viewport/SubViewportContainer"]
-layout_mode = 2
 
 [node name="WindowManager" parent="." instance=ExtResource("3_0xth8")]
 
@@ -89,7 +55,7 @@ transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499997, 0.866026, -0
 speed_scale = 1.6
 
 [node name="Player" parent="MAP_DEVROOM1" index="3" node_paths=PackedStringArray("inventory")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.6621, 0, 20.8424)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6651, 0, 20.8571)
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
 
 [node name="OmniLight3D" parent="MAP_DEVROOM1" index="7"]
@@ -133,10 +99,11 @@ transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7.8, 
 visible = false
 spot_range = 10.0
 
-[editable path="Viewport/SubViewportContainer/SubViewport/Camera"]
 [editable path="WindowManager"]
 [editable path="MAP_DEVROOM1"]
 [editable path="MAP_DEVROOM1/DayNightManager"]
 [editable path="MAP_DEVROOM1/DayNightManager/preview/test"]
 [editable path="MAP_DEVROOM1/CameraLimit"]
+[editable path="MAP_DEVROOM1/Player"]
+[editable path="MAP_DEVROOM1/Player/Camera"]
 [editable path="MAP_DEVROOM1/test"]

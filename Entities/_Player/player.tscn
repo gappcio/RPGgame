@@ -1,7 +1,8 @@
-[gd_scene load_steps=19 format=3 uid="uid://crqp6ytp53h0h"]
+[gd_scene load_steps=20 format=3 uid="uid://crqp6ytp53h0h"]
 
 [ext_resource type="Script" uid="uid://ikvdrjboayf" path="res://Entities/_Player/player.gd" id="1_v0ns8"]
 [ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Entities/_Player/Sprites/spr_player_basic.png" id="2_2532p"]
+[ext_resource type="PackedScene" uid="uid://xeqjgy6gnfs" path="res://Common/Camera/Camera.tscn" id="2_u3exm"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_o7r0b"]
 radius = 0.35
@@ -250,3 +251,6 @@ light_energy = 0.27
 shadow_enabled = true
 omni_range = 2.814
 omni_attenuation = 0.592
+
+[node name="Camera" parent="." instance=ExtResource("2_u3exm")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
