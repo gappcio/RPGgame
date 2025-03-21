@@ -1,6 +1,6 @@
-extends SpringArm3D
+extends Node3D
 
-var mouse_sensitivity: float = 0.5;
+var mouse_sensitivity: float = 0.005;
 
 func _ready() -> void:
 	pass
@@ -18,6 +18,6 @@ func _unhandled_input(event: InputEvent) -> void:
 			rotation.y = wrapf(rotation.y, 0.0, TAU);
 			
 			rotation.x -= event.relative.y * mouse_sensitivity;
-			rotation.x = clamp(rotation.x, 0.0, 90.0);
+			rotation.x = clamp(rotation.x, -PI/2, 0.75);
 			
-	print(event)
+			print(rad_to_deg(rotation.y));

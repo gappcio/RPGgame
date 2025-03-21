@@ -1,4 +1,4 @@
-extends Control
+extends Node3D
 class_name Game
 
 @export var debug_inventory: bool = false;

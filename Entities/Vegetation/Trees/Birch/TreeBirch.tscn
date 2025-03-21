@@ -456,4 +456,4 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.0319346, 6.345, -0.0983896
 shape = SubResource("CapsuleShape3D_cgllv")
 
 [node name="VisibleOnScreenEnabler3D" type="VisibleOnScreenEnabler3D" parent="."]
-aabb = AABB(-0.5, 1.88, -8.215, 1, 1, 1)
+aabb = AABB(-3, 0, -1.4472, 6, 14, 4.80334)

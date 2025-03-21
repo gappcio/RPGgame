@@ -1,22 +1,15 @@
-[gd_scene load_steps=8 format=3 uid="uid://douityyj76al4"]
+[gd_scene load_steps=7 format=3 uid="uid://douityyj76al4"]
 
 [ext_resource type="Script" uid="uid://c40fdw187e6iq" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
 [ext_resource type="PackedScene" uid="uid://dyt3dg1al01ao" path="res://Utils/TimeSystem/Time.tscn" id="2_fiet3"]
 [ext_resource type="PackedScene" uid="uid://cmjplav76x5mc" path="res://Common/WindowManager/WindowManager.tscn" id="3_0xth8"]
 [ext_resource type="PackedScene" uid="uid://dafx4llrs7i7h" path="res://Common/InventorySystem/Inventory.tscn" id="3_dp4xh"]
-[ext_resource type="PackedScene" uid="uid://capi4r314uane" path="res://Entities/Vegetation/Trees/Birch/TreeBirch.tscn" id="7_j45y5"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8jpl"]
 size = Vector3(1, 5, 40)
 
-[node name="MainScene" type="Control"]
-layout_mode = 3
-anchors_preset = 15
-anchor_right = 1.0
-anchor_bottom = 1.0
-grow_horizontal = 2
-grow_vertical = 2
+[node name="MainScene" type="Node3D"]
 script = ExtResource("1_d6va0")
 
 [node name="Time" parent="." instance=ExtResource("2_fiet3")]
@@ -44,7 +37,6 @@ inventory_interface = NodePath("..")
 [node name="MAP_DEVROOM1" parent="." instance=ExtResource("1_v3vin")]
 
 [node name="DayNightManager" parent="MAP_DEVROOM1" index="0"]
-enable_cycle = true
 cycle_length = 15.0
 sky_color = Color(0.0117647, 0, 0.741176, 1)
 
@@ -54,36 +46,21 @@ transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499997, 0.866026, -0
 [node name="SunCycle" parent="MAP_DEVROOM1/DayNightManager" index="2"]
 speed_scale = 1.6
 
-[node name="Player" parent="MAP_DEVROOM1" index="3" node_paths=PackedStringArray("inventory")]
+[node name="Player" parent="MAP_DEVROOM1" index="2" node_paths=PackedStringArray("inventory")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6651, 0, 20.8571)
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
 
-[node name="OmniLight3D" parent="MAP_DEVROOM1" index="7"]
+[node name="OmniLight3D" parent="MAP_DEVROOM1" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0049, 7.9, 10.8599)
 visible = true
 
-[node name="OmniLight3D2" parent="MAP_DEVROOM1" index="8"]
+[node name="OmniLight3D2" parent="MAP_DEVROOM1" index="7"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72677, 0.9, 17.5983)
 omni_range = 11.52
 omni_attenuation = 0.422
 
-[node name="TreeBirch" parent="MAP_DEVROOM1" index="9"]
-transform = Transform3D(0.677082, 0, -0.735908, 0, 1, 0, 0.735908, 0, 0.677082, -12, 0, 10.172)
-
-[node name="TreeBirch2" parent="MAP_DEVROOM1" index="10"]
-transform = Transform3D(0.301971, 0, 0.953317, 0, 1, 0, -0.953317, 0, 0.301971, -19.242, 0, 5.344)
-
-[node name="TreeBirch3" parent="MAP_DEVROOM1" index="11"]
-transform = Transform3D(0.161828, 0, 0.986819, 0, 1, 0, -0.986819, 0, 0.161828, -18.4968, 0, 24.8521)
-
-[node name="TreeBirch5" parent="MAP_DEVROOM1" index="12"]
-transform = Transform3D(0.461687, 0, -0.887043, 0, 1, 0, 0.887043, 0, 0.461687, -24.4528, 0, 15.0265)
-
-[node name="MeshInstance3D" parent="MAP_DEVROOM1" index="20"]
+[node name="MeshInstance3D" parent="MAP_DEVROOM1" index="14"]
 visible = false
-
-[node name="TreeBirch6" parent="MAP_DEVROOM1" instance=ExtResource("7_j45y5")]
-transform = Transform3D(0.487692, 0, 0.873016, 0, 1, 0, -0.873016, 0, 0.487692, -5.1, 0, 20.758)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_DEVROOM1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, 0)
@@ -103,7 +80,5 @@ spot_range = 10.0
 [editable path="MAP_DEVROOM1"]
 [editable path="MAP_DEVROOM1/DayNightManager"]
 [editable path="MAP_DEVROOM1/DayNightManager/preview/test"]
-[editable path="MAP_DEVROOM1/CameraLimit"]
 [editable path="MAP_DEVROOM1/Player"]
-[editable path="MAP_DEVROOM1/Player/Camera"]
 [editable path="MAP_DEVROOM1/test"]

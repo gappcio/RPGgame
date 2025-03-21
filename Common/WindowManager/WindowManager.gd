@@ -25,9 +25,11 @@ func _process(delta: float) -> void:
 
 	if active:
 		canvas_layer.visible = true
+		control.visible = true;
 		main()
 	else:
 		canvas_layer.visible = false
+		control.visible = false;
 		
 func main() -> void:
 	screen_size_value.text = str(DisplayServer.screen_get_size());
@@ -62,7 +64,7 @@ func _on_window_scale_input_value_changed(value: int) -> void:
 	DisplayServer.window_set_size(GLOBAL.window_base_resolution * value);
 	#viewport.scale = Vector2(value, value);
 	var offset: Vector2 = Vector2((GLOBAL.window_base_resolution.x * value) / 2, (GLOBAL.window_base_resolution.y * value) / 2);
-	sub_viewport_container.pivot_offset = offset;
-	sub_viewport.size = GLOBAL.window_base_resolution * value;
-	sub_viewport_container.scale = Vector2(1/float(value), 1/float(value));
+	#sub_viewport_container.pivot_offset = offset;
+	#sub_viewport.size = GLOBAL.window_base_resolution * value;
+	#sub_viewport_container.scale = Vector2(1/float(value), 1/float(value));
 	get_window().move_to_center();

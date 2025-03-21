@@ -3,8 +3,8 @@ extends Node
 class_name Global
 
 var TILE_X: float = 1.0;
-var TILE_Y: float = 1.414;
-var TILE_Z: float = 1.414;
+var TILE_Y: float = 1.0;
+var TILE_Z: float = 1.0;
 
 var PIXEL_X: float = TILE_X / 16.0;
 var PIXEL_YZ: float = TILE_Z / 16.0;

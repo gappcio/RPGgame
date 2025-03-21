@@ -4,15 +4,21 @@ class_name Player
 
 @onready var anim: AnimationPlayer = $Visual/AnimationPlayer
 @export var inventory: Inventory;
+@onready var camera_root: Node3D = $CameraRoot
+@onready var mesh: MeshInstance3D = $Visual/MeshInstance3D2
+@onready var spring_arm_3d: SpringArm3D = $CameraRoot/SpringArm3D
+@onready var direction_sprite: Node3D = $Visual/direction_sprite
 
 var SPEED = 5.0
 var ACCEL = 0.75
 var DECCEL = 0.2
-var JUMP_FORCE_BASE = 4.5 * GLOBAL.TILE_Y
+var JUMP_FORCE_BASE = 4.5;
 var jump_force = JUMP_FORCE_BASE
 
 var GRAVITY_BASE = ProjectSettings.get_setting("physics/3d/default_gravity")
 var gravity = GRAVITY_BASE
+
+var dir: Vector3;
 
 var is_moving: bool = false
 var is_falling: bool = false
@@ -66,7 +72,7 @@ func _process(delta: float) -> void:
 		anim.seek(anim_pos);
 		
 		if direction_string == "down" || direction_string == "up":
-			anim.speed_scale = velocity.length() * 0.25 / GLOBAL.TILE_Z;
+			anim.speed_scale = velocity.length() * 0.25;
 		else:
 			anim.speed_scale = velocity.length() * 0.25;
 		
@@ -162,8 +168,11 @@ func _physics_process(delta: float) -> void:
 	
 	input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
 	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	direction = Vector2(direction.x, direction.z).rotated(-camera_root.rotation.y);
 	
 	if direction:
+		
+		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(velocity.x, velocity.z), 0.4)
 		
 		if key_run:
 			final_speed = lerp(final_speed, SPEED * 1.5, ACCEL * .1);
@@ -171,13 +180,20 @@ func _physics_process(delta: float) -> void:
 			final_speed = lerp(final_speed, SPEED, DECCEL);
 		
 		velocity.x = lerp(velocity.x, direction.x * final_speed, ACCEL)
-		velocity.z = lerp(velocity.z, direction.z * final_speed * GLOBAL.TILE_Z, ACCEL * GLOBAL.TILE_Z)
+		velocity.z = lerp(velocity.z, direction.y * final_speed, ACCEL)
 	else:
 		
 		final_speed = lerp(final_speed, SPEED, DECCEL);
 		
 		velocity.x = lerp(velocity.x, 0.0, DECCEL)
-		velocity.z = lerp(velocity.z, 0.0, DECCEL * GLOBAL.TILE_Z)
+		velocity.z = lerp(velocity.z, 0.0, DECCEL)
+
+	var vec = Vector2(velocity.z, velocity.x);
+	var l = vec.length();
+	var r = vec.angle_to_point(Vector2(0, 1));
+
+	direction_sprite.scale = -Vector3(l, 1, l);
+	direction_sprite.rotation = Vector3(0, r, 0);
 
 	#print("%.2f" % final_speed)
 
