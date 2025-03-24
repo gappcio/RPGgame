@@ -6,9 +6,9 @@ class_name WindowManager extends Node3D
 @onready var window_size_value: Label = $Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer2/WindowSizeValue
 @onready var window_scale_input: SpinBox = $Control/CanvasLayer/Control/VBoxContainer/WindowScale/WindowScaleInput
 @onready var fps_value: Label = $Control/CanvasLayer/Control/VBoxContainer2/HBoxContainer3/FPSValue
-@onready var viewport: Control = $"../Viewport"
-@onready var sub_viewport: SubViewport = $"../Viewport/SubViewportContainer/SubViewport"
-@onready var sub_viewport_container: SubViewportContainer = $"../Viewport/SubViewportContainer"
+#@onready var viewport: Control = $"../Viewport"
+#@onready var sub_viewport: SubViewport = $"../Viewport/SubViewportContainer/SubViewport"
+#@onready var sub_viewport_container: SubViewportContainer = $"../Viewport/SubViewportContainer"
 @onready var control: Control = $Control
 
 

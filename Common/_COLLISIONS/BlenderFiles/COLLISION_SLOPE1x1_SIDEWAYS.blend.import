@@ -3,13 +3,13 @@
 importer="scene"
 importer_version=1
 type="PackedScene"
-uid="uid://cbua7gbiaswd0"
-path="res://.godot/imported/COLLISION_CUBE2x2x1.blend-58502a1546e0bf400fda281f22e99761.scn"
+uid="uid://duy6yq8n6jnud"
+path="res://.godot/imported/COLLISION_SLOPE1x1_SIDEWAYS.blend-f25f4bc471b89886b002bac7cdea722f.scn"
 
 [deps]
 
-source_file="res://Common/_COLLISIONS/BlenderFiles/COLLISION_CUBE2x2x1.blend"
-dest_files=["res://.godot/imported/COLLISION_CUBE2x2x1.blend-58502a1546e0bf400fda281f22e99761.scn"]
+source_file="res://Common/_COLLISIONS/BlenderFiles/COLLISION_SLOPE1x1_SIDEWAYS.blend"
+dest_files=["res://.godot/imported/COLLISION_SLOPE1x1_SIDEWAYS.blend-f25f4bc471b89886b002bac7cdea722f.scn"]
 
 [params]
 

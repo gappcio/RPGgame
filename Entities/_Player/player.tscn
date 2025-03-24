@@ -30,7 +30,8 @@ bottom_radius = 0.2
 height = 1.0
 
 [sub_resource type="StandardMaterial3D" id="StandardMaterial3D_vgrot"]
-transparency = 1
+transparency = 4
+cull_mode = 2
 albedo_texture = ExtResource("2_2532p")
 backlight_enabled = true
 backlight = Color(1, 1, 1, 1)
@@ -230,6 +231,7 @@ disabled = true
 
 [node name="BasicShadow" type="MeshInstance3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 0.997564, 0.0697565, 0, -0.0697565, 0.997564, 0, 0.980713, -0.359922)
+visible = false
 cast_shadow = 3
 mesh = SubResource("CapsuleMesh_sh0go")
 
@@ -249,7 +251,6 @@ mesh = SubResource("CylinderMesh_thoy8")
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
 sorting_offset = 2.0
 material_override = SubResource("StandardMaterial3D_vgrot")
-cast_shadow = 0
 pixel_size = 0.0625
 billboard = 2
 shaded = true
@@ -279,12 +280,12 @@ texture_filter = 0
 texture = ExtResource("3_thoy8")
 
 [node name="OmniLight3D" type="OmniLight3D" parent="."]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.61812, 0.496947)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2.61812, 0.496947)
 visible = false
 light_energy = 0.27
 shadow_enabled = true
-omni_range = 2.814
-omni_attenuation = 0.592
+omni_range = 3.594
+omni_attenuation = -2.268
 
 [node name="CameraRoot" type="Node3D" parent="."]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -295,10 +296,10 @@ script = ExtResource("3_u3exm")
 [node name="CameraPitch" type="Node3D" parent="CameraRoot/CameraYaw"]
 
 [node name="SpringArm" type="SpringArm3D" parent="CameraRoot/CameraYaw/CameraPitch"]
-spring_length = 5.0
+spring_length = 7.0
 
 [node name="Camera" type="Camera3D" parent="CameraRoot/CameraYaw/CameraPitch/SpringArm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 5)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
 keep_aspect = 0
 current = true
 size = 0.015

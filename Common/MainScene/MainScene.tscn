@@ -50,17 +50,14 @@ speed_scale = 1.6
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6651, 0, 20.8571)
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
 
-[node name="OmniLight3D" parent="MAP_DEVROOM1" index="6"]
+[node name="OmniLight3D" parent="MAP_DEVROOM1" index="5"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0049, 7.9, 10.8599)
 visible = true
 
-[node name="OmniLight3D2" parent="MAP_DEVROOM1" index="7"]
+[node name="OmniLight3D2" parent="MAP_DEVROOM1" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72677, 0.9, 17.5983)
 omni_range = 11.52
 omni_attenuation = 0.422
-
-[node name="MeshInstance3D" parent="MAP_DEVROOM1" index="14"]
-visible = false
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_DEVROOM1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, 0)

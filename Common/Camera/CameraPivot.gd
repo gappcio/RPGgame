@@ -15,6 +15,10 @@ var pitch_min : float = -45;
 var position_offset : Vector3 = Vector3(0, 1.3, 0);
 var position_offset_target : Vector3 = Vector3(0, 1.3, 0);
 
+var zoom: float = 7.0;
+var zoom_min: float = 4.0;
+var zoom_max: float = 12.0;
+
 func _ready() -> void:
 	spring_arm.add_excluded_object(player.get_rid())
 	top_level = true;
@@ -40,13 +44,25 @@ func _unhandled_input(event: InputEvent) -> void:
 			#print(rad_to_deg(rotation.y));
 
 func _physics_process(delta: float) -> void:
+	
+	if Input.is_action_just_pressed("camera_zoom_in"):
+		zoom -= 1.0;
+	if Input.is_action_just_pressed("camera_zoom_out"):
+		zoom += 1.0;
+		
+	zoom = clamp(zoom, zoom_min, zoom_max);
+	print(zoom)
+		
+	spring_arm.spring_length = lerp(spring_arm.spring_length, zoom, 4 * delta);
+	camera.position.z = spring_arm.spring_length;
+	
 	position_offset = lerp(position_offset, position_offset_target, 4 * delta)
 	global_position = lerp(global_position, player.global_position + position_offset, 18 * delta)
 	
 	pitch = clamp(pitch, pitch_min, pitch_max)
 	
-	camera_yaw.rotation_degrees.y = yaw
-	camera_pitch.rotation_degrees.x = pitch	
-	
-	#camera_yaw.rotation_degrees.y = lerp(camera_yaw.rotation_degrees.y, yaw, mouse_sensitivity * delta * 20)
-	#camera_pitch.rotation_degrees.x = lerp(camera_pitch.rotation_degrees.x, pitch, mouse_sensitivity * delta * 20)
+	#camera_yaw.rotation_degrees.y = yaw
+	#camera_pitch.rotation_degrees.x = pitch	
+	#
+	camera_yaw.rotation_degrees.y = lerp(camera_yaw.rotation_degrees.y, yaw, mouse_sensitivity * delta * 30)
+	camera_pitch.rotation_degrees.x = lerp(camera_pitch.rotation_degrees.x, pitch, mouse_sensitivity * delta * 30)

@@ -6,7 +6,7 @@ class_name DayNightCycleManager
 @onready var world_environment: WorldEnvironment = $Environment;
 @onready var sun: DirectionalLight3D = $Sun;
 @onready var sun_cycle: AnimationPlayer = $SunCycle;
-@onready var color_rect: ColorRect = $Viewport/SubViewportContainer/ColorRect;
+#@onready var color_rect: ColorRect = $Viewport/SubViewportContainer/ColorRect;
 
 @export_group("Time")
 @export var enable_cycle: bool = false;

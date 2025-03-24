@@ -4,11 +4,8 @@ class_name Player
 
 @onready var anim: AnimationPlayer = $Visual/AnimationPlayer
 @export var inventory: Inventory;
-@onready var camera_root: Node3D = $CameraRoot
+
 @onready var camera_yaw: Node3D = $CameraRoot/CameraYaw
-@onready var camera_pitch: Node3D = $CameraRoot/CameraYaw/CameraPitch
-@onready var spring_arm: SpringArm3D = $CameraRoot/CameraYaw/CameraPitch/SpringArm
-@onready var camera: Camera3D = $CameraRoot/CameraYaw/CameraPitch/SpringArm/Camera
 
 @onready var mesh: MeshInstance3D = $Visual/MeshInstance3D2
 @onready var direction_sprite: Node3D = $Visual/direction_sprite
