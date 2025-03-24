@@ -5,8 +5,12 @@ class_name Player
 @onready var anim: AnimationPlayer = $Visual/AnimationPlayer
 @export var inventory: Inventory;
 @onready var camera_root: Node3D = $CameraRoot
+@onready var camera_yaw: Node3D = $CameraRoot/CameraYaw
+@onready var camera_pitch: Node3D = $CameraRoot/CameraYaw/CameraPitch
+@onready var spring_arm: SpringArm3D = $CameraRoot/CameraYaw/CameraPitch/SpringArm
+@onready var camera: Camera3D = $CameraRoot/CameraYaw/CameraPitch/SpringArm/Camera
+
 @onready var mesh: MeshInstance3D = $Visual/MeshInstance3D2
-@onready var spring_arm_3d: SpringArm3D = $CameraRoot/SpringArm3D
 @onready var direction_sprite: Node3D = $Visual/direction_sprite
 
 var SPEED = 5.0
@@ -167,20 +171,24 @@ func _physics_process(delta: float) -> void:
 				jump()
 	
 	input_dir = Input.get_vector("move_left", "move_right", "move_up", "move_down")
-	direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
-	direction = Vector2(direction.x, direction.z).rotated(-camera_root.rotation.y);
+	#direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
+	direction.x = Input.get_action_strength("move_right") - Input.get_action_strength("move_left");
+	direction.z = Input.get_action_strength("move_down") - Input.get_action_strength("move_up");
+	#direction = Vector2(direction.x, direction.z).rotated(-camera_root.rotation.y);
+	direction = direction.rotated(Vector3.UP, camera_yaw.rotation.y);
+	var target_rotation = atan2(direction.x, direction.z);
+	mesh.rotation.y = lerp_angle(mesh.rotation.y, target_rotation, 10 * delta);
+	
 	
 	if direction:
-		
-		mesh.rotation.y = lerp_angle(mesh.rotation.y, atan2(velocity.x, velocity.z), 0.4)
 		
 		if key_run:
 			final_speed = lerp(final_speed, SPEED * 1.5, ACCEL * .1);
 		else:
 			final_speed = lerp(final_speed, SPEED, DECCEL);
 		
-		velocity.x = lerp(velocity.x, direction.x * final_speed, ACCEL)
-		velocity.z = lerp(velocity.z, direction.y * final_speed, ACCEL)
+		velocity.x = lerp(velocity.x, direction.normalized().x * final_speed, ACCEL)
+		velocity.z = lerp(velocity.z, direction.normalized().z * final_speed, ACCEL)
 	else:
 		
 		final_speed = lerp(final_speed, SPEED, DECCEL);
@@ -211,9 +219,9 @@ func _physics_process(delta: float) -> void:
 	
 	# snap position to base pixel size divided by window scale to avoid jitter
 	
-	position.x = snapped(position.x, (GLOBAL.TILE_X / 16.0) / GLOBAL.window_scale)
-	position.y = snapped(position.y, (GLOBAL.TILE_Y / 16.0) / GLOBAL.window_scale)
-	position.z = snapped(position.z, (GLOBAL.TILE_Z / 16.0) / GLOBAL.window_scale)
+	#position.x = snapped(position.x, (GLOBAL.TILE_X / 16.0) / GLOBAL.window_scale)
+	#position.y = snapped(position.y, (GLOBAL.TILE_X / 16.0) / GLOBAL.window_scale)
+	#position.z = snapped(position.z, (GLOBAL.TILE_X / 16.0) / GLOBAL.window_scale)
 	
 	#if velocity.x == 0.0 && velocity.z == 0.0:
 	#	position.x = snapped(position.x, 0.0625)
