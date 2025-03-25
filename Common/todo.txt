@@ -43,10 +43,7 @@ TODO:
 MAPMAKING:
 	- draft in tiled
 	- trace in crocotile3d
-	- apply scales (yz 1.414) in blender
 	- import in godot
-
-BE READY FOR GODOT 4.4 AND JOLT INTEGRATION
 
 RESOLUTIONS:
 	base 480x270 - camera size 30
@@ -66,3 +63,6 @@ NODE STRUCTURE:
 RENDERING:
 	VisualInstance3D -> sorting -> offset -> set to bottom of the sprite if the sprite is using transparency
 	alternatively use depth prepass (check the performance cost)
+
+	FOR OBJECTS MADE IN BLENDER:
+	SPACE SPRITES IN ASEPRITE AT LEAST BY 1PX TO AVOID GLITCHING ON EDGES

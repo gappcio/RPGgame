@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://crqp6ytp53h0h"]
+[gd_scene load_steps=31 format=3 uid="uid://crqp6ytp53h0h"]
 
 [ext_resource type="Script" uid="uid://ikvdrjboayf" path="res://Entities/_Player/player.gd" id="1_v0ns8"]
 [ext_resource type="Texture2D" uid="uid://dqxr4p6ccy1ib" path="res://Entities/_Player/Sprites/spr_player_basic.png" id="2_2532p"]
@@ -94,7 +94,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [12]
+"values": [18]
 }
 
 [sub_resource type="Animation" id="Animation_0nxy0"]
@@ -110,7 +110,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [4]
+"values": [6]
 }
 
 [sub_resource type="Animation" id="Animation_ek3xa"]
@@ -126,7 +126,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 1,
-"values": [8]
+"values": [12]
 }
 
 [sub_resource type="Animation" id="Animation_4bwoc"]
@@ -160,7 +160,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [12, 13, 14, 15]
+"values": [18, 19, 20, 21]
 }
 
 [sub_resource type="Animation" id="Animation_ne1ry"]
@@ -177,7 +177,7 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [4, 5, 6, 7]
+"values": [6, 7, 8, 9]
 }
 
 [sub_resource type="Animation" id="Animation_3ltif"]
@@ -194,16 +194,144 @@ tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.25, 0.5, 0.75),
 "transitions": PackedFloat32Array(1, 1, 1, 1),
 "update": 1,
-"values": [8, 9, 10, 11]
+"values": [12, 13, 14, 15]
+}
+
+[sub_resource type="Animation" id="Animation_thoy8"]
+resource_name = "jump_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [16]
+}
+
+[sub_resource type="Animation" id="Animation_7dbch"]
+resource_name = "fall_up"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [17]
+}
+
+[sub_resource type="Animation" id="Animation_f17h3"]
+resource_name = "jump_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [22]
+}
+
+[sub_resource type="Animation" id="Animation_iovcw"]
+resource_name = "fall_left"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [23]
+}
+
+[sub_resource type="Animation" id="Animation_l8kyf"]
+resource_name = "jump_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [10]
+}
+
+[sub_resource type="Animation" id="Animation_3g0jy"]
+resource_name = "fall_right"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [11]
+}
+
+[sub_resource type="Animation" id="Animation_x5aht"]
+resource_name = "jump_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [4]
+}
+
+[sub_resource type="Animation" id="Animation_7na4r"]
+resource_name = "fall_down"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Visual/SpriteFull:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [5]
 }
 
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_yt2hf"]
 _data = {
 &"RESET": SubResource("Animation_wadm3"),
+&"fall_down": SubResource("Animation_7na4r"),
+&"fall_left": SubResource("Animation_iovcw"),
+&"fall_right": SubResource("Animation_3g0jy"),
+&"fall_up": SubResource("Animation_7dbch"),
 &"idle_down": SubResource("Animation_lqrfa"),
 &"idle_left": SubResource("Animation_h4n4m"),
 &"idle_right": SubResource("Animation_0nxy0"),
 &"idle_up": SubResource("Animation_ek3xa"),
+&"jump_down": SubResource("Animation_x5aht"),
+&"jump_left": SubResource("Animation_f17h3"),
+&"jump_right": SubResource("Animation_l8kyf"),
+&"jump_up": SubResource("Animation_thoy8"),
 &"walk_down": SubResource("Animation_4bwoc"),
 &"walk_left": SubResource("Animation_m0c0t"),
 &"walk_right": SubResource("Animation_ne1ry"),
@@ -256,7 +384,7 @@ billboard = 2
 shaded = true
 texture_filter = 0
 texture = ExtResource("2_2532p")
-hframes = 4
+hframes = 6
 vframes = 4
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Visual"]

@@ -2,29 +2,30 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://dsm188csj4ykd"
-path="res://.godot/imported/birch_birch_texture.png-665aa4ff894086dde11b9dbb2a821229.ctex"
+uid="uid://bqjdejxmv2tlj"
+path.s3tc="res://.godot/imported/birch_birch_texture.png-665aa4ff894086dde11b9dbb2a821229.s3tc.ctex"
 metadata={
-"vram_texture": false
+"imported_formats": ["s3tc_bptc"],
+"vram_texture": true
 }
 generator_parameters={
-"md5": "875a1cd1804c1f73aef8232ef23cfa09"
+"md5": "4a11ab62dae5d743bd92ad509d425680"
 }
 
 [deps]
 
 source_file="res://Entities/Vegetation/Trees/Birch/birch_birch_texture.png"
-dest_files=["res://.godot/imported/birch_birch_texture.png-665aa4ff894086dde11b9dbb2a821229.ctex"]
+dest_files=["res://.godot/imported/birch_birch_texture.png-665aa4ff894086dde11b9dbb2a821229.s3tc.ctex"]
 
 [params]
 
-compress/mode=0
+compress/mode=2
 compress/high_quality=false
 compress/lossy_quality=0.7
 compress/hdr_compression=1
 compress/normal_map=0
 compress/channel_pack=0
-mipmaps/generate=false
+mipmaps/generate=true
 mipmaps/limit=-1
 roughness/mode=0
 roughness/src_normal=""

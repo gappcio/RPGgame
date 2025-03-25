@@ -1,7 +1,8 @@
-[gd_resource type="VisualShader" load_steps=15 format=3 uid="uid://cnieuekus7e60"]
+[gd_resource type="VisualShader" load_steps=13 format=3 uid="uid://cnieuekus7e60"]
 
 [sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_ey5ob"]
-output_port_for_preview = 0
+output_port_for_preview = 4
+expanded_output_ports = [0]
 source = 5
 
 [sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_hqxbi"]
@@ -13,16 +14,6 @@ texture_repeat = 2
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_ey5ob"]
 constant = 1.0
 
-[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_ey5ob"]
-parameter_name = "Mask"
-color_default = 1
-texture_filter = 1
-texture_repeat = 2
-
-[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_hqxbi"]
-output_port_for_preview = 0
-source = 5
-
 [sub_resource type="VisualShaderNodeDistanceFade" id="VisualShaderNodeDistanceFade_ey5ob"]
 default_input_values = [0, 10.0, 1, 12.0]
 
@@ -31,7 +22,7 @@ output_port_for_preview = 0
 operator = 2
 
 [sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_hqxbi"]
-constant = 0.5
+constant = 0.1
 
 [sub_resource type="VisualShaderNodeInput" id="VisualShaderNodeInput_ey5ob"]
 input_name = "vertex"
@@ -61,7 +52,6 @@ render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specul
 uniform sampler2D Noise : filter_linear;
 uniform bool wind_enabled = true;
 uniform sampler2D Texture : source_color, filter_nearest, repeat_disable;
-uniform sampler2D Mask : hint_default_black, filter_nearest, repeat_disable;
 
 
 
@@ -97,11 +87,7 @@ void fragment() {
 	vec4 n_out2p0;
 // Texture2D:2
 	n_out2p0 = texture(Texture, UV);
-
-
-	vec4 n_out6p0;
-// Texture2D:6
-	n_out6p0 = texture(Mask, UV);
+	float n_out2p4 = n_out2p0.a;
 
 
 // DistanceFade:7
@@ -111,11 +97,11 @@ void fragment() {
 
 
 // FloatOp:8
-	float n_out8p0 = n_out6p0.x * n_out7p0;
+	float n_out8p0 = n_out2p4 * n_out7p0;
 
 
 // FloatConstant:9
-	float n_out9p0 = 0.500000;
+	float n_out9p0 = 0.100000;
 
 
 // FloatConstant:4
@@ -131,10 +117,10 @@ void fragment() {
 
 }
 "
-graph_offset = Vector2(-684.854, 575.992)
+graph_offset = Vector2(-546.259, -34.6111)
 modes/cull = 2
 modes/specular = 1
-preview_params/Mask = "Resource(\"res://Entities/Vegetation/Trees/Birch/textures/birch_mask.png\")"
+preview_params/Texture = "Resource(\"res://Entities/Vegetation/Trees/Birch/birch_texture.png\")"
 nodes/vertex/0/position = Vector2(700, 160)
 nodes/vertex/2/node = SubResource("VisualShaderNodeInput_ey5ob")
 nodes/vertex/2/position = Vector2(-340, -80)
@@ -151,19 +137,15 @@ nodes/vertex/7/position = Vector2(23.7768, 305.179)
 nodes/vertex/connections = PackedInt32Array(2, 0, 5, 0, 4, 0, 3, 2, 6, 0, 7, 1, 3, 0, 7, 0, 7, 0, 5, 1, 5, 0, 0, 0)
 nodes/fragment/0/position = Vector2(840, 180)
 nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_ey5ob")
-nodes/fragment/2/position = Vector2(-140, 100)
+nodes/fragment/2/position = Vector2(-820, 140)
 nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_hqxbi")
-nodes/fragment/3/position = Vector2(-880, 160)
+nodes/fragment/3/position = Vector2(-1180, 180)
 nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_ey5ob")
-nodes/fragment/4/position = Vector2(500, 900)
-nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_ey5ob")
-nodes/fragment/5/position = Vector2(-840, 620)
-nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_hqxbi")
-nodes/fragment/6/position = Vector2(-380, 560)
+nodes/fragment/4/position = Vector2(460, 1000)
 nodes/fragment/7/node = SubResource("VisualShaderNodeDistanceFade_ey5ob")
-nodes/fragment/7/position = Vector2(240, 600)
+nodes/fragment/7/position = Vector2(-100, 620)
 nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_hqxbi")
-nodes/fragment/8/position = Vector2(540, 440)
+nodes/fragment/8/position = Vector2(240, 360)
 nodes/fragment/9/node = SubResource("VisualShaderNodeFloatConstant_hqxbi")
-nodes/fragment/9/position = Vector2(500, 760)
-nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 5, 0, 6, 2, 4, 0, 0, 20, 2, 0, 0, 0, 9, 0, 0, 19, 7, 0, 8, 1, 6, 0, 8, 0, 8, 0, 0, 1)
+nodes/fragment/9/position = Vector2(480, 900)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 4, 0, 0, 20, 2, 0, 0, 0, 9, 0, 0, 19, 7, 0, 8, 1, 2, 4, 8, 0, 8, 0, 0, 1)
