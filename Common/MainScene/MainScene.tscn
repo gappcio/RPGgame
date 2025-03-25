@@ -1,10 +1,11 @@
-[gd_scene load_steps=7 format=3 uid="uid://douityyj76al4"]
+[gd_scene load_steps=8 format=3 uid="uid://douityyj76al4"]
 
 [ext_resource type="Script" uid="uid://c40fdw187e6iq" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
 [ext_resource type="PackedScene" uid="uid://dyt3dg1al01ao" path="res://Utils/TimeSystem/Time.tscn" id="2_fiet3"]
 [ext_resource type="PackedScene" uid="uid://cmjplav76x5mc" path="res://Common/WindowManager/WindowManager.tscn" id="3_0xth8"]
 [ext_resource type="PackedScene" uid="uid://dafx4llrs7i7h" path="res://Common/InventorySystem/Inventory.tscn" id="3_dp4xh"]
+[ext_resource type="PackedScene" uid="uid://bi1gxxyhcgs8k" path="res://Common/WeatherManager/WeatherManager.tscn" id="4_c50p3"]
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8jpl"]
 size = Vector3(1, 5, 40)
@@ -15,6 +16,8 @@ script = ExtResource("1_d6va0")
 [node name="Time" parent="." instance=ExtResource("2_fiet3")]
 
 [node name="WindowManager" parent="." instance=ExtResource("3_0xth8")]
+
+[node name="WeatherManager" parent="." instance=ExtResource("4_c50p3")]
 
 [node name="UI" type="CanvasLayer" parent="."]
 
@@ -37,22 +40,31 @@ inventory_interface = NodePath("..")
 [node name="MAP_DEVROOM1" parent="." instance=ExtResource("1_v3vin")]
 
 [node name="DayNightManager" parent="MAP_DEVROOM1" index="0"]
+enable_cycle = true
 cycle_length = 15.0
 sky_color = Color(0.0117647, 0, 0.741176, 1)
 
 [node name="Sun" parent="MAP_DEVROOM1/DayNightManager" index="1"]
 transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499997, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
+directional_shadow_mode = 0
+directional_shadow_split_1 = 0.01
+directional_shadow_max_distance = 0.0
 
 [node name="SunCycle" parent="MAP_DEVROOM1/DayNightManager" index="2"]
 speed_scale = 1.6
 
 [node name="Player" parent="MAP_DEVROOM1" index="2" node_paths=PackedStringArray("inventory")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.6651, 0, 20.8571)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1886, 0, 13.7734)
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
 
+[node name="Camera" parent="MAP_DEVROOM1/Player/CameraRoot/CameraYaw/CameraPitch" index="1"]
+near = 0.001
+
 [node name="OmniLight3D" parent="MAP_DEVROOM1" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -23.0049, 7.9, 10.8599)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.944, 1.41914, 21.7349)
 visible = true
+light_color = Color(1, 1, 1, 1)
+light_energy = 2.094
 
 [node name="OmniLight3D2" parent="MAP_DEVROOM1" index="6"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72677, 0.9, 17.5983)

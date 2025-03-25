@@ -1,17 +1,113 @@
-[gd_scene load_steps=28 format=4 uid="uid://capi4r314uane"]
+[gd_scene load_steps=42 format=4 uid="uid://capi4r314uane"]
 
-[ext_resource type="Texture2D" uid="uid://dsm188csj4ykd" path="res://Entities/Vegetation/Trees/Birch/birch_birch_texture.png" id="1_0sx3o"]
+[ext_resource type="Material" uid="uid://bq001l0vgsriv" path="res://Entities/Vegetation/Trees/Birch/BirchMaterial.tres" id="1_hmcml"]
+[ext_resource type="Shader" uid="uid://cnieuekus7e60" path="res://Entities/Vegetation/Trees/Birch/TestShader.tres" id="3_0w723"]
+[ext_resource type="Texture2D" uid="uid://cgvlp5ednndhv" path="res://Entities/Vegetation/Trees/Birch/textures/birch_mask.png" id="3_xmcbb"]
+[ext_resource type="Texture2D" uid="uid://d1i00jkymuldm" path="res://Entities/Vegetation/Trees/Birch/textures/birch_texture.png" id="3_yxmxu"]
+[ext_resource type="Texture2D" uid="uid://botpb7fwi6hxj" path="res://Common/WeatherManager/wind_noise.tres" id="4_igh27"]
 
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_yplua"]
-resource_name = "birch_texture"
-transparency = 2
-alpha_scissor_threshold = 0.5
-alpha_antialiasing_mode = 0
-cull_mode = 2
-vertex_color_use_as_albedo = true
-albedo_texture = ExtResource("1_0sx3o")
-texture_filter = 2
-texture_repeat = false
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_1vcf5"]
+source = 5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_yxmxu"]
+parameter_name = "Texture"
+texture_type = 1
+texture_filter = 1
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_xmcbb"]
+constant = 0.5
+
+[sub_resource type="VisualShaderNodeTexture2DParameter" id="VisualShaderNodeTexture2DParameter_0w723"]
+parameter_name = "Mask"
+texture_filter = 1
+texture_repeat = 2
+
+[sub_resource type="VisualShaderNodeTexture" id="VisualShaderNodeTexture_igh27"]
+source = 5
+
+[sub_resource type="VisualShaderNodeDistanceFade" id="VisualShaderNodeDistanceFade_j7qmc"]
+default_input_values = [0, 10.0, 1, 12.0]
+
+[sub_resource type="VisualShaderNodeFloatOp" id="VisualShaderNodeFloatOp_j3lqa"]
+operator = 2
+
+[sub_resource type="VisualShaderNodeFloatConstant" id="VisualShaderNodeFloatConstant_cd0yc"]
+constant = 0.1
+
+[sub_resource type="VisualShader" id="VisualShader_q2uuq"]
+code = "shader_type spatial;
+render_mode blend_mix, depth_draw_opaque, cull_disabled, diffuse_lambert, specular_toon;
+
+uniform sampler2D Texture : source_color, filter_nearest, repeat_disable;
+uniform sampler2D Mask : filter_nearest, repeat_disable;
+
+
+
+void fragment() {
+	vec4 n_out2p0;
+// Texture2D:2
+	n_out2p0 = texture(Texture, UV);
+
+
+	vec4 n_out6p0;
+// Texture2D:6
+	n_out6p0 = texture(Mask, UV);
+
+
+// DistanceFade:7
+	float n_in7p0 = 10.00000;
+	float n_in7p1 = 12.00000;
+	float n_out7p0 = clamp(smoothstep(n_in7p0, n_in7p1, length(VERTEX)), 0.0, 1.0);
+
+
+// FloatOp:8
+	float n_out8p0 = n_out6p0.x * n_out7p0;
+
+
+// FloatConstant:9
+	float n_out9p0 = 0.100000;
+
+
+// FloatConstant:4
+	float n_out4p0 = 0.500000;
+
+
+// Output:0
+	ALBEDO = vec3(n_out2p0.xyz);
+	ALPHA = n_out8p0;
+	ALPHA_SCISSOR_THRESHOLD = n_out9p0;
+	ALPHA_HASH_SCALE = n_out4p0;
+
+
+}
+"
+modes/cull = 2
+modes/specular = 1
+nodes/fragment/0/position = Vector2(840, 180)
+nodes/fragment/2/node = SubResource("VisualShaderNodeTexture_1vcf5")
+nodes/fragment/2/position = Vector2(-140, 100)
+nodes/fragment/3/node = SubResource("VisualShaderNodeTexture2DParameter_yxmxu")
+nodes/fragment/3/position = Vector2(-880, 160)
+nodes/fragment/4/node = SubResource("VisualShaderNodeFloatConstant_xmcbb")
+nodes/fragment/4/position = Vector2(500, 960)
+nodes/fragment/5/node = SubResource("VisualShaderNodeTexture2DParameter_0w723")
+nodes/fragment/5/position = Vector2(-840, 620)
+nodes/fragment/6/node = SubResource("VisualShaderNodeTexture_igh27")
+nodes/fragment/6/position = Vector2(-380, 560)
+nodes/fragment/7/node = SubResource("VisualShaderNodeDistanceFade_j7qmc")
+nodes/fragment/7/position = Vector2(240, 540)
+nodes/fragment/8/node = SubResource("VisualShaderNodeFloatOp_j3lqa")
+nodes/fragment/8/position = Vector2(540, 440)
+nodes/fragment/9/node = SubResource("VisualShaderNodeFloatConstant_cd0yc")
+nodes/fragment/9/position = Vector2(500, 860)
+nodes/fragment/connections = PackedInt32Array(3, 0, 2, 2, 5, 0, 6, 2, 4, 0, 0, 20, 7, 0, 8, 1, 6, 0, 8, 0, 9, 0, 0, 19, 8, 0, 0, 1, 2, 0, 0, 0)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5jc5q"]
+render_priority = 0
+shader = SubResource("VisualShader_q2uuq")
+shader_parameter/Texture = ExtResource("3_yxmxu")
+shader_parameter/Mask = ExtResource("3_xmcbb")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_0iq4g"]
 _surfaces = [{
@@ -35,7 +131,7 @@ _surfaces = [{
 "format": 34896613407,
 "index_count": 1920,
 "index_data": PackedByteArray("AAABAAIAAAADAAEAAwAEAAEAAwAFAAQABgAHAAgABgAJAAcACgALAAwACgANAAsADgAPABAADgARAA8AEgATABQAEgAVABMAFgAXABgAFgAZABcAGgAZABYAGgAbABkAHAAdAB4AHAAfAB0AHwAgAB0AHwAhACAAIgAjACQAIgAlACMAIwAlACYAJQAiACcAJwAiACgAJQAnACkAKgArACwAKgAtACsALgAtACoALgAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA3ADQAOAA5ADcAOgA7ADwAOgA9ADsAPgA/AEAAPgBBAD8AQgBBAD4AQgBDAEEARABFAEYARABHAEUARgBFAEgARgBIAEkASgBLAEwASgBNAEsATgBNAEoATgBPAE0AUABRAFIAUABTAFEAVABTAFAAVABVAFMAVgBXAFgAVgBZAFcAWABXAFoAWABaAFsAXABYAFsAXABbAF0AXgBfAGAAXgBhAF8AYABfAGIAYABiAGMAZABlAGYAZABnAGUAaABpAGoAaABrAGkAagBpAGwAagBsAG0AbgBvAHAAbgBxAG8AcgBzAHQAcgB1AHMAdgB3AHgAdgB5AHcAegB7AHwAegB9AHsAewB9AH4AfQB6AH8AfwB6AIAAfQB/AIEAggCDAIQAggCFAIMAhACDAIYAhACGAIcAiACJAIoAiACLAIkAigCJAIwAigCMAI0AjQCMAI4AjQCOAI8AjwCOAJAAjwCQAJEAkgCTAJQAkgCVAJMAlACTAJYAlACWAJcAmACZAJoAmACbAJkAmgCZAJwAmgCcAJ0AngCfAKAAngChAJ8AoQCiAJ8AoQCjAKIApAClAKYApACnAKUApgClAKgApgCoAKkAqgCrAKwAqgCtAKsArACrAK4ArACuAK8AsACxALIAsACzALEAsgCxALQAsgC0ALUAtgC3ALgAtgC5ALcAugC7ALwAugC9ALsAvQC+ALsAvQC/AL4AwADBAMIAwADDAMEAxADDAMAAxADFAMMAxgDHAMgAxgDJAMcAygDLAMwAygDNAMsAzgDPANAAzgDRAM8A0gDTANQA0gDVANMA1gDVANIA1gDXANUA2ADZANoA2ADbANkA3ADdAN4A3ADfAN0A4ADhAOIA4ADjAOEA5ADlAOYA5ADnAOUA6ADpAOoA6ADrAOkA6QDrAOwA6wDoAO0A7QDoAO4A6wDtAO8A8ADxAPIA8ADzAPEA8QDzAPQA8wDwAPUA9QDwAPYA8wD1APcA+AD5APoA+AD7APkA/AD9AP4A/AD/AP0AAAEBAQIBAAEDAQEBBAEFAQYBBAEHAQUBCAEJAQoBCAELAQkBDAENAQ4BDAEPAQ0BEAERARIBEAETAREBFAEVARYBFAEXARUBGAEUARYBGAEWARkBGgEbARwBGgEdARsBHgEaARwBHgEcAR8BIAEhASIBIAEjASEBJAEgASIBJAEiASUBJgEnASgBJgEpAScBKgEmASgBKgEoASsBLAEtAS4BLAEvAS0BMAEsAS4BMAEuATEBMgEzATQBMgE1ATMBNgEyATQBNgE0ATcBOAE5AToBOAE7ATkBPAE4AToBPAE6AT0BPgE/AUABPgFBAT8BQgE+AUABQgFAAUMBRAFFAUYBRAFHAUUBRwFIAUUBRwFJAUgBSgFLAUwBSgFNAUsBTgFKAUwBTgFMAU8BUAFRAVIBUAFTAVEBVAFQAVIBVAFSAVUBVgFXAVgBVgFZAVcBWgFWAVgBWgFYAVsBXAFdAV4BXAFfAV0BYAFfAVwBYAFhAV8BYgFjAWQBYgFlAWMBZAFjAWYBZAFmAWcBaAFpAWoBaAFrAWkBbAFtAW4BbAFvAW0BcAFxAXIBcAFzAXEBdAF1AXYBdAF3AXUBeAF5AXoBeAF7AXkBegF5AXwBegF8AX0BfgF/AYABfgGBAX8BgAF/AYIBgAGCAYMBhAGFAYYBhAGHAYUBhgGFAYgBhgGIAYkBigGLAYwBigGNAYsBjgGPAZABjgGRAY8BkgGTAZQBkgGVAZMBlgGXAZgBlgGZAZcBmAGXAZoBmAGaAZsBnAGdAZ4BnAGfAZ0BngGdAaABngGgAaEBogGjAaQBogGlAaMBpAGjAaYBpAGmAacBqAGpAaoBqAGrAakBrAGtAa4BrAGvAa0BrgGtAbABrgGwAbEBsgGzAbQBsgG1AbMBtgG3AbgBtgG5AbcBuAG3AboBuAG6AbsBvAG9Ab4BvAG/Ab0BvgG9AcABvgHAAcEBwgHDAcQBwgHFAcMBxgHHAcgBxgHJAccBygHJAcYBygHLAckBzAHNAc4BzAHPAc0B0AHPAcwB0AHRAc8B0gHTAdQB0gHVAdMB1gHXAdgB1gHZAdcB2gHbAdwB2gHdAdsB3gHfAeAB3gHhAd8B4gHjAeQB4gHlAeMB5gHnAegB5gHpAecB6gHmAegB6gHoAesB7AHtAe4B7AHvAe0B8AHsAe4B8AHuAfEB8gHzAfQB8gH1AfMB9gHyAfQB9gH0AfcB+AH5AfoB+AH7AfkB/AH4AfoB/AH6Af0B/gH/AQAC/gEBAv8BAgIDAgQCAgIFAgMCBgICAgQCBgIEAgcCCAIJAgoCCAILAgkCDAIIAgoCDAIKAg0CDgIPAhACDgIRAg8CEgIRAg4CEgITAhECFAIVAhYCFAIXAhUCGAIXAhQCGAIZAhcCGgIbAhwCGgIdAhsCHgIdAhoCHgIfAh0CIAIhAiICIAIjAiECJAIjAiACJAIlAiMCJgInAigCJgIpAicCKAInAioCKAIqAisCLAItAi4CLAIvAi0CLgItAjACLgIwAjECMgIzAjQCMgI1AjMCNgI3AjgCNgI5AjcCOAI3AjoCOAI6AjsCPAI9Aj4CPAI/Aj0CQAJBAkICQAJDAkECQgJBAkQCQgJEAkUCRgJHAkgCRgJJAkcCSgJJAkYCSgJLAkkCTAJNAk4CTAJPAk0CUAJRAlICUAJTAlECVAJVAlYCVAJXAlUCWAJZAloCWAJbAlkCXAJdAl4CXAJfAl0CYAJhAmICYAJjAmECZAJlAmYCZAJnAmUCZgJlAmgCZgJoAmkCagJrAmwCagJtAmsCbAJrAm4CbAJuAm8CcAJxAnICcAJzAnECcgJxAnQCcgJ0AnUCdgJ3AngCdgJ5AncCeAJ3AnoCeAJ6AnsCfAJ9An4CfAJ/An0CfgJ9AoACfgKAAoECggKDAoQCggKFAoMChAKDAoYChAKGAocCiAKJAooCiAKLAokCigKJAowCigKMAo0CjgKPApACjgKRAo8CkQKSAo8CkQKTApICkgKUAo8CkgKVApQClgKXApgClgKZApcCmgKbApwCmgKdApsCngKfAqACngKhAp8CoQKiAp8CoQKjAqICpAKlAqYCpAKnAqUCpgKlAqgCpgKoAqkCqgKrAqwCqgKtAqsCrQKuAqsCrQKvAq4CsAKxArICsAKzArECsQKzArQCswKwArUCtQKwArYCswK1ArcCuAK5AroCuAK7ArkCugK5ArwCugK8Ar0CvgK/AsACvgLBAr8CwAK/AsICwALCAsMCxALFAsYCxALHAsUCyALHAsQCyALJAscCygLLAswCygLNAssCzgLPAtACzgLRAs8C0gLRAs4C0gLTAtEC1ALVAtYC1ALXAtUC1gLVAtgC1gLYAtkC2gLbAtwC2gLdAtsC3gLfAuAC3gLhAt8C4gLjAuQC4gLlAuMC5gLlAuIC5gLnAuUC6ALpAuoC6ALrAukC7ALtAu4C7ALvAu0C7gLtAvAC7gLwAvEC8gLzAvQC8gL1AvMC9ALzAvYC9AL2AvcC+AL5AvoC+AL7AvkC+gL5AvwC+gL8Av0C/gL/AgAD/gIBA/8C/wIBAwIDAQP+AgMDAwP+AgQDAQMDAwUDBgMHAwgDBgMJAwcDCgMLAwwDCgMNAwsDDgMPAxADDgMRAw8DEgMTAxQDEgMVAxMDFAMTAxYDFAMWAxcDGAMZAxoDGAMbAxkDHAMdAx4DHAMfAx0DIAMhAyIDIAMjAyEDJAMgAyIDJAMiAyUDJgMnAygDJgMpAycDKgMmAygDKgMoAysDLAMtAy4DLAMvAy0DMAMxAzIDMAMzAzEDNAMwAzIDNAMyAzUDNgM3AzgDNgM5AzcDOgM7AzwDOgM9AzsDPgM9AzoDPgM/Az0DQANBA0IDQANDA0EDRANFA0YDRANHA0UDSANJA0oDSANLA0kDTANNA04DTANPA00DTgNNA1ADTgNQA1EDUgNTA1QDUgNVA1MDVgNXA1gDVgNZA1cDWgNbA1wDWgNdA1sDWwNdA14DXQNaA18DXwNaA2ADXQNfA2EDYgNjA2QDYgNlA2MDZgNnA2gDZgNpA2cDagNrA2wDagNtA2sDbgNvA3ADbgNxA28DcgNzA3QDcgN1A3MDdgN3A3gDdgN5A3cDegN7A3wDegN9A3sDfgN/A4ADfgOBA38DgAN/A4IDgAOCA4MDhAOFA4YDhAOHA4UDhgOFA4gDhgOIA4kDigOLA4wDigONA4sDjAOLA44DjAOOA48DkAORA5IDkAOTA5EDkgORA5QDkgOUA5UDlgOXA5gDlgOZA5cDmgObA5wDmgOdA5sDngOfA6ADngOhA58DogOjA6QDogOlA6MDpgOnA6gDpgOpA6cDqAOnA6oDqAOqA6sDrAOtA64DrAOvA60DsAOxA7IDsAOzA7EDtAO1A7YDtAO3A7UDuAO3A7QDuAO5A7cDugO7A7wDugO9A7sDvgO/A8ADvgPBA78DwgPDA8QDwgPFA8MDxgPHA8gDxgPJA8cDyAPHA8oDyAPKA8sDzAPNA84DzAPPA80D0APRA9ID0APTA9ED0gPRA9QD0gPUA9UD1gPXA9gD1gPZA9cD1wPZA9oD2QPWA9sD2wPWA9wD2QPbA90D3gPfA+AD3gPhA98D4APfA+ID4APiA+MD5APlA+YD5APnA+UD5gPlA+gD5gPoA+kD6QPoA+oD6QPqA+sD6wPqA+wD6wPsA+0D7gPvA/AD7gPxA+8D8gPxA+4D8gPzA/ED9AP1A/YD9AP3A/UD9gP1A/gD9gP4A/kD+gP7A/wD+gP9A/sD/gP/AwAE/gMBBP8DAgQDBAQEAgQFBAMEBgQHBAgEBgQJBAcE"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": SubResource("ShaderMaterial_5jc5q"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -44,6 +140,14 @@ _surfaces = [{
 }]
 blend_shape_mode = 0
 shadow_mesh = SubResource("ArrayMesh_0iq4g")
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_j7qmc"]
+render_priority = 0
+shader = ExtResource("3_0w723")
+shader_parameter/Noise = ExtResource("4_igh27")
+shader_parameter/wind_enabled = true
+shader_parameter/Texture = ExtResource("3_yxmxu")
+shader_parameter/Mask = ExtResource("3_xmcbb")
 
 [sub_resource type="ArrayMesh" id="ArrayMesh_ndva6"]
 _surfaces = [{
@@ -67,7 +171,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 342,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUAGAAZABoAGAAbABkAHAAdAB4AHAAfAB0AIAAhACIAIAAjACEAJAAlACYAJAAnACUAKAApACoAKAArACkALAAtAC4ALAAvAC0AMAAxADIAMAAzADEANAA1ADYANAA3ADUAOAA5ADoAOAA7ADkAPAA9AD4APAA/AD0AQABBAEIAQABDAEEARABFAEYARABHAEUASABJAEoASABLAEkATABNAE4ATABPAE0AUABRAFIAUABTAFEAVABVAFYAVABXAFUAWABZAFoAWABbAFkAXABdAF4AXABfAF0AYABhAGIAYABjAGEAZABlAGYAZABnAGUAaABpAGoAaABrAGkAbABtAG4AbABvAG0AcABxAHIAcABzAHEAdAB1AHYAdAB3AHUAeAB5AHoAeAB7AHkAfAB9AH4AfAB/AH0AgACBAIIAgACDAIEAhACFAIYAhACHAIUAiACJAIoAiACLAIkAjACNAI4AjACPAI0AkACRAJIAkACTAJEAlACVAJYAlACXAJUAmACZAJoAmACbAJkAnACdAJ4AnACfAJ0AoAChAKIAoACjAKEApAClAKYApACnAKUAqACpAKoAqACrAKkArACtAK4ArACvAK0AsACxALIAsACzALEAtAC1ALYAtAC3ALUAuAC5ALoAuAC7ALkAvAC9AL4AvAC/AL0AwADBAMIAwADDAMEAxADFAMYAxADHAMUAyADJAMoAyADLAMkAzADNAM4AzADPAM0A0ADRANIA0ADTANEA1ADVANYA1ADXANUA2ADZANoA2ADbANkA3ADdAN4A3ADfAN0A4ADhAOIA4ADjAOEA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": SubResource("ShaderMaterial_j7qmc"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -99,7 +203,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -131,7 +235,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -163,7 +267,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -195,7 +299,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -227,7 +331,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -259,7 +363,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 18,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -291,7 +395,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 6,
 "index_data": PackedByteArray("AAABAAIAAAADAAEA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -323,7 +427,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -355,7 +459,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),
@@ -387,7 +491,7 @@ _surfaces = [{
 "format": 34896613399,
 "index_count": 36,
 "index_data": PackedByteArray("AAABAAIAAAADAAEABAAFAAYABAAHAAUACAAJAAoACAALAAkADAANAA4ADAAPAA0AEAARABIAEAATABEAFAAVABYAFAAXABUA"),
-"material": SubResource("StandardMaterial3D_yplua"),
+"material": ExtResource("1_hmcml"),
 "name": "birch_texture",
 "primitive": 3,
 "uv_scale": Vector4(0, 0, 0, 0),

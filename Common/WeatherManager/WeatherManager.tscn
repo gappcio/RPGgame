@@ -1,0 +1,8 @@
+[gd_scene load_steps=3 format=3 uid="uid://bi1gxxyhcgs8k"]
+
+[ext_resource type="Script" uid="uid://boy3en3paht82" path="res://Common/WeatherManager/WeatherManager.gd" id="1_7i34d"]
+[ext_resource type="Texture2D" uid="uid://botpb7fwi6hxj" path="res://Common/WeatherManager/wind_noise.tres" id="2_4rfdv"]
+
+[node name="WeatherManager" type="Node3D"]
+script = ExtResource("1_7i34d")
+wind_texture = ExtResource("2_4rfdv")

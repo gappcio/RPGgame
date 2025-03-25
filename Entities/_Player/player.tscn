@@ -298,8 +298,9 @@ script = ExtResource("3_u3exm")
 [node name="SpringArm" type="SpringArm3D" parent="CameraRoot/CameraYaw/CameraPitch"]
 spring_length = 7.0
 
-[node name="Camera" type="Camera3D" parent="CameraRoot/CameraYaw/CameraPitch/SpringArm"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 7)
+[node name="Camera" type="Camera3D" parent="CameraRoot/CameraYaw/CameraPitch"]
+transform = Transform3D(1, 0, 0, 0, 0.939693, 0.34202, 0, -0.34202, 0.939693, 0, 8, 18)
 keep_aspect = 0
 current = true
 size = 0.015
+far = 200.0
