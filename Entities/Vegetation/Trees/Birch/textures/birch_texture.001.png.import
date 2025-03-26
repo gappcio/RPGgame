@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://wvmm7ipyos24"
-path="res://.godot/imported/pine_texture.png-c058a23c8955d1185a538426dc8c7cdf.ctex"
+uid="uid://bia7tgx4ircme"
+path="res://.godot/imported/birch_texture.001.png-b85e352dd8131a5d526b41d0859bd09b.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Entities/Vegetation/Trees/Pine/pine_texture.png"
-dest_files=["res://.godot/imported/pine_texture.png-c058a23c8955d1185a538426dc8c7cdf.ctex"]
+source_file="res://Entities/Vegetation/Trees/Birch/textures/birch_texture.001.png"
+dest_files=["res://.godot/imported/birch_texture.001.png-b85e352dd8131a5d526b41d0859bd09b.ctex"]
 
 [params]
 
@@ -31,4 +31,4 @@ process/normal_map_invert_y=false
 process/hdr_as_srgb=false
 process/hdr_clamp_exposure=false
 process/size_limit=0
-detect_3d/compress_to=0
+detect_3d/compress_to=1

@@ -1,4 +1,4 @@
-[gd_scene load_steps=8 format=3 uid="uid://douityyj76al4"]
+[gd_scene load_steps=11 format=3 uid="uid://douityyj76al4"]
 
 [ext_resource type="Script" uid="uid://c40fdw187e6iq" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
@@ -7,8 +7,18 @@
 [ext_resource type="PackedScene" uid="uid://dafx4llrs7i7h" path="res://Common/InventorySystem/Inventory.tscn" id="3_dp4xh"]
 [ext_resource type="PackedScene" uid="uid://bi1gxxyhcgs8k" path="res://Common/WeatherManager/WeatherManager.tscn" id="4_c50p3"]
 
+[sub_resource type="CameraAttributesPractical" id="CameraAttributesPractical_c50p3"]
+dof_blur_near_enabled = true
+dof_blur_near_distance = 5.0
+dof_blur_near_transition = 2.0
+
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8jpl"]
 size = Vector3(1, 5, 40)
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c50p3"]
+
+[sub_resource type="CapsuleMesh" id="CapsuleMesh_c50p3"]
+material = SubResource("StandardMaterial3D_c50p3")
 
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_d6va0")
@@ -44,6 +54,9 @@ enable_cycle = true
 cycle_length = 15.0
 sky_color = Color(0.0117647, 0, 0.741176, 1)
 
+[node name="Environment" parent="MAP_DEVROOM1/DayNightManager" index="0"]
+camera_attributes = SubResource("CameraAttributesPractical_c50p3")
+
 [node name="Sun" parent="MAP_DEVROOM1/DayNightManager" index="1"]
 transform = Transform3D(0.876307, -0.417211, 0.240876, 0, 0.499997, 0.866026, -0.481754, -0.758904, 0.438151, 0, 0, 0)
 directional_shadow_mode = 0
@@ -54,22 +67,27 @@ directional_shadow_max_distance = 0.0
 speed_scale = 1.6
 
 [node name="Player" parent="MAP_DEVROOM1" index="2" node_paths=PackedStringArray("inventory")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -19.1886, 0, 13.7734)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6057, 0.222242, 20.5214)
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
 
-[node name="Camera" parent="MAP_DEVROOM1/Player/CameraRoot/CameraYaw/CameraPitch" index="1"]
-near = 0.001
-
 [node name="OmniLight3D" parent="MAP_DEVROOM1" index="5"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.944, 1.41914, 21.7349)
-visible = true
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.2942, 1.41914, 18.1119)
 light_color = Color(1, 1, 1, 1)
 light_energy = 2.094
+omni_range = 9.62123
 
-[node name="OmniLight3D2" parent="MAP_DEVROOM1" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.72677, 0.9, 17.5983)
+[node name="OmniLight3D3" parent="MAP_DEVROOM1" index="6"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8212, 1.49231, 24.0548)
+omni_range = 19.7851
+
+[node name="OmniLight3D2" parent="MAP_DEVROOM1" index="7"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.7294, 0.9, 19.7071)
+visible = false
 omni_range = 11.52
 omni_attenuation = 0.422
+
+[node name="TreePine" parent="MAP_DEVROOM1" index="16"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.8799, 1.90735e-06, 19.7675)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_DEVROOM1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, 0)
@@ -81,9 +99,17 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 2, 19.5)
 shape = SubResource("BoxShape3D_o8jpl")
 
 [node name="SpotLight3D" type="SpotLight3D" parent="MAP_DEVROOM1"]
-transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -7.8, 1.7, 19.1)
+transform = Transform3D(-1, 0, 8.74228e-08, 0, 1, 0, -8.74228e-08, 0, -1, -27.5034, 1.7, 17.5025)
 visible = false
-spot_range = 10.0
+light_energy = 1.37
+light_size = 0.4
+shadow_enabled = true
+spot_range = 11.53
+spot_attenuation = -1.6
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="MAP_DEVROOM1"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6582, 1.08339, 19.959)
+mesh = SubResource("CapsuleMesh_c50p3")
 
 [editable path="WindowManager"]
 [editable path="MAP_DEVROOM1"]

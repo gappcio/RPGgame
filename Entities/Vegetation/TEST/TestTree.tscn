@@ -28,5 +28,6 @@ texture = ExtResource("1_dwkua")
 
 [node name="MeshInstance3D" type="MeshInstance3D" parent="Node3D"]
 transform = Transform3D(1, 0, 0, 0, -4.37114e-08, -1.414, 0, 1, -6.18079e-08, 0, 2.258, 0)
+sorting_offset = 0.625
 mesh = SubResource("PlaneMesh_lkffl")
 skeleton = NodePath("../..")

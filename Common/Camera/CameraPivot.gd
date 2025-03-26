@@ -26,7 +26,7 @@ var zoom_max: float = 12.0;
 func _ready() -> void:
 	pass
 	spring_arm.add_excluded_object(player.get_rid())
-	#top_level = true;
+	top_level = true;
 
 func _unhandled_input(event: InputEvent) -> void:
 	pass
@@ -61,11 +61,12 @@ func _physics_process(delta: float) -> void:
 		
 	#spring_arm.spring_length = lerp(spring_arm.spring_length, zoom, 4 * delta);
 	#camera.position.z = spring_arm.spring_length;
-	
+	#
 	#camera.fov = lerp(camera.fov, 75.0 + zoom, 4 * delta)
 	
 	#camera_pos = lerp(camera_pos, position_offset_target, 4 * delta);
 	global_position = lerp(global_position, player.global_position + camera_zoom, 18 * delta);
+	
 	
 	#pitch = clamp(pitch, pitch_min, pitch_max)
 	
