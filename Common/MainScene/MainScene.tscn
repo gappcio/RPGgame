@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://douityyj76al4"]
+[gd_scene load_steps=9 format=3 uid="uid://douityyj76al4"]
 
 [ext_resource type="Script" uid="uid://c40fdw187e6iq" path="res://Common/MainScene/GameManager.gd" id="1_d6va0"]
 [ext_resource type="PackedScene" uid="uid://62n6lc63rm26" path="res://Maps/DEVROOM/devroom1.tscn" id="1_v3vin"]
@@ -14,11 +14,6 @@ dof_blur_near_transition = 2.0
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_o8jpl"]
 size = Vector3(1, 5, 40)
-
-[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_c50p3"]
-
-[sub_resource type="CapsuleMesh" id="CapsuleMesh_c50p3"]
-material = SubResource("StandardMaterial3D_c50p3")
 
 [node name="MainScene" type="Node3D"]
 script = ExtResource("1_d6va0")
@@ -50,7 +45,6 @@ inventory_interface = NodePath("..")
 [node name="MAP_DEVROOM1" parent="." instance=ExtResource("1_v3vin")]
 
 [node name="DayNightManager" parent="MAP_DEVROOM1" index="0"]
-enable_cycle = true
 cycle_length = 15.0
 sky_color = Color(0.0117647, 0, 0.741176, 1)
 
@@ -67,7 +61,7 @@ directional_shadow_max_distance = 0.0
 speed_scale = 1.6
 
 [node name="Player" parent="MAP_DEVROOM1" index="2" node_paths=PackedStringArray("inventory")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -20.6057, 0.222242, 20.5214)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -11.6057, 0.222242, 22.5214)
 inventory = NodePath("../../UI/CanvasInventory/InventoryInferface/Inventory")
 
 [node name="OmniLight3D" parent="MAP_DEVROOM1" index="5"]
@@ -77,7 +71,7 @@ light_energy = 2.094
 omni_range = 9.62123
 
 [node name="OmniLight3D3" parent="MAP_DEVROOM1" index="6"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -30.8212, 1.49231, 24.0548)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -21.8212, 1.49231, 28.0548)
 omni_range = 19.7851
 
 [node name="OmniLight3D2" parent="MAP_DEVROOM1" index="7"]
@@ -86,8 +80,17 @@ visible = false
 omni_range = 11.52
 omni_attenuation = 0.422
 
+[node name="TestTree" parent="MAP_DEVROOM1" index="9"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -37, 0, 26)
+
+[node name="TreeBirch2" parent="MAP_DEVROOM1" index="12"]
+transform = Transform3D(-0.398631, 0, 1.1689, 0, 1.235, 0, -1.1689, 0, -0.398631, -14.5064, -0.067849, 25.7817)
+
+[node name="TreeBirch4" parent="MAP_DEVROOM1" index="14"]
+transform = Transform3D(0.171967, 0, 0.833325, 0, 0.850884, 0, -0.833325, 0, 0.171967, -3.34876, -0.067847, 28.4185)
+
 [node name="TreePine" parent="MAP_DEVROOM1" index="16"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -32.8799, 1.90735e-06, 19.7675)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.8799, 1.90735e-06, 12.7675)
 
 [node name="StaticBody3D" type="StaticBody3D" parent="MAP_DEVROOM1"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -42.5, 0, 0)
@@ -106,10 +109,6 @@ light_size = 0.4
 shadow_enabled = true
 spot_range = 11.53
 spot_attenuation = -1.6
-
-[node name="MeshInstance3D2" type="MeshInstance3D" parent="MAP_DEVROOM1"]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -25.6582, 1.08339, 19.959)
-mesh = SubResource("CapsuleMesh_c50p3")
 
 [editable path="WindowManager"]
 [editable path="MAP_DEVROOM1"]
