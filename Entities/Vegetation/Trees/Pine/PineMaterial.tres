@@ -10,3 +10,4 @@ shader = ExtResource("1_xv5rh")
 shader_parameter/Noise = ExtResource("2_vicyl")
 shader_parameter/wind_enabled = true
 shader_parameter/Texture = ExtResource("1_2wvk1")
+shader_parameter/PlayerPosition = Vector3(0, 0, 0)

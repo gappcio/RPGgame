@@ -11,4 +11,3 @@ shader_parameter/Noise = ExtResource("2_t6x80")
 shader_parameter/wind_enabled = true
 shader_parameter/Texture = ExtResource("3_ejyhy")
 shader_parameter/PlayerPosition = Vector3(0, 0, 0)
-shader_parameter/NoiseFragment = ExtResource("2_t6x80")
